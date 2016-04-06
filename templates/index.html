@@ -17,18 +17,18 @@
 
 <body>
 
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div class="progress z-depth-2 activityIndicator">
+<input id="pac-input" class="white black-text flow-text" type="search">
+<div class="progress activityIndicator">
     <div class="indeterminate"></div>
 </div>
 <div id="map"></div>
 
 {# Scripts #}
-<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&signed_in=true&callback=initAutocomplete"></script>
 <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&callback=initAutocomplete"></script>
 
 </body>
 </html>
