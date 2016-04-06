@@ -10,6 +10,7 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
 
+    <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/map.css' %}"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -19,12 +20,13 @@
 
 <body>
 
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map"></div>
 
 
 <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&signed_in=true&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&signed_in=true&callback=initAutocomplete"></script>
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
