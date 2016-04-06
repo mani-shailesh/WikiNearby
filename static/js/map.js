@@ -50,7 +50,7 @@ function initAutocomplete() {
     userGeolocation();
 
     // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
+    var input = document.getElementById('search-input');
     // var searchDiv = document.getElementById('search-div');
     var searchBox = new google.maps.places.SearchBox(input);
     // map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchDiv);

@@ -7,13 +7,27 @@
 
 }
 
-#pac-input {
+#search-input {
+    /*width: 300px;*/
+    float: left; /* add this */
+    padding-left: 50px;
+    /*padding-right: 50px;*/
+}
+
+#search-icon {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+}
+
+#search-div {
     position: absolute;
     z-index: 1;
-    width: 300px;
-    padding-left: 8px;
+    width: 100%;
+    overflow: hidden;
     margin-top: 10px;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 
 
