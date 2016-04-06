@@ -104,6 +104,8 @@ ENV/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/map_annotate.iml
+.idea/misc.xml
 
 # Gradle:
 .idea/gradle.xml
