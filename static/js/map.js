@@ -1,18 +1,52 @@
 // This prototype displays a marker at the center of IIT Ropar.
 // When the user clicks the marker, an info window opens.
-var IITRopar = {lat: 30.9755, lng: 76.5395};
+
+// var IITRopar = {lat: 30.9755, lng: 76.5395};
+var map;
 
 function initMap() {
-    return new google.maps.Map(document.getElementById('map'), {
+    var newMap = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
-        center: IITRopar,
+        center: {lat: -34.397, lng: 150.644},
         mapTypeControl: false
     });
+
+    return newMap;
+
+}
+
+function userGeolocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            // Using global variable here
+            map.setCenter(pos);
+            map.setZoom(16);
+        }, function () {
+            handleLocationError(true);
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false);
+    }
+}
+
+function handleLocationError(browserHasGeolocation) {
+    // Materialize.toast(message, displayLength, className, completeCallback);
+    Materialize.toast(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.', 2000); // last number is the duration of the toast
 }
 
 function initAutocomplete() {
 
-    var map = initMap();
+    map = initMap();
+
+    // HTML5 geolocation
+    userGeolocation();
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
