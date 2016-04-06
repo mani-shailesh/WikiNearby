@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
 
-    {# Stylesheets #}
+    {#Stylesheets#}
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/map.css' %}"/>
@@ -17,18 +17,54 @@
 
 <body>
 
+<div id="upperRightControls">
+
+    <div class="row">
+        {#Filter button#}
+        <a id="filterModalTrigger" class="waves-effect waves-light btn-floating btn-large red modal-trigger"
+           href="#filterModal">
+            <i class="large material-icons">settings</i>
+        </a>
+    </div>
+
+    <div class="valign-wrapper">
+        <div class="row">
+            {#"Go to my location" button#}
+            <a id="myLocationButton" class="waves-effect waves-light btn-floating blue modal-trigger" href="#">
+                <i class="large material-icons">my_location</i>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+{#Filter modal#}
+<div id="filterModal" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>View Options</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Apply</a>
+    </div>
+</div>
+
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div class="progress z-depth-2 activityIndicator">
+
+<div class="progress activityIndicator">
     <div class="indeterminate"></div>
 </div>
+
 <div id="map"></div>
 
-{# Scripts #}
-<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&signed_in=true&callback=initAutocomplete"></script>
+{#Scripts#}
 <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&callback=initAutocomplete"></script>
+
 
 </body>
 </html>
