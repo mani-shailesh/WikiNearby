@@ -13,3 +13,7 @@ $('#filterModalTrigger').leanModal({
         // complete: function() { alert('Closed'); }
     }
 );
+
+// Function "userGeolocation()" and "map" is declared and initialized in
+// map.js
+$('#myLocationButton').click(userGeolocation);
