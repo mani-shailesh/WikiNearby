@@ -9,14 +9,12 @@ var oldTileCoordinate;
 var TILE_SIZE = 256;
 
 function initMap() {
-    var newMap = new google.maps.Map(document.getElementById('map'), {
+    return new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: {lat: -34.397, lng: 150.644},
         mapTypeControl: false,
         streetViewControl: false
     });
-
-    return newMap;
 
 }
 
@@ -56,17 +54,13 @@ function project(latLng) {
 }
 
 function getNewTileCoordinate() {
-    currentBounds = map.getBounds();
-    currentCenterLatLng = currentBounds.getCenter();
+    var currentBounds = map.getBounds();
+    var currentCenterLatLng = currentBounds.getCenter();
     var scale = 1 << map.getZoom();
     var worldCoordinate = project(currentCenterLatLng);
-    var pixelCoordinate = new google.maps.Point(
-        Math.floor(worldCoordinate.x * scale),
-        Math.floor(worldCoordinate.y * scale));
-    var newTileCoordinate = new google.maps.Point(
+    return new google.maps.Point(
         Math.floor(worldCoordinate.x * scale / TILE_SIZE),
         Math.floor(worldCoordinate.y * scale / TILE_SIZE));
-    return newTileCoordinate;
 }
 
 function initAutocomplete() {

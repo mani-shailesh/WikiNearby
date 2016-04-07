@@ -8,7 +8,7 @@ $('#filterModalTrigger').leanModal({
         dismissible: true,
         opacity: .5,
         in_duration: 300,
-        out_duration: 200,
+    out_duration: 200
         // ready: function() { alert('Ready'); },
         // complete: function() { alert('Closed'); }
     }
