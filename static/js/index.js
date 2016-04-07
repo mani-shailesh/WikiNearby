@@ -1,7 +1,3 @@
-/**
- * Created by tagarwal on 06/04/16.
- */
-
 // Filter modal configuration
 
 $('#filterModalTrigger').leanModal({

@@ -8,6 +8,7 @@ var map;
 var oldTileCoordinate;
 var TILE_SIZE = 256;
 
+// Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
 function initMap() {
     return new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
@@ -18,6 +19,7 @@ function initMap() {
 
 }
 
+// Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
 function userGeolocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -37,6 +39,7 @@ function userGeolocation() {
     }
 }
 
+// Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
 function handleLocationError(browserHasGeolocation) {
     // Materialize.toast(message, displayLength, className, completeCallback);
     Materialize.toast(browserHasGeolocation ?
@@ -44,6 +47,7 @@ function handleLocationError(browserHasGeolocation) {
         'Error: Your browser doesn\'t support geolocation.', 2000); // last number is the duration of the toast
 }
 
+// Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
 function project(latLng) {
     var siny = Math.sin(latLng.lat() * Math.PI / 180);
     siny = Math.min(Math.max(siny, -0.9999), 0.9999);
@@ -53,6 +57,7 @@ function project(latLng) {
         TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI)));
 }
 
+// Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
 function getNewTileCoordinate() {
     var currentBounds = map.getBounds();
     var currentCenterLatLng = currentBounds.getCenter();
@@ -63,6 +68,7 @@ function getNewTileCoordinate() {
         Math.floor(worldCoordinate.y * scale / TILE_SIZE));
 }
 
+// Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
 function initAutocomplete() {
 
     map = initMap();
