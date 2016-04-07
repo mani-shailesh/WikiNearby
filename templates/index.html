@@ -17,15 +17,19 @@
 
 <body>
 
-<div id="search-div">
-    {#    <div class="row">#}
-    {#        <div class="col l3 m5 s10">#}
-            <i id="search-icon" class="material-icons">search</i>
-            <input id="search-input" class="white black-text flow-text" type="search" placeholder="Search your place"/>
-    {#        </div>#}
-    {#    </div>#}
+<div id="search-div" class="z-depth-2 grey">
+
+    <i id="search-icon" class="material-icons">search</i>
+    <input id="search-input" class="white black-text flow-text" type="search" placeholder="Search for a place"/>
+
 </div>
 {#<input id="pac-input" class="white black-text flow-text" type="search"/>#}
+
+<div class="smallScreenOverlay">
+
+    <div class="smallScreenOverlayData white-text">Hello, World!</div>
+
+</div>
 
 <div class="progress activityIndicator">
     <div class="indeterminate"></div>
@@ -36,7 +40,7 @@
     <div class="row">
         {#Filter button#}
         <a id="filterModalTrigger" data-position="left" data-delay="500" data-tooltip="View Options"
-           class="waves-effect waves-light btn-floating btn-large red modal-trigger tooltipped"
+           class="waves-effect waves-light btn-floating btn-large red modal-trigger tooltipped z-depth-2"
            href="#filterModal">
             <i class="large material-icons">settings</i>
         </a>
@@ -46,7 +50,7 @@
         <div class="row">
             {#"Go to my location" button#}
             <a id="myLocationButton" data-position="left" data-delay="500" data-tooltip="Go to my location"
-               class="waves-effect waves-light btn-floating blue modal-trigger tooltipped" href="#">
+               class="waves-effect waves-light btn-floating blue modal-trigger tooltipped z-depth-2" href="#">
                 <i class="large material-icons">my_location</i>
             </a>
         </div>

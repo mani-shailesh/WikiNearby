@@ -8,28 +8,30 @@
 }
 
 #search-input {
-    width: 300px;
-    float: left; /* add this */
-    padding-left: 50px;
-    /*padding-right: 50px;*/
+    width: 88%;
+    padding-left: 12%;
+    float: left;
+    margin-bottom: 1px;
+    margin-right: 0px;
 }
 
 #search-icon {
     position: absolute;
     margin-left: 10px;
     margin-top: 10px;
-    overflow: hidden; /* if you don't want #second to wrap below #first */
+    overflow: hidden;
 }
 
 #search-div {
     position: absolute;
     z-index: 1;
-    /*width: 400px;*/
+    width: 70%;
+    max-width: 400px;
     overflow: hidden;
     margin-top: 10px;
     margin-left: 10px;
+    padding-bottom: 0px;
 }
-
 
 #upperRightControls {
 
@@ -38,3 +40,116 @@
     top: 10px;
 
 }
+
+.smallScreenOverlay {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.smallScreenOverlayData {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    width: 100%;
+}
+
+@media screen and (max-width: 440px) {
+
+    #search-input {
+        width: 85%;
+        padding-left: 15%;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+
+    #search-input {
+        width: 80%;
+        padding-left: 20%;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+
+    #search-div {
+
+        position: absolute;
+        z-index: 1;
+        width: 60%;
+        overflow: hidden;
+        margin-top: 10px;
+        margin-left: 10px;
+
+    }
+
+}
+
+@media screen and (max-width: 295px) {
+
+    #search-div {
+
+        position: absolute;
+        z-index: 1;
+        width: 50%;
+        overflow: hidden;
+        margin-top: 10px;
+        margin-left: 10px;
+
+    }
+
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        color: transparent;
+    }
+
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: transparent;
+    }
+
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: transparent;
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: transparent;
+    }
+
+    textarea::-webkit-input-placeholder { /* WebKit browsers */
+        color: transparent;
+    }
+
+    textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: transparent;
+    }
+
+    textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: transparent;
+    }
+
+    textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: transparent;
+    }
+
+    .smallScreenOverlay {
+        overflow-y: auto;
+        display: block;
+    }
+
+    .smallScreenOverlayData {
+        display: block;
+    }
+
+}
+
