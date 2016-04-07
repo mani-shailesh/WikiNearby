@@ -4,6 +4,10 @@
 // var IITRopar = {lat: 30.9755, lng: 76.5395};
 var map;
 
+// Helper variabls to display the indeterminate loader on top of the screen
+var oldTileCoordinate;
+var TILE_SIZE = 256;
+
 function initMap() {
     var newMap = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
@@ -25,7 +29,7 @@ function userGeolocation() {
             };
             // Using global variable here
             map.setCenter(pos);
-            map.setZoom(16);
+            map.setZoom(12);
         }, function () {
             handleLocationError(true);
         });
@@ -42,9 +46,51 @@ function handleLocationError(browserHasGeolocation) {
         'Error: Your browser doesn\'t support geolocation.', 2000); // last number is the duration of the toast
 }
 
+function project(latLng) {
+    var siny = Math.sin(latLng.lat() * Math.PI / 180);
+    siny = Math.min(Math.max(siny, -0.9999), 0.9999);
+
+    return new google.maps.Point(
+        TILE_SIZE * (0.5 + latLng.lng() / 360),
+        TILE_SIZE * (0.5 - Math.log((1 + siny) / (1 - siny)) / (4 * Math.PI)));
+}
+
+function getNewTileCoordinate() {
+    currentBounds = map.getBounds();
+    currentCenterLatLng = currentBounds.getCenter();
+    var scale = 1 << map.getZoom();
+    var worldCoordinate = project(currentCenterLatLng);
+    var pixelCoordinate = new google.maps.Point(
+        Math.floor(worldCoordinate.x * scale),
+        Math.floor(worldCoordinate.y * scale));
+    var newTileCoordinate = new google.maps.Point(
+        Math.floor(worldCoordinate.x * scale / TILE_SIZE),
+        Math.floor(worldCoordinate.y * scale / TILE_SIZE));
+    return newTileCoordinate;
+}
+
 function initAutocomplete() {
 
     map = initMap();
+
+    google.maps.event.addListener(map, 'bounds_changed', function () {
+        var newTileCoordinate = getNewTileCoordinate();
+        // console.log(newTileCoordinate);
+        if (typeof oldTileCoordinate != 'undefined') {
+            // console.log("Updating");
+            if ((Math.abs(newTileCoordinate.x - oldTileCoordinate.x) >= 2) || (Math.abs(newTileCoordinate.y - oldTileCoordinate.y) >= 2)) {
+                // console.log("Changed!");
+                $('.activityIndicator').fadeIn(200);
+            }
+        }
+    });
+
+    google.maps.event.addListener(map, 'tilesloaded', function () {
+        // console.log("Loaded!");
+        oldTileCoordinate = getNewTileCoordinate();
+        // console.log("Loaded");
+        $('.activityIndicator').fadeOut(200);
+    });
 
     // HTML5 geolocation
     userGeolocation();
