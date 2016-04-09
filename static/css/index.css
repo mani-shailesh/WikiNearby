@@ -1,6 +1,34 @@
 /*Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version*/
 /*Some code from http://stackoverflow.com/questions/30794947/hide-placeholder-with-css*/
 
+/*iOS specific CSS*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select:focus,
+  textarea:focus,
+  input[type="search"]:focus {
+    font-size: 16px;
+    background: #eee;
+  }
+}
+
+/*iOS specific CSS*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select,
+  textarea,
+  input[type="search"] {
+    font-size: 16px;
+  }
+}
+
+/*iOS specific CSS*/
+input[type="search"] {
+
+    border-radius: 0 0 0 0;
+    -webkit-appearance: none;
+    -webkit-border-radius:0;
+
+}
+
 .activityIndicator {
 
     /*display: none;*/
