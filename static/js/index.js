@@ -18,7 +18,6 @@ $('#myLocationButton').click(userGeolocation);
 var hideSoftKeyboard = function() {
     document.activeElement.blur();
     $("input").blur();
-    console.log('HIDE!');
 };
 
 $('#map').click(hideSoftKeyboard);
