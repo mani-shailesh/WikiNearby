@@ -31,9 +31,10 @@ class ResponseBuilder:
         """
         pass
 
-    def get_response(self):
+    def get_response_dict(self):
         """
-        Return the appropriate JSON response which satisfy filters.
+        Processes the request and returns the appropriate response dictionary
+        containing key value pairs which satisfy filters.
         :return:
         """
         pass

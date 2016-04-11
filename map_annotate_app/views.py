@@ -1,6 +1,7 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 
-import map_annotate_app.classes.ResponseBuilder as ResponseBuilder
+import map_annotate_app.ResponseBuilder as ResponseBuilder
 
 
 def index(request):
@@ -14,4 +15,4 @@ def get_response(request):
     :return:
     """
     response_builder = ResponseBuilder.ResponseBuilder(request)
-    return response_builder.get_response()
+    return JsonResponse(response_builder.get_response_dict())
