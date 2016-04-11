@@ -9,6 +9,7 @@
 
     {#Stylesheets#}
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/map.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}"/>
@@ -75,6 +76,20 @@
 </div>
 
 <div id="map"></div>
+
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text"><i class="fa fa-map"></i> Map-Annotate</h5>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <a class="white-text" href="https://github.com/tushar-agarwal/map_annotate"><p><i
+                        class="fa fa-github"></i> See the GitHub project</p></a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 {#Scripts#}
 <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>

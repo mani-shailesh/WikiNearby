@@ -97,6 +97,13 @@ input[type="search"] {
     right: 10%;
 }
 
+footer.page-footer {
+
+    margin-top: 0;
+    padding-top: 0;
+
+}
+
 @media screen and (max-width: 440px) {
 
     #search-input {
