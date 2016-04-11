@@ -20,4 +20,25 @@ var hideSoftKeyboard = function() {
     $("input").blur();
 };
 
+// Remove the below code when ready for production!
+sideNavState = false;
+var toggleSideNav = function () {
+    if (sideNavState) {
+        $('.button-collapse').sideNav('hide');
+        sideNavState = false;
+    } else {
+        $('.button-collapse').sideNav('show');
+        sideNavState = true;
+    }
+};
+
+$('#mainBranding').click(toggleSideNav);
+
 $('#map').click(hideSoftKeyboard);
+$(".button-collapse").sideNav();
+
+// Show overlay menu
+// $('.button-collapse').sideNav('show');
+
+// Hide overlay menu
+// $('.button-collapse').sideNav('hide');
