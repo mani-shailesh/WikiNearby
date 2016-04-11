@@ -3,21 +3,21 @@
 
 /*iOS specific CSS*/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  select:focus,
-  textarea:focus,
-  input[type="search"]:focus {
-    font-size: 16px;
-    background: #eee;
-  }
+    select:focus,
+    textarea:focus,
+    input[type="search"]:focus {
+        font-size: 16px;
+        background: #eee;
+    }
 }
 
 /*iOS specific CSS*/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  select,
-  textarea,
-  input[type="search"] {
-    font-size: 16px;
-  }
+    select,
+    textarea,
+    input[type="search"] {
+        font-size: 16px;
+    }
 }
 
 /*iOS specific CSS*/

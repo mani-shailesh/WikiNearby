@@ -1,7 +1,3 @@
-// This prototype displays a marker at the center of IIT Ropar.
-// When the user clicks the marker, an info window opens.
-
-// var IITRopar = {lat: 30.9755, lng: 76.5395};
 var map;
 
 // Helper variabls to display the indeterminate loader on top of the screen
