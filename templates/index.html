@@ -65,9 +65,19 @@
 
 {#Filter modal#}
 <div id="filterModal" class="modal bottom-sheet">
-    <div class="modal-content">
-        <h4>View Options</h4>
-        <p>A bunch of text</p>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a class="teal-text active" href="#allFilter">All</a></li>
+                <li class="tab col s3"><a class="teal-text" href="#crimeFilter">Crime</a></li>
+                <li class="tab col s3"><a class="teal-text" href="#sansadFilter">Sansad</a></li>
+                <li class="tab col s3"><a class="teal-text" href="#wikipediaFilter">Wikipedia</a></li>
+            </ul>
+        </div>
+        <div id="allFilter" class="col s12 flow-text">All Filters Active</div>
+        <div id="crimeFilter" class="col s12 flow-text">Crime Filter Active</div>
+        <div id="sansadFilter" class="col s12 flow-text">Sansad Filter Active</div>
+        <div id="wikipediaFilter" class="col s12 flow-text">Wikipedia Filter Active</div>
     </div>
     <div class="modal-footer">
         <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Apply</a>
