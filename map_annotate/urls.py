@@ -20,5 +20,6 @@ from map_annotate_app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^markers/', views.get_response),
     url(r'^.*$', views.index, name='index'),
 ]
