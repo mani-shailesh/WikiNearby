@@ -1,6 +1,10 @@
 /*Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version*/
 /*Some code from http://stackoverflow.com/questions/30794947/hide-placeholder-with-css*/
 
+#filterModal {
+    overflow: visible;
+}
+
 /*iOS specific CSS*/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     select:focus,

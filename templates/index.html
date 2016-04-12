@@ -79,16 +79,82 @@
                                           href="#wikipediaFilter">Wikipedia</a></li>
             </ul>
         </div>
-        <div id="allFilter" class="col s12 flow-text center-align"><p>Showing all data</p></div>
-        <div id="crimeFilter" class="col s12 flow-text center-align"><p>Showing crime data</p></div>
-        <div id="sansadFilter" class="col s12 flow-text center-align"><p>Showing Sansad data</p></div>
-        <div id="wikipediaFilter" class="col s12 flow-text center-align"><p>Showing Wikipedia data</p></div>
+        <div id="allFilter" class="col s12 flow-text center-align">
+            <div class="row">
+                <div class="valign-wrapper">
+                    <p class="col s12 l5">Showing all data.</p>
+                    <p class="col s12 l5">To filter data, click on an item above.</p>
+                    <div class="col s12 l2">
+                        <p>
+                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="crimeFilter" class="col s12 flow-text center-align">
+            <div class="row">
+                <div class="valign-wrapper">
+                    <p class="col s12 l5">Showing crime data.</p>
+                    <div class="col s12 l5">
+                        <label>
+                            <select multiple>
+                                <option value="" disabled selected>Select crime type(s)</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="col s12 l2">
+                        <p>
+                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sansadFilter" class="col s12 flow-text center-align">
+            <div class="row">
+                <div class="valign-wrapper">
+                    <p class="col s12 l5">Showing Sansad data.</p>
+                    <div class="col s12 l5">
+                        <label>
+                            <select multiple>
+                                <option value="" disabled selected>Select political party/parties</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="col s12 l2">
+                        <p>
+                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="wikipediaFilter" class="col s12 flow-text center-align">
+            <div class="row">
+                <div class="valign-wrapper">
+                    <p class="col s12 l5">Showing Wikipedia data.</p>
+                    <div class="col s12 l5">
+                        <div class="input-field left-align">
+                            <input id="wikiSearchTerm" type="text" class="validate">
+                            <label for="wikiSearchTerm">Type a term to narrow down results</label>
+                        </div>
+                    </div>
+                    <div class="col s12 l2">
+                        <p>
+                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="modal-footer">
-        <a href="#" class=" modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
-    </div>
-
 </div>
 
 <div class="container">

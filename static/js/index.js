@@ -36,6 +36,8 @@ $('#mainBranding').click(doubleToggleSideNav);
 $('#map').click(hideSoftKeyboard);
 $(".button-collapse").sideNav();
 
+$('select').material_select();
+
 // Show overlay menu
 // $('.button-collapse').sideNav('show');
 
