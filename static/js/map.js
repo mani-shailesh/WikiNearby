@@ -39,8 +39,8 @@ function userGeolocation() {
 function handleLocationError(browserHasGeolocation) {
     // Materialize.toast(message, displayLength, className, completeCallback);
     Materialize.toast(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.', 2000); // last number is the duration of the toast
+        'We could not figure out your location. Is the Location Service enabled?.' :
+        'We could not figure out your location because your browser doesn\'t support geolocation.', 2000); // last number is the duration of the toast
 }
 
 // Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version

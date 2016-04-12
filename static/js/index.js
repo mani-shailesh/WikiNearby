@@ -21,8 +21,8 @@ var hideSoftKeyboard = function() {
 };
 
 // Remove the below code when ready for production!
-sideNavState = false;
-var toggleSideNav = function () {
+sideNavState = true;
+var doubleToggleSideNav = function () {
     if (sideNavState) {
         $('.button-collapse').sideNav('hide');
         sideNavState = false;
@@ -32,7 +32,7 @@ var toggleSideNav = function () {
     }
 };
 
-$('#mainBranding').click(toggleSideNav);
+$('#mainBranding').click(doubleToggleSideNav);
 
 $('#map').click(hideSoftKeyboard);
 $(".button-collapse").sideNav();
