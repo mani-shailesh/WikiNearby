@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from map_annotate_app.dao import CrimeDAO
 from map_annotate_app.dao import LegislatorDAO
 from map_annotate_app.dao import WikiInfoDAO
+from map_annotate_app.extras import Location
 from map_annotate_app.extras import Pin
 from map_annotate_app.filters import CrimeFilter
 from map_annotate_app.filters import LegislatorFilter
@@ -24,6 +25,7 @@ class ResponseBuilder:
         else:
             query_dict = request.POST
 
+        # TODO : Initialization of filters
         self.crime_filter = CrimeFilter.CrimeFilter()
         self.legislator_filter = LegislatorFilter.LegislatorFilter()
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter()
@@ -90,15 +92,29 @@ class ResponseBuilder:
 
         return []
 
-    def converge_to_one(self, pin_list):
+    @staticmethod
+    def converge_to_one(pin_list):
         """
-        :param pin_list: List of `Pin` objects.
         Utility function to converge pins in one square to a single pin.
-        :return:
+        :param pin_list: List of `Pin` objects.
+        :return: A `Pin` object.
         """
-        # TODO
+        crime_list = []
+        wiki_info_list = []
+        legislator_list = []
+        lat_sum = 0.0
+        lng_sum = 0.0
 
-        pass
+        for pin in pin_list:
+            crime_list += pin.crime_list
+            wiki_info_list += wiki_info_list
+            legislator_list += legislator_list
+            lat_sum += pin.location.lat
+            lng_sum += pin.location.lng
+
+        final_location = Location.Location(lat_sum / len(pin_list), lng_sum / len(pin_list))
+        final_pin = Pin.Pin(final_location, crime_list, legislator_list, wiki_info_list)
+        return final_pin
 
     def get_response_json(self):
         """
