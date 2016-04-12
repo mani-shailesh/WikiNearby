@@ -31,7 +31,6 @@ var doubleToggleSideNav = function () {
         sideNavState = true;
     }
 };
-
 $('#mainBranding').click(doubleToggleSideNav);
 
 $('#map').click(hideSoftKeyboard);

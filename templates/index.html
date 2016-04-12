@@ -65,13 +65,15 @@
 
 {#Filter modal#}
 <div id="filterModal" class="modal bottom-sheet">
+
     <div class="row">
-        <div class="col s12">
+        <div class="col s12 center-align">
             <ul class="tabs">
-                <li class="tab col s3"><a class="teal-text active" href="#allFilter">All</a></li>
-                <li class="tab col s3"><a class="teal-text" href="#crimeFilter">Crime</a></li>
-                <li class="tab col s3"><a class="teal-text" href="#sansadFilter">Sansad</a></li>
-                <li class="tab col s3"><a class="teal-text" href="#wikipediaFilter">Wikipedia</a></li>
+                <li class="tab col s3"><a class="teal-text active" id="allFilterSource" href="#allFilter">All</a></li>
+                <li class="tab col s3"><a class="teal-text" id="crimeFilterSource" href="#crimeFilter">Crime</a></li>
+                <li class="tab col s3"><a class="teal-text" id="sansadFilterSource" href="#sansadFilter">Sansad</a></li>
+                <li class="tab col s3"><a class="teal-text" id="wikipediaFilterSource"
+                                          href="#wikipediaFilter">Wikipedia</a></li>
             </ul>
         </div>
         <div id="allFilter" class="col s12 flow-text center-align"><p>Showing all data</p></div>
@@ -79,9 +81,11 @@
         <div id="sansadFilter" class="col s12 flow-text center-align"><p>Showing Sansad data</p></div>
         <div id="wikipediaFilter" class="col s12 flow-text center-align"><p>Showing Wikipedia data</p></div>
     </div>
+
     <div class="modal-footer">
         <a href="#" class=" modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
     </div>
+
 </div>
 
 <div class="container">
@@ -119,9 +123,9 @@
 <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&callback=initAutocomplete"></script>
-<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 
 </body>
 </html>
