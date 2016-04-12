@@ -8,7 +8,7 @@ var TILE_SIZE = 256;
 function initMap() {
     return new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
-        center: {lat: -34.397, lng: 150.644},
+        center: {lat: 28.6139, lng: 77.2090},
         mapTypeControl: false,
         streetViewControl: false
     });
