@@ -8,7 +8,7 @@ class CrimeDAO:
     def __init__(self):
         pass
 
-    def get_crime_list(crime_filter):
+    def get_crime_list(self, crime_filter):
         """
         Gets crimes which fit the filter from database.
         :param crime_filter: `CrimeFilter` object to filter out the crimes

@@ -38,7 +38,7 @@ class ResponseBuilder:
         Helper method to get a list of `Pin` objects which satisfy the `CrimeFilter`.
         :return: List of `Pin` objects.
         """
-        crime_dao = CrimeDAO
+        crime_dao = CrimeDAO.CrimeDAO()
         crime_dto_list = crime_dao.get_crime_list(self.crime_filter)
         pin_list = []
         for crime_dto in crime_dto_list:

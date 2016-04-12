@@ -10,4 +10,4 @@ class LegislatorDAO:
         """
         # TODO
 
-        pass
+        return []
