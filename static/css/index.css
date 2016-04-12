@@ -7,10 +7,6 @@ body {
     flex-direction: column;
 }
 
-main {
-    flex: 1 0 auto;
-}
-
 /*iOS specific CSS*/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     select:focus,
@@ -111,6 +107,7 @@ footer.page-footer {
 
     margin-top: 0;
     padding-top: 0;
+    /*height: 52px;*/
 
 }
 
