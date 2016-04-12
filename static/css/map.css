@@ -1,8 +1,7 @@
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
 }
 #map {
-    height: calc(100% - 52px);
+    height: 100%;
 }

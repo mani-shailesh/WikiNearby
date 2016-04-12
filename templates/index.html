@@ -18,88 +18,94 @@
 </head>
 
 <body>
+<main>
 
-<div id="search-div" class="z-depth-2 grey">
+    <div id="search-div" class="z-depth-2 grey">
 
-    <i id="search-icon" class="material-icons">search</i>
-    <input id="search-input" class="white black-text flow-text" type="search" placeholder="Search for a place"/>
+        <i id="search-icon" class="material-icons">search</i>
+        <input id="search-input" class="white black-text flow-text" type="search" placeholder="Search for a place"/>
 
-</div>
-
-<div class="smallScreenOverlay">
-
-    <div class="smallScreenOverlayData white-text">
-        <p><i class="material-icons">error_outline</i></p>
-        <p>This website won't look good on a small screen.</p>
-        <p>Please access this website from a device with a larger screen.</p>
     </div>
 
-</div>
+    <div class="smallScreenOverlay">
 
-<div class="progress activityIndicator">
-    <div class="indeterminate"></div>
-</div>
+        <div class="smallScreenOverlayData white-text">
+            <p><i class="material-icons">error_outline</i></p>
+            <p>This website won't look good on a small screen.</p>
+            <p>Please access this website from a device with a larger screen.</p>
+        </div>
 
-<div id="upperRightControls">
-
-    <div class="row">
-        {#Filter button#}
-        <a id="filterModalTrigger"
-           class="waves-effect waves-light btn-floating btn-large teal modal-trigger z-depth-2"
-           href="#filterModal">
-            <i class="large material-icons">settings</i>
-        </a>
     </div>
 
-    <div class="valign-wrapper">
+    <div class="progress activityIndicator">
+        <div class="indeterminate"></div>
+    </div>
+
+    <div id="upperRightControls">
+
         <div class="row">
-            {#"Go to my location" button#}
-            <a id="myLocationButton"
-               class="waves-effect waves-light btn-floating blue modal-trigger z-depth-2" href="#">
-                <i class="large material-icons">my_location</i>
+            {#Filter button#}
+            <a id="filterModalTrigger"
+               class="waves-effect waves-light btn-floating btn-large teal modal-trigger z-depth-2"
+               href="#filterModal">
+                <i class="large material-icons">settings</i>
             </a>
         </div>
-    </div>
 
-</div>
-
-{#Filter modal#}
-<div id="filterModal" class="modal bottom-sheet">
-
-    <div class="row">
-        <div class="col s12 center-align">
-            <ul class="tabs">
-                <li class="tab col s3"><a class="teal-text active" id="allFilterSource" href="#allFilter">All</a></li>
-                <li class="tab col s3"><a class="teal-text" id="crimeFilterSource" href="#crimeFilter">Crime</a></li>
-                <li class="tab col s3"><a class="teal-text" id="sansadFilterSource" href="#sansadFilter">Sansad</a></li>
-                <li class="tab col s3"><a class="teal-text" id="wikipediaFilterSource"
-                                          href="#wikipediaFilter">Wikipedia</a></li>
-            </ul>
+        <div class="valign-wrapper">
+            <div class="row">
+                {#"Go to my location" button#}
+                <a id="myLocationButton"
+                   class="waves-effect waves-light btn-floating blue modal-trigger z-depth-2" href="#">
+                    <i class="large material-icons">my_location</i>
+                </a>
+            </div>
         </div>
-        <div id="allFilter" class="col s12 flow-text center-align"><p>Showing all data</p></div>
-        <div id="crimeFilter" class="col s12 flow-text center-align"><p>Showing crime data</p></div>
-        <div id="sansadFilter" class="col s12 flow-text center-align"><p>Showing Sansad data</p></div>
-        <div id="wikipediaFilter" class="col s12 flow-text center-align"><p>Showing Wikipedia data</p></div>
+
     </div>
 
-    <div class="modal-footer">
-        <a href="#" class=" modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
+    {#Filter modal#}
+    <div id="filterModal" class="modal bottom-sheet">
+
+        <div class="row">
+            <div class="col s12 center-align">
+                <ul class="tabs">
+                    <li class="tab col s3"><a class="teal-text active" id="allFilterSource" href="#allFilter">All</a>
+                    </li>
+                    <li class="tab col s3"><a class="teal-text" id="crimeFilterSource" href="#crimeFilter">Crime</a>
+                    </li>
+                    <li class="tab col s3"><a class="teal-text" id="sansadFilterSource" href="#sansadFilter">Sansad</a>
+                    </li>
+                    <li class="tab col s3"><a class="teal-text" id="wikipediaFilterSource"
+                                              href="#wikipediaFilter">Wikipedia</a></li>
+                </ul>
+            </div>
+            <div id="allFilter" class="col s12 flow-text center-align"><p>Showing all data</p></div>
+            <div id="crimeFilter" class="col s12 flow-text center-align"><p>Showing crime data</p></div>
+            <div id="sansadFilter" class="col s12 flow-text center-align"><p>Showing Sansad data</p></div>
+            <div id="wikipediaFilter" class="col s12 flow-text center-align"><p>Showing Wikipedia data</p></div>
+        </div>
+
+        <div class="modal-footer">
+            <a href="#" class=" modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
+        </div>
+
     </div>
 
-</div>
+    <div class="container">
+        <a href="#" data-activates="nav-mobile" class="button-collapse alwaysHidden"></a>
+    </div>
 
-<div class="container">
-    <a href="#" data-activates="nav-mobile" class="button-collapse alwaysHidden"></a>
-</div>
+    <ul id="nav-mobile" class="side-nav">
+        <li class="bold"><a href="#" class="waves-effect waves-teal">First item</a></li>
+        <li class="bold"><a href="#" class="waves-effect waves-teal">Second item</a></li>
+        <li class="bold"><a href="#" class="waves-effect waves-teal">Third item</a></li>
+        <li class="bold"><a href="#" class="waves-effect waves-teal">Fourth item</a></li>
+    </ul>
 
-<ul id="nav-mobile" class="side-nav">
-    <li class="bold"><a href="#" class="waves-effect waves-teal">First item</a></li>
-    <li class="bold"><a href="#" class="waves-effect waves-teal">Second item</a></li>
-    <li class="bold"><a href="#" class="waves-effect waves-teal">Third item</a></li>
-    <li class="bold"><a href="#" class="waves-effect waves-teal">Fourth item</a></li>
-</ul>
+    <div id="map"></div>
 
-<div id="map"></div>
+</main>
 
 <footer class="page-footer teal">
     <div class="container">
