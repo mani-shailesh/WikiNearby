@@ -104,6 +104,19 @@ footer.page-footer {
 
 }
 
+.tabs {
+
+    background-color: inherit;
+
+}
+
+.tabs .indicator {
+
+    height: 5px;
+    background-color: teal;
+
+}
+
 .alwaysHidden {
     display: none;
 }
