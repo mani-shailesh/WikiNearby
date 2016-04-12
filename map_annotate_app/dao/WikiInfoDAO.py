@@ -8,4 +8,6 @@ class WikiInfoDAO:
         :param wiki_filter: `WikiInfoFilter` object to filter out the crimes
         :return: List of `WikiInfoDTO` objects which satisfy the `crime_filter`
         """
+        # TODO
+
         pass

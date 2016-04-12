@@ -8,4 +8,6 @@ class LegislatorDAO:
         :param legislator_filter: `LegislatorFilter` object to filter out the crimes
         :return: List of `LegislatorDTO` objects which satisfy the `crime_filter`
         """
+        # TODO
+
         pass

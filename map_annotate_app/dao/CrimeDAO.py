@@ -8,4 +8,6 @@ class CrimeDAO:
         :param crime_filter: `CrimeFilter` object to filter out the crimes
         :return: List of `CrimeDTO` objects which satisfy the `crime_filter`
         """
+        # TODO
+
         pass
