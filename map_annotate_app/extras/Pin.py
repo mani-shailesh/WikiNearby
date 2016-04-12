@@ -13,3 +13,18 @@ class Pin:
         self.legislator_list = list(legislator_list)  # List of `LegislatorDTO` objects represented by this Pin.
 
         self.wiki_info_list = list(wiki_info_list)  # List of `WikiInfoDTO` objects represented by this Pin.
+
+    def json_dict(self):
+        """
+        Returns dictionary to be used for building JSON response.
+        :return: A python dictionary.
+        """
+
+        # TODO: Truncate the list of crimes etc. at a threshold
+
+        return_dict = dict()
+        return_dict['location'] = self.location.json_dict()
+        return_dict['crime_list'] = [i.json_dict() for i in self.crime_list]
+        return_dict['legislator_list'] = [i.json_dict() for i in self.legislator_list]
+        return_dict['wiki_info_list'] = [i.json_dict() for i in self.wiki_info_list]
+        return return_dict

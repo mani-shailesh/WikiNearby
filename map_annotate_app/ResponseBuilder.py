@@ -29,6 +29,7 @@ class ResponseBuilder:
         self.crime_filter = CrimeFilter.CrimeFilter()
         self.legislator_filter = LegislatorFilter.LegislatorFilter()
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter()
+
         self.screen_width = query_dict.get('screen_width')
         self.screen_height = query_dict.get('screen_height')
 
@@ -80,7 +81,7 @@ class ResponseBuilder:
         """
         # TODO
 
-        return []
+        return pin_list
 
     def converge_multiple_type(self, pin_list):
         """
@@ -90,7 +91,7 @@ class ResponseBuilder:
         """
         # TODO
 
-        return []
+        return pin_list
 
     @staticmethod
     def converge_to_one(pin_list):
@@ -133,6 +134,6 @@ class ResponseBuilder:
 
         final_pin_list = self.converge_multiple_type(final_pin_list)
 
-        json_dict = {'pins': final_pin_list}
+        json_dict = {'pins': [i.json_dict() for i in final_pin_list]}
 
         return JsonResponse(json_dict)
