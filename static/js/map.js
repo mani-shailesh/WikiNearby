@@ -206,17 +206,21 @@ function isMarkerPresent(pinList, marker) {
 var markers = [];
 var markerTypes = [];
 var infowindow;
+var currentlyActiveInfowindowPin;
 
 function infowindowContent(title) {
-    return '<div id="content">' +
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h6 id="firstHeading" class="firstHeading">' + title + '</h6>' +
-        '<div id="bodyContent">' +
+    return '<div>' +
+        '<h6 class="firstHeading">' + title + '</h6>' +
+        '<div>' +
         '<p>' + title + '</p>' +
-        '<p><a href="#">More details</a></p>' +
+        '<p><a onclick="handleMoreDetailsEvent(); void(0);" href="#">More details</a></p>' +
         '</div>' +
         '</div>';
+}
+
+function handleMoreDetailsEvent() {
+    $('.button-collapse').sideNav('show');
+    // console.log(currentlyActiveInfowindowPin);
 }
 
 function setNewMarkers(input) {
@@ -277,9 +281,12 @@ function setNewMarkers(input) {
             position: location
             // animation: google.maps.Animation.DROP
         });
+        marker.pinRef = pin;
         marker.addListener('click', function () {
             infowindow.setContent(contentString);
             infowindow.open(map, marker);
+            currentlyActiveInfowindowPin = marker.pinRef;
+            // console.log(currentlyActiveInfowindowPin);
         });
         markers.push(marker);
         markerTypes.push(typeOfMarker(pin));
