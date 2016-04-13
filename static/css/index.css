@@ -1,6 +1,13 @@
 /*Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version*/
 /*Some code from http://stackoverflow.com/questions/30794947/hide-placeholder-with-css*/
 
+@media screen and (min-width: 992px) {
+    #nav-mobile {
+        width: 25%;
+        min-width: 240px;
+    }
+}
+
 .card {
     margin: 0 0 0 0;
 }

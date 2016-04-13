@@ -172,7 +172,7 @@ function typeOfMarker(pin) {
 
         return LEGISLATOR_PIN;
 
-    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 1) {
+    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length > 0) {
 
         return WIKI_PIN;
 
@@ -208,11 +208,11 @@ var markers = [];
 var infowindow;
 var currentlyActiveInfowindowPin;
 
-function infowindowContent(title) {
+function infowindowContent(title, body) {
     return '<div>' +
         '<h6 class="firstHeading">' + title + '</h6>' +
         '<div>' +
-        '<p>' + title + '</p>' +
+        '<p>' + body + '</p>' +
         '<p><a onclick="handleMoreDetailsEvent(); void(0);" href="#">More details</a></p>' +
         '</div>' +
         '</div>';
@@ -221,27 +221,6 @@ function infowindowContent(title) {
 function handleMoreDetailsEvent() {
     $('.button-collapse').sideNav('show');
     // console.log(currentlyActiveInfowindowPin);
-    var navMobileSelect = $('#nav-mobile');
-    navMobileSelect.empty();
-    switch (typeOfMarker(currentlyActiveInfowindowPin)) {
-
-        case MULTI_PIN:
-            title = "Multi Pin: Click to see more details";
-            break;
-        case CRIME_PIN:
-            title = "Crime Data: " + currentlyActiveInfowindowPin.crime_list[0].type;
-            break;
-        case LEGISLATOR_PIN:
-            title = "Legislator Data: " + currentlyActiveInfowindowPin.legislator_list[0].first_name + " " + currentlyActiveInfowindowPin.legislator_list[0].last_name;
-            break;
-        case WIKI_PIN:
-            title = "Wikipedia Data: " + currentlyActiveInfowindowPin.wiki_info_list[0].title;
-            break;
-        case INVALID_PIN:
-            break;
-
-    }
-    navMobileSelect.append('<p>' + title + '</p>');
 }
 
 function setNewMarkers(input) {
@@ -266,6 +245,7 @@ function setNewMarkers(input) {
         var location = {lat: pin.location.lat, lng: pin.location.lng};
         var iconLink; // See https://sites.google.com/site/gmapsdevelopment/
         var title;
+        var body;
         var contentString;
 
         switch (typeOfMarker(pin)) {
@@ -273,23 +253,26 @@ function setNewMarkers(input) {
             case MULTI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal5/icon44.png';
                 title = "Multi Pin: Click to see more details";
-                contentString = infowindowContent(title);
+                body = '';
+                contentString = infowindowContent(title, body);
                 break;
             case CRIME_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
-                title = "Crime Data: " + pin.crime_list[0].type;
-                contentString = infowindowContent(title);
+                title = "Crime Type: " + pin.crime_list[0].type;
+                body = '';
+                contentString = infowindowContent(title, body);
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
-                title = "Legislator Data: " + pin.legislator_list[0].first_name +
-                    " " + pin.legislator_list[0].last_name;
-                contentString = infowindowContent(title);
+                title = "Legislator Data: " + pin.legislator_list[0].title;
+                body = '';
+                contentString = infowindowContent(title, body);
                 break;
             case WIKI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
-                contentString = infowindowContent(title);
+                body = '';
+                contentString = infowindowContent(title, body);
                 break;
             case INVALID_PIN:
                 break;
