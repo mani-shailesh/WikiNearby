@@ -1,6 +1,10 @@
 /*Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version*/
 /*Some code from http://stackoverflow.com/questions/30794947/hide-placeholder-with-css*/
 
+.notVisible {
+    visibility: hidden;
+}
+
 /*Chrome specific CSS for showing placeholders in date fields*/
 input[type="date"]::before {
     color: rgba(0, 0, 0, 0.26);

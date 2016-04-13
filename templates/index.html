@@ -82,13 +82,15 @@
         <div id="allFilter" class="col s12 flow-text center-align">
             <div class="row">
                 <div class="valign-wrapper-responsive">
-                    <p class="col s12 l3">Showing all data.</p>
+                    <p class="col s12 l3">Show all data.</p>
                     <p class="col s12 l3">Choose a filter above.</p>
                     <div class="col s12 l2">
-                        <input type="date" placeholder="Start date is auto-selected" class="datepicker" disabled>
+                        <input type="date" placeholder="Start date is auto-selected" class="datepicker notVisible"
+                               disabled>
                     </div>
                     <div class="col s12 l2">
-                        <input type="date" placeholder="End date is auto-selected" class="datepicker" disabled>
+                        <input type="date" placeholder="End date is auto-selected" class="datepicker notVisible"
+                               disabled>
                     </div>
                     <div class="col s12 l2">
                         <p>
@@ -101,7 +103,7 @@
         <div id="crimeFilter" class="col s12 flow-text center-align">
             <div class="row">
                 <div class="valign-wrapper-responsive">
-                    <p class="col s12 l3">Showing crime data.</p>
+                    <p class="col s12 l3">Show crime data.</p>
                     <div class="col s12 l3">
                         <label>
                             <select multiple>
@@ -129,7 +131,7 @@
         <div id="sansadFilter" class="col s12 flow-text center-align">
             <div class="row">
                 <div class="valign-wrapper-responsive">
-                    <p class="col s12 l3">Showing Sansad data.</p>
+                    <p class="col s12 l3">Show Sansad data.</p>
                     <div class="col s12 l3">
                         <label>
                             <select multiple>
@@ -141,10 +143,12 @@
                         </label>
                     </div>
                     <div class="col s12 l2">
-                        <input type="date" placeholder="Start date is auto-selected" class="datepicker" disabled>
+                        <input type="date" placeholder="Start date is auto-selected" class="datepicker notVisible"
+                               disabled>
                     </div>
                     <div class="col s12 l2">
-                        <input type="date" placeholder="End date is auto-selected" class="datepicker" disabled>
+                        <input type="date" placeholder="End date is auto-selected" class="datepicker notVisible"
+                               disabled>
                     </div>
                     <div class="col s12 l2">
                         <p>
@@ -157,19 +161,22 @@
         <div id="wikipediaFilter" class="col s12 flow-text center-align">
             <div class="row">
                 <div class="valign-wrapper-responsive">
-                    <p class="col s12 l3">Showing Wikipedia data.</p>
-                    <div class="col s12 l3">
-                        <label>
-                            <select multiple disabled>
-                                <option value="" selected>All categories are selected</option>
-                            </select>
-                        </label>
+                    <p class="col s12 l3">Show Wikipedia data.</p>
+                    <p class="col s12 l3">This filter has no settings.</p>
+                    {#                    <div class="col s12 l3">#}
+                    {#                        <label>#}
+                    {#                            <select class="notVisible" multiple disabled>#}
+                    {#                                <option value="" selected>All categories are selected</option>#}
+                    {#                            </select>#}
+                    {#                        </label>#}
+                    {#                    </div>#}
+                    <div class="col s12 l2">
+                        <input type="date" placeholder="Start date is auto-selected" class="datepicker notVisible"
+                               disabled>
                     </div>
                     <div class="col s12 l2">
-                        <input type="date" placeholder="Start date is auto-selected" class="datepicker" disabled>
-                    </div>
-                    <div class="col s12 l2">
-                        <input type="date" placeholder="End date is auto-selected" class="datepicker" disabled>
+                        <input type="date" placeholder="End date is auto-selected" class="datepicker notVisible"
+                               disabled>
                     </div>
                     <div class="col s12 l2">
                         <p>
