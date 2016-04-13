@@ -230,7 +230,7 @@ function setNewMarkers(input) {
      */
     markers.forEach(function (marker) {
         // if (!isMarkerPresent(input.pins, marker)) {
-            marker.setMap(null);
+        marker.setMap(null);
         // }
     });
 
@@ -240,7 +240,6 @@ function setNewMarkers(input) {
     });
 
     markers = [];
-    // markerTypes = [];
 
     input.pins.forEach(function (pin) {
         var location = {lat: pin.location.lat, lng: pin.location.lng};
@@ -262,8 +261,7 @@ function setNewMarkers(input) {
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
-                title = "Legislator Data: " + pin.legislator_list[0].first_name + " "
-                    + pin.legislator_list[0].last_name;
+                title = "Legislator Data: " + pin.legislator_list[0].title;
                 contentString = infowindowContent(title);
                 break;
             case WIKI_PIN:
