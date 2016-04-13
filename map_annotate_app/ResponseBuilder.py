@@ -3,12 +3,14 @@ from django.http import JsonResponse
 from map_annotate_app.dao import CrimeDAO
 from map_annotate_app.dao import LegislatorDAO
 from map_annotate_app.dao import WikiInfoDAO
+from map_annotate_app.extras import Boundary
 from map_annotate_app.extras import Location
 from map_annotate_app.extras import Pin
 from map_annotate_app.filters import CrimeFilter
 from map_annotate_app.filters import LegislatorFilter
 from map_annotate_app.filters import WikiInfoFilter
 
+SQUARE_SIZE = 100
 
 class ResponseBuilder:
     """
@@ -32,6 +34,12 @@ class ResponseBuilder:
 
         self.map_width = query_dict.get('map_width')
         self.map_height = query_dict.get('map_height')
+
+        self.map_boundary = Boundary.Boundary(query_dict.get('top_left'),
+                                              query_dict.get('top_right'),
+                                              query_dict.get('bottom_right'),
+                                              query_dict.get('bottom_left'))
+
 
     def get_crimes(self):
         """
@@ -72,6 +80,14 @@ class ResponseBuilder:
             pin_list.append(Pin.Pin(legislator_dto.location, [], [legislator_dto], []))
 
         return pin_list
+
+    def converge(self, pin_list):
+        no_rows = int(self.map_height / SQUARE_SIZE) + 1
+        no_columns = int(self.map_width / SQUARE_SIZE) + 1
+
+        map_mat = []
+        for pin in pin_list:
+            pass
 
     def converge_single_type(self, pin_list):
         """
