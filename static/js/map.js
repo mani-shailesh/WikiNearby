@@ -207,6 +207,18 @@ var markers = [];
 var markerTypes = [];
 var infowindow;
 
+function infowindowContent(title) {
+    return '<div id="content">' +
+        '<div id="siteNotice">' +
+        '</div>' +
+        '<h6 id="firstHeading" class="firstHeading">' + title + '</h6>' +
+        '<div id="bodyContent">' +
+        '<p>' + title + '</p>' +
+        '<p><a href="#">More details</a></p>' +
+        '</div>' +
+        '</div>';
+}
+
 function setNewMarkers(input) {
     /*
      Marks the pins in `input` on the map. Removes previously marked pins.
@@ -219,7 +231,8 @@ function setNewMarkers(input) {
     });
 
     infowindow = new google.maps.InfoWindow({
-        content: ''
+        content: '',
+        disableAutoPan: true
     });
 
     markers = [];
@@ -235,50 +248,22 @@ function setNewMarkers(input) {
             case MULTI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal5/icon44.png';
                 title = "Multi Pin: Click to see more details";
-                contentString = '<div id="content">' +
-                    '<div id="siteNotice">' +
-                    '</div>' +
-                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
-                    '<div id="bodyContent">' +
-                    '<p>' + title + '</p>' +
-                    '</div>' +
-                    '</div>';
+                contentString = infowindowContent(title);
                 break;
             case CRIME_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
                 title = "Crime Data: " + pin.crime_list[0].type;
-                contentString = '<div id="content">' +
-                    '<div id="siteNotice">' +
-                    '</div>' +
-                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
-                    '<div id="bodyContent">' +
-                    '<p>' + title + '</p>' +
-                    '</div>' +
-                    '</div>';
+                contentString = infowindowContent(title);
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
                 title = "Legislator Data: " + pin.legislator_list[0].title;
-                contentString = '<div id="content">' +
-                    '<div id="siteNotice">' +
-                    '</div>' +
-                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
-                    '<div id="bodyContent">' +
-                    '<p>' + title + '</p>' +
-                    '</div>' +
-                    '</div>';
+                contentString = infowindowContent(title);
                 break;
             case WIKI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
-                contentString = '<div id="content">' +
-                    '<div id="siteNotice">' +
-                    '</div>' +
-                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
-                    '<div id="bodyContent">' +
-                    '<p>' + title + '</p>' +
-                    '</div>' +
-                    '</div>';
+                contentString = infowindowContent(title);
                 break;
             case INVALID_PIN:
                 break;
@@ -299,4 +284,5 @@ function setNewMarkers(input) {
         markers.push(marker);
         markerTypes.push(typeOfMarker(pin));
     });
+
 }
