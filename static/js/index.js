@@ -15,7 +15,7 @@ var queryData = function () {
             if (mapLoaded && dataLoaded) {
                 $('.activityIndicator').fadeOut(200);
             }
-            setNewMarkers(queryResponse);
+            setNewMarkers(String(queryResponse));
         }
     });
 };
