@@ -10,6 +10,8 @@ $('#filterModalTrigger').leanModal({
     }
 );
 
+$('#filterTabsArea').click();
+
 // Enforce sane behaviour on date range
 fromDateSelector = $('#fromDatePicker');
 toDateSelector = $('#toDatePicker');

@@ -1,8 +1,20 @@
 /*Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version*/
 /*Some code from http://stackoverflow.com/questions/30794947/hide-placeholder-with-css*/
 
+@media screen and (min-width: 600px) {
+    .valign-wrapper-responsive {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+}
+
 #filterModal {
     overflow: visible;
+    max-height: 100%;
 }
 
 /*iOS specific CSS*/
