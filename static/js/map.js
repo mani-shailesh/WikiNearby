@@ -235,22 +235,50 @@ function setNewMarkers(input) {
             case MULTI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal5/icon44.png';
                 title = "Multi Pin: Click to see more details";
-                contentString = '';
+                contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
+                    '<div id="bodyContent">' +
+                    '<p>' + title + '</p>' +
+                    '</div>' +
+                    '</div>';
                 break;
             case CRIME_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
                 title = "Crime Data: " + pin.crime_list[0].type;
-                contentString = '';
+                contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
+                    '<div id="bodyContent">' +
+                    '<p>' + title + '</p>' +
+                    '</div>' +
+                    '</div>';
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
                 title = "Legislator Data: " + pin.legislator_list[0].title;
-                contentString = '';
+                contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
+                    '<div id="bodyContent">' +
+                    '<p>' + title + '</p>' +
+                    '</div>' +
+                    '</div>';
                 break;
             case WIKI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
-                contentString = '';
+                contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h5 id="firstHeading" class="firstHeading">' + title + '</h5>' +
+                    '<div id="bodyContent">' +
+                    '<p>' + title + '</p>' +
+                    '</div>' +
+                    '</div>';
                 break;
             case INVALID_PIN:
                 break;
@@ -265,7 +293,7 @@ function setNewMarkers(input) {
             // animation: google.maps.Animation.DROP
         });
         marker.addListener('click', function () {
-            infowindow.setContent('Hello World');
+            infowindow.setContent(contentString);
             infowindow.open(map, marker);
         });
         markers.push(marker);
