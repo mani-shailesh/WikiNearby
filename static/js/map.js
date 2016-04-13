@@ -108,7 +108,7 @@ function initAutocomplete() {
         searchBox.setBounds(map.getBounds());
     });
 
-    var markers = [];
+    // var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function () {
@@ -117,31 +117,31 @@ function initAutocomplete() {
         if (places.length == 0) {
             return;
         }
-
-        // Clear out the old markers.
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
-        markers = [];
+        //
+        // // Clear out the old markers.
+        // markers.forEach(function (marker) {
+        //     marker.setMap(null);
+        // });
+        // markers = [];
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
         places.forEach(function (place) {
-            var icon = {
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-                map: map,
-                icon: icon,
-                title: place.name,
-                position: place.geometry.location
-            }));
+            //     var icon = {
+            //         url: place.icon,
+            //         size: new google.maps.Size(71, 71),
+            //         origin: new google.maps.Point(0, 0),
+            //         anchor: new google.maps.Point(17, 34),
+            //         scaledSize: new google.maps.Size(25, 25)
+            //     };
+            //
+            //     // Create a marker for each place.
+            //     markers.push(new google.maps.Marker({
+            //         map: map,
+            //         icon: icon,
+            //         title: place.name,
+            //         position: place.geometry.location
+            //     }));
 
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -151,5 +151,36 @@ function initAutocomplete() {
             }
         });
         map.fitBounds(bounds);
+    });
+}
+
+// Global array to store all the markers currently marked on `map`.
+var markers = [];
+
+function setNewMarkers(input) {
+    /*
+     Marks the pins in `input` on the map. Removes previously marked pins.
+     param: input: JSON object of `pins` to be marked on map.
+     */
+    markers.forEach(function (marker) {
+        marker.setMap(null);
+    });
+
+    markers = [];
+
+    input.pins.forEach(function (pin) {
+        var location = {lat: pin.location.lat, lng: pin.location.lng};
+        var title;
+        if (pin.crime_list.length != 0)
+            title = pin.crime_list[0].type;
+        else if (pin.wiki_info_list.length != 0)
+            title = pin.wiki_info_list[0].title;
+        else
+            title = pin.legislator_list[0].title;
+        markers.push(new google.maps.Marker({
+            map: map,
+            title: title,
+            position: location
+        }));
     });
 }
