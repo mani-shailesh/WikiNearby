@@ -154,6 +154,40 @@ function initAutocomplete() {
     });
 }
 
+// Types of pins
+var INVALID_PIN = 0;
+var MULTI_PIN = 1;
+var CRIME_PIN = 2;
+var LEGISLATOR_PIN = 3;
+var WIKI_PIN = 4;
+
+// Identify the type of a pin
+function typeOfMarker(pin) {
+
+    if (pin.crime_list.length > 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
+
+        return CRIME_PIN;
+
+    } else if (pin.crime_list.length == 0 && pin.legislator_list.length > 0 && pin.wiki_info_list.length == 0) {
+
+        return LEGISLATOR_PIN;
+
+    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length > 0) {
+
+        return WIKI_PIN;
+
+    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
+
+        return INVALID_PIN
+
+    } else {
+
+        return MULTI_PIN;
+
+    }
+
+}
+
 // Global array to store all the markers currently marked on `map`.
 var markers = [];
 
@@ -170,17 +204,47 @@ function setNewMarkers(input) {
 
     input.pins.forEach(function (pin) {
         var location = {lat: pin.location.lat, lng: pin.location.lng};
+        var iconLink; // See https://sites.google.com/site/gmapsdevelopment/
         var title;
-        if (pin.crime_list.length != 0)
-            title = pin.crime_list[0].type;
-        else if (pin.wiki_info_list.length != 0)
-            title = pin.wiki_info_list[0].title;
-        else
-            title = pin.legislator_list[0].title;
-        markers.push(new google.maps.Marker({
+
+        switch (typeOfMarker(pin)) {
+
+            case MULTI_PIN:
+                iconLink = 'http://maps.google.com/mapfiles/kml/pal5/icon44.png';
+                title = "Multi Pin: Click to see more details";
+                break;
+            case CRIME_PIN:
+                iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
+                title = "Crime Data: " + pin.crime_list[0].type;
+                break;
+            case LEGISLATOR_PIN:
+                iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
+                title = "Legislator Data: " + pin.legislator_list[0].title;
+                break;
+            case WIKI_PIN:
+                iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
+                title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
+                break;
+            case INVALID_PIN:
+                break;
+
+        }
+
+        var contentString = 'Hello, World!';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        var marker = new google.maps.Marker({
             map: map,
             title: title,
+            icon: iconLink,
             position: location
-        }));
+            // animation: google.maps.Animation.DROP
+        });
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+        markers.push(marker);
     });
 }
