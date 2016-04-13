@@ -189,22 +189,22 @@ function typeOfMarker(pin) {
 }
 
 // Checks if a marker is present in the new input
-function isMarkerPresent(pinList, marker) {
-    pinList.forEach(function (pin) {
-        if (pin.location.lat == marker.position.lat &&
-            pin.location.lng == marker.position.lng &&
-            typeOfMarker(pin) == markerTypes[markers.indexOf(marker)]) {
-            return true;
-        }
-    });
-
-    return false;
-
-}
+// function isMarkerPresent(pinList, marker) {
+//     pinList.forEach(function (pin) {
+//         if (pin.location.lat == marker.position.lat &&
+//             pin.location.lng == marker.position.lng &&
+//             typeOfMarker(pin) == markerTypes[markers.indexOf(marker)]) {
+//             return true;
+//         }
+//     });
+//
+//     return false;
+//
+// }
 
 // Global array to store all the markers currently marked on `map`.
 var markers = [];
-var markerTypes = [];
+// var markerTypes = [];
 var infowindow;
 
 function infowindowContent(title) {
@@ -225,9 +225,9 @@ function setNewMarkers(input) {
      param: input: JSON object of `pins` to be marked on map.
      */
     markers.forEach(function (marker) {
-        if (!isMarkerPresent(input.pins, marker)) {
+        // if (!isMarkerPresent(input.pins, marker)) {
             marker.setMap(null);
-        }
+        // }
     });
 
     infowindow = new google.maps.InfoWindow({
@@ -236,6 +236,7 @@ function setNewMarkers(input) {
     });
 
     markers = [];
+    // markerTypes = [];
 
     input.pins.forEach(function (pin) {
         var location = {lat: pin.location.lat, lng: pin.location.lng};
@@ -257,7 +258,8 @@ function setNewMarkers(input) {
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
-                title = "Legislator Data: " + pin.legislator_list[0].title;
+                title = "Legislator Data: " + pin.legislator_list[0].first_name + " "
+                    + pin.legislator_list[0].last_name;
                 contentString = infowindowContent(title);
                 break;
             case WIKI_PIN:
@@ -282,7 +284,7 @@ function setNewMarkers(input) {
             infowindow.open(map, marker);
         });
         markers.push(marker);
-        markerTypes.push(typeOfMarker(pin));
+        // markerTypes.push(typeOfMarker(pin));
     });
 
 }

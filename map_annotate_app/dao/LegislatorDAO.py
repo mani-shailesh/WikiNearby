@@ -1,3 +1,9 @@
+import random
+
+from map_annotate_app.dto import LegislatorDTO
+from map_annotate_app.extras import Location
+
+
 class LegislatorDAO:
     def __init__(self):
         pass
@@ -10,4 +16,30 @@ class LegislatorDAO:
         """
         # TODO
 
-        return []
+        return_list = []
+
+        legislator_dto = LegislatorDTO.LegislatorDTO()
+        legislator_dto.location = Location.Location(30.978, 76.53)
+        legislator_dto.first_name = "Tushar"
+        legislator_dto.last_name = "Agarwal"
+        legislator_dto.party = "Corrupt Party"
+        legislator_dto.no_questions = 0
+        return_list.append(legislator_dto)
+
+        legislator_dto = LegislatorDTO.LegislatorDTO()
+        legislator_dto.location = Location.Location(30.9664, 76.51)
+        legislator_dto.first_name = "Jainendra"
+        legislator_dto.last_name = "Mandavi"
+        legislator_dto.party = "Ropar Mukti Morcha"
+        legislator_dto.no_questions = 10
+        return_list.append(legislator_dto)
+
+        legislator_dto = LegislatorDTO.LegislatorDTO()
+        legislator_dto.location = Location.Location(30.95, 76.53306)
+        legislator_dto.first_name = "Himanshu"
+        legislator_dto.last_name = "Gupta"
+        legislator_dto.party = "PAAP"
+        legislator_dto.no_questions = 100
+        return_list.append(legislator_dto)
+
+        return random.sample(return_list, 2)
