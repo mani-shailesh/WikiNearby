@@ -30,8 +30,8 @@ class ResponseBuilder:
         self.legislator_filter = LegislatorFilter.LegislatorFilter()
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter()
 
-        self.screen_width = query_dict.get('map_width')
-        self.screen_height = query_dict.get('map_height')
+        self.map_width = query_dict.get('map_width')
+        self.map_height = query_dict.get('map_height')
 
     def get_crimes(self):
         """
