@@ -188,8 +188,24 @@ function typeOfMarker(pin) {
 
 }
 
+// Checks if a marker is present in the new input
+function isMarkerPresent(pinList, marker) {
+    pinList.forEach(function (pin) {
+        if (pin.location.lat == marker.position.lat &&
+            pin.location.lng == marker.position.lng &&
+            typeOfMarker(pin) == markerTypes[markers.indexOf(marker)]) {
+            return true;
+        }
+    });
+
+    return false;
+
+}
+
 // Global array to store all the markers currently marked on `map`.
 var markers = [];
+var markerTypes = [];
+var infowindow;
 
 function setNewMarkers(input) {
     /*
@@ -197,7 +213,13 @@ function setNewMarkers(input) {
      param: input: JSON object of `pins` to be marked on map.
      */
     markers.forEach(function (marker) {
-        marker.setMap(null);
+        if (!isMarkerPresent(input.pins, marker)) {
+            marker.setMap(null);
+        }
+    });
+
+    infowindow = new google.maps.InfoWindow({
+        content: ''
     });
 
     markers = [];
@@ -206,35 +228,35 @@ function setNewMarkers(input) {
         var location = {lat: pin.location.lat, lng: pin.location.lng};
         var iconLink; // See https://sites.google.com/site/gmapsdevelopment/
         var title;
+        var contentString;
 
         switch (typeOfMarker(pin)) {
 
             case MULTI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal5/icon44.png';
                 title = "Multi Pin: Click to see more details";
+                contentString = '';
                 break;
             case CRIME_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
                 title = "Crime Data: " + pin.crime_list[0].type;
+                contentString = '';
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
                 title = "Legislator Data: " + pin.legislator_list[0].title;
+                contentString = '';
                 break;
             case WIKI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
+                contentString = '';
                 break;
             case INVALID_PIN:
                 break;
 
         }
 
-        var contentString = 'Hello, World!';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
         var marker = new google.maps.Marker({
             map: map,
             title: title,
@@ -243,8 +265,10 @@ function setNewMarkers(input) {
             // animation: google.maps.Animation.DROP
         });
         marker.addListener('click', function () {
+            infowindow.setContent('Hello World');
             infowindow.open(map, marker);
         });
         markers.push(marker);
+        markerTypes.push(typeOfMarker(pin));
     });
 }
