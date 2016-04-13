@@ -10,7 +10,7 @@ from map_annotate_app.filters import CrimeFilter
 from map_annotate_app.filters import LegislatorFilter
 from map_annotate_app.filters import WikiInfoFilter
 
-SQUARE_SIZE = 100
+SQUARE_SIZE = 150
 
 class ResponseBuilder:
     """
@@ -32,14 +32,16 @@ class ResponseBuilder:
         self.legislator_filter = LegislatorFilter.LegislatorFilter()
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter()
 
-        self.map_width = query_dict.get('map_width')
-        self.map_height = query_dict.get('map_height')
+        self.map_width = int(query_dict.get('map_width'))
+        self.map_height = int(query_dict.get('map_height'))
 
-        self.map_boundary = Boundary.Boundary(query_dict.get('top_left'),
-                                              query_dict.get('top_right'),
-                                              query_dict.get('bottom_right'),
-                                              query_dict.get('bottom_left'))
+        north_east = Location.Location(float(query_dict.get('north_east_lat')),
+                                       float(query_dict.get('north_east_lng')))
 
+        south_west = Location.Location(float(query_dict.get('south_west_lat')),
+                                       float(query_dict.get('south_west_lng')))
+
+        self.map_boundary = Boundary.Boundary(north_east, south_west)
 
     def get_crimes(self):
         """
@@ -85,29 +87,59 @@ class ResponseBuilder:
         no_rows = int(self.map_height / SQUARE_SIZE) + 1
         no_columns = int(self.map_width / SQUARE_SIZE) + 1
 
-        map_mat = []
+        lat_diff = abs(self.map_boundary.north_east.lat - self.map_boundary.south_west.lat)
+        lng_diff = abs(self.map_boundary.north_east.lng - self.map_boundary.south_west.lng)
+        if lng_diff > 180:
+            lng_diff = abs(360 - lng_diff)
+
+        lat_square_size = lat_diff / no_rows
+        lng_square_size = lng_diff / no_columns
+
+        map_mat = [[[] for jj in range(no_columns)] for ii in range(no_rows)]  # Matrix of lists to hold pins
+
         for pin in pin_list:
-            pass
+            lng_diff = abs(pin.location.lng - self.map_boundary.south_west.lng)
+            if lng_diff > 180:
+                lng_diff = abs(360 - lng_diff)
+            lat_diff = abs(pin.location.lat - self.map_boundary.north_east.lat)
 
-    def converge_single_type(self, pin_list):
-        """
-        Utility function to converge pins of single type to one per square.
-        :param pin_list: List of `Pin` objects of single type.
-        :return: List of `Pin` objects.
-        """
-        # TODO
+            this_row = int(lat_diff / lat_square_size)
+            this_column = int(lng_diff / lng_square_size)
 
-        return pin_list
+            if this_row >= no_rows or this_column >= no_columns:
+                continue
 
-    def converge_multiple_type(self, pin_list):
-        """
-        Utility function to converge pins of different types to one per square.
-        :param pin_list: List of `Pin` objects of multiple types.
-        :return: List of `Pin` objects.
-        """
-        # TODO
+            map_mat[this_row][this_column].append(pin)
 
-        return pin_list
+        return_list = []
+
+        for ii in range(no_rows):
+            for jj in range(no_columns):
+                new_pin = self.converge_to_one(map_mat[ii][jj])
+                if new_pin is not None:
+                    return_list.append(new_pin)
+
+        return return_list
+
+    # def converge_single_type(self, pin_list):
+    #     """
+    #     Utility function to converge pins of single type to one per square.
+    #     :param pin_list: List of `Pin` objects of single type.
+    #     :return: List of `Pin` objects.
+    #     """
+    #     # TODO
+    #
+    #     return pin_list
+    #
+    # def converge_multiple_type(self, pin_list):
+    #     """
+    #     Utility function to converge pins of different types to one per square.
+    #     :param pin_list: List of `Pin` objects of multiple types.
+    #     :return: List of `Pin` objects.
+    #     """
+    #     # TODO
+    #
+    #     return pin_list
 
     @staticmethod
     def converge_to_one(pin_list):
@@ -116,6 +148,10 @@ class ResponseBuilder:
         :param pin_list: List of `Pin` objects.
         :return: A `Pin` object.
         """
+
+        if len(pin_list) == 0:
+            return None
+
         crime_list = []
         wiki_info_list = []
         legislator_list = []
@@ -124,10 +160,10 @@ class ResponseBuilder:
 
         for pin in pin_list:
             crime_list += pin.crime_list
-            wiki_info_list += wiki_info_list
-            legislator_list += legislator_list
+            wiki_info_list += pin.wiki_info_list
+            legislator_list += pin.legislator_list
             lat_sum += pin.location.lat
-            lng_sum += pin.location.lng
+            lng_sum += pin.location.lng  # TODO: May cause errors with pins near +180 and -180
 
         final_location = Location.Location(lat_sum / len(pin_list), lng_sum / len(pin_list))
         final_pin = Pin.Pin(final_location, crime_list, legislator_list, wiki_info_list)
@@ -141,14 +177,16 @@ class ResponseBuilder:
         crime_pin_list = self.get_crimes()
         wiki_pin_list = self.get_wiki_info()
         legislator_pin_list = self.get_legislators()
-
-        crime_pin_list = self.converge_single_type(crime_pin_list)
-        wiki_pin_list = self.converge_single_type(wiki_pin_list)
-        legislator_pin_list = self.converge_single_type(legislator_pin_list)
+        #
+        # crime_pin_list = self.converge_single_type(crime_pin_list)
+        # wiki_pin_list = self.converge_single_type(wiki_pin_list)
+        # legislator_pin_list = self.converge_single_type(legislator_pin_list)
 
         final_pin_list = crime_pin_list + wiki_pin_list + legislator_pin_list
 
-        final_pin_list = self.converge_multiple_type(final_pin_list)
+        # final_pin_list = self.converge_multiple_type(final_pin_list)
+
+        final_pin_list = self.converge(final_pin_list)
 
         json_dict = {'pins': [i.json_dict() for i in final_pin_list]}
 

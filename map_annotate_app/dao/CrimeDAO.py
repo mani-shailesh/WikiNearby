@@ -1,4 +1,3 @@
-import random
 import time
 
 from map_annotate_app.dto import CrimeDTO
@@ -53,4 +52,6 @@ class CrimeDAO:
         crimeData5.timestamp = time.time()
         crimeData5.url_link = "http://www.bing.com"
 
-        return random.sample([crimeData1, crimeData2, crimeData3, crimeData4, crimeData5], 2)
+        return_list = [crimeData1, crimeData2, crimeData3, crimeData4, crimeData5]
+        # return_list = random.sample(return_list, 2)
+        return return_list

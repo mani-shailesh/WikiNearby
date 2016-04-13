@@ -5,9 +5,14 @@ var queryData = function () {
     var url = window.location.href;
     var urlArr = url.split("/");
     var mapSelector = $('#map');
+    var mapBounds = map.getBounds();
     var urlResult = urlArr[0] + "//" + urlArr[2] + "/" + "markers/?map_width=" + mapSelector.width() +
-        "&map_height=" + mapSelector.height();
-    // console.log(urlResult);
+        "&map_height=" + mapSelector.height() +
+        "&north_east_lat=" + mapBounds.getNorthEast().lat() +
+        "&north_east_lng=" + mapBounds.getNorthEast().lng() +
+        "&south_west_lat=" + mapBounds.getSouthWest().lat() +
+        "&south_west_lng=" + mapBounds.getSouthWest().lng();
+    console.log(urlResult);
     $.ajax({
         url: urlResult, success: function (queryResponse) {
             // console.log(queryResponse);

@@ -1,5 +1,3 @@
-import random
-
 from map_annotate_app.dto import LegislatorDTO
 from map_annotate_app.extras import Location
 
@@ -42,4 +40,5 @@ class LegislatorDAO:
         legislator_dto.no_questions = 100
         return_list.append(legislator_dto)
 
-        return random.sample(return_list, 2)
+        # return_list = random.sample(return_list, 2)
+        return return_list

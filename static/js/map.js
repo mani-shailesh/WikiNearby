@@ -264,7 +264,8 @@ function setNewMarkers(input) {
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
-                title = "Legislator Data: " + pin.legislator_list[0].title;
+                title = "Legislator Data: " + pin.legislator_list[0].first_name +
+                    " " + pin.legislator_list[0].last_name;
                 body = '';
                 contentString = infowindowContent(title, body);
                 break;

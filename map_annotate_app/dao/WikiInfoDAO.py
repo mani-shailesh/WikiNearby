@@ -1,5 +1,3 @@
-import random
-
 from map_annotate_app.dto import WikiInfoDTO
 from map_annotate_app.extras import Location
 
@@ -59,4 +57,5 @@ class WikiInfoDAO:
         wiki_dto.info = "This is some sample info...."
         return_list.append(wiki_dto)
 
-        return random.sample(return_list, 4)
+        # return_list = random.sample(return_list, 4)
+        return return_list
