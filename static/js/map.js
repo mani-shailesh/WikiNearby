@@ -164,15 +164,15 @@ var WIKI_PIN = 4;
 // Identify the type of a pin
 function typeOfMarker(pin) {
 
-    if (pin.crime_list.length > 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
+    if (pin.crime_list.length == 1 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
 
         return CRIME_PIN;
 
-    } else if (pin.crime_list.length == 0 && pin.legislator_list.length > 0 && pin.wiki_info_list.length == 0) {
+    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 1 && pin.wiki_info_list.length == 0) {
 
         return LEGISLATOR_PIN;
 
-    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length > 0) {
+    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 1) {
 
         return WIKI_PIN;
 
@@ -282,7 +282,8 @@ function setNewMarkers(input) {
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
-                title = "Legislator Data: " + pin.legislator_list[0].first_name + " " + pin.legislator_list[0].last_name;
+                title = "Legislator Data: " + pin.legislator_list[0].first_name +
+                    " " + pin.legislator_list[0].last_name;
                 contentString = infowindowContent(title);
                 break;
             case WIKI_PIN:
