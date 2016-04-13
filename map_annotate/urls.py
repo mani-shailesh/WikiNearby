@@ -19,7 +19,7 @@ from django.contrib import admin
 from map_annotate_app import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^markers/', views.get_response),
+    url(r'^admin/', admin.site.urls, name='admin'),
+    url(r'^markers/', views.get_response, name='markers'),
     url(r'^.*$', views.index, name='index'),
 ]

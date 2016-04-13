@@ -1,12 +1,33 @@
-// Filter modal configuration
+// Send an AJAX request
+var queryData = function () {
+    $('.activityIndicator').fadeIn(200);
+    dataLoaded = false;
+    var url = window.location.href;
+    var urlArr = url.split("/");
+    var mapSelector = $('#map');
+    var urlResult = urlArr[0] + "//" + urlArr[2] + "/" + "markers/?map_width=" + mapSelector.width() +
+        "&map_height=" + mapSelector.height();
+    // console.log(urlResult);
+    $.ajax({
+        url: urlResult, success: function (queryResponse) {
+            // console.log(queryResponse);
+            dataLoaded = true;
+            if (mapLoaded && dataLoaded) {
+                $('.activityIndicator').fadeOut(200);
+            }
+            setNewMarkers(queryResponse);
+        }
+    });
+};
 
+// Filter modal configuration
 $('#filterModalTrigger').leanModal({
         dismissible: true,
         opacity: .5,
         in_duration: 300,
-        out_duration: 200
+    out_duration: 200,
         // ready: function() { alert('Ready'); },
-        // complete: function() { alert('Closed'); }
+    complete: queryData
     }
 );
 

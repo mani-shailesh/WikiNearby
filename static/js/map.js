@@ -3,6 +3,8 @@ var map;
 // Helper variabls to display the indeterminate loader on top of the screen
 var oldTileCoordinate;
 var TILE_SIZE = 256;
+var mapLoaded = false;
+var dataLoaded = false;
 
 // Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
 function initMap() {
@@ -73,6 +75,7 @@ function initAutocomplete() {
         var newTileCoordinate = getNewTileCoordinate();
         if (typeof oldTileCoordinate != 'undefined') {
             if ((Math.abs(newTileCoordinate.x - oldTileCoordinate.x) >= 2) || (Math.abs(newTileCoordinate.y - oldTileCoordinate.y) >= 2)) {
+                mapLoaded = false;
                 $('.activityIndicator').fadeIn(200);
             }
         }
@@ -80,7 +83,15 @@ function initAutocomplete() {
 
     google.maps.event.addListener(map, 'tilesloaded', function () {
         oldTileCoordinate = getNewTileCoordinate();
-        $('.activityIndicator').fadeOut(200);
+        mapLoaded = true;
+        if (mapLoaded && dataLoaded) {
+            $('.activityIndicator').fadeOut(200);
+        }
+    });
+
+    // Load pins on map idle
+    google.maps.event.addListener(map, 'idle', function () {
+        queryData();
     });
 
     // HTML5 geolocation
