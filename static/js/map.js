@@ -221,6 +221,27 @@ function infowindowContent(title) {
 function handleMoreDetailsEvent() {
     $('.button-collapse').sideNav('show');
     // console.log(currentlyActiveInfowindowPin);
+    var navMobileSelect = $('#nav-mobile');
+    navMobileSelect.empty();
+    switch (typeOfMarker(currentlyActiveInfowindowPin)) {
+
+        case MULTI_PIN:
+            title = "Multi Pin: Click to see more details";
+            break;
+        case CRIME_PIN:
+            title = "Crime Data: " + currentlyActiveInfowindowPin.crime_list[0].type;
+            break;
+        case LEGISLATOR_PIN:
+            title = "Legislator Data: " + currentlyActiveInfowindowPin.legislator_list[0].first_name + " " + currentlyActiveInfowindowPin.legislator_list[0].last_name;
+            break;
+        case WIKI_PIN:
+            title = "Wikipedia Data: " + currentlyActiveInfowindowPin.wiki_info_list[0].title;
+            break;
+        case INVALID_PIN:
+            break;
+
+    }
+    navMobileSelect.append('<p>' + title + '</p>');
 }
 
 function setNewMarkers(input) {
@@ -261,7 +282,7 @@ function setNewMarkers(input) {
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
-                title = "Legislator Data: " + pin.legislator_list[0].title;
+                title = "Legislator Data: " + pin.legislator_list[0].first_name + " " + pin.legislator_list[0].last_name;
                 contentString = infowindowContent(title);
                 break;
             case WIKI_PIN:
