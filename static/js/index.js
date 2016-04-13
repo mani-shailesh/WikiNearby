@@ -1,16 +1,3 @@
-// Check for valid JSON
-var isValidJSON = function (jsonString) {
-    try {
-        var o = JSON.parse(jsonString);
-        if (o && typeof o === "object" && o !== null) {
-            return true;
-        }
-    }
-    catch (e) {
-    }
-    return false;
-};
-
 // Send an AJAX request
 var queryData = function () {
     $('.activityIndicator').fadeIn(200);
@@ -28,8 +15,9 @@ var queryData = function () {
             if (mapLoaded && dataLoaded) {
                 $('.activityIndicator').fadeOut(200);
             }
-            if (isValidJSON(queryResponse)) {
-                setNewMarkers(String(queryResponse));
+            // Very basic validity check
+            if (typeof queryResponse != 'undefined' && typeof queryResponse.pins != 'undefined') {
+                setNewMarkers(queryResponse);
             }
         }
     });
