@@ -10,6 +10,30 @@ $('#filterModalTrigger').leanModal({
     }
 );
 
+// Enforce sane behaviour on date range
+fromDateSelector = $('#fromDatePicker');
+toDateSelector = $('#toDatePicker');
+
+var fromDatePicker = fromDateSelector.pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: true // Creates a dropdown of 15 years to control year
+}).pickadate('picker');
+
+var toDatePicker = toDateSelector.pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: true // Creates a dropdown of 15 years to control year
+}).pickadate('picker');
+
+fromDateSelector.on('change', function () {
+    var dateToSet = fromDatePicker.get();
+    toDatePicker.set('min', dateToSet);
+});
+
+toDateSelector.on('change', function () {
+    var dateToSet = toDatePicker.get();
+    fromDatePicker.set('max', dateToSet);
+});
+
 // Function "userGeolocation()" and "map" is declared and initialized in
 // map.js
 $('#myLocationButton').click(userGeolocation);
@@ -21,7 +45,7 @@ var hideSoftKeyboard = function() {
 };
 
 // Remove the below code when ready for production!
-sideNavState = true;
+var sideNavState = true;
 var doubleToggleSideNav = function () {
     if (sideNavState) {
         $('.button-collapse').sideNav('hide');

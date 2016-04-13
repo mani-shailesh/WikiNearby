@@ -71,20 +71,15 @@ function initAutocomplete() {
 
     google.maps.event.addListener(map, 'bounds_changed', function () {
         var newTileCoordinate = getNewTileCoordinate();
-        // console.log(newTileCoordinate);
         if (typeof oldTileCoordinate != 'undefined') {
-            // console.log("Updating");
             if ((Math.abs(newTileCoordinate.x - oldTileCoordinate.x) >= 2) || (Math.abs(newTileCoordinate.y - oldTileCoordinate.y) >= 2)) {
-                // console.log("Changed!");
                 $('.activityIndicator').fadeIn(200);
             }
         }
     });
 
     google.maps.event.addListener(map, 'tilesloaded', function () {
-        // console.log("Loaded!");
         oldTileCoordinate = getNewTileCoordinate();
-        // console.log("Loaded");
         $('.activityIndicator').fadeOut(200);
     });
 
