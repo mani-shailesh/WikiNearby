@@ -130,26 +130,6 @@ class ResponseBuilder:
 
         return return_list
 
-    # def converge_single_type(self, pin_list):
-    #     """
-    #     Utility function to converge pins of single type to one per square.
-    #     :param pin_list: List of `Pin` objects of single type.
-    #     :return: List of `Pin` objects.
-    #     """
-    #     # TODO
-    #
-    #     return pin_list
-    #
-    # def converge_multiple_type(self, pin_list):
-    #     """
-    #     Utility function to converge pins of different types to one per square.
-    #     :param pin_list: List of `Pin` objects of multiple types.
-    #     :return: List of `Pin` objects.
-    #     """
-    #     # TODO
-    #
-    #     return pin_list
-
     @staticmethod
     def converge_to_one(pin_list):
         """
