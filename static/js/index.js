@@ -12,7 +12,7 @@ var queryData = function () {
         "&north_east_lng=" + mapBounds.getNorthEast().lng() +
         "&south_west_lat=" + mapBounds.getSouthWest().lat() +
         "&south_west_lng=" + mapBounds.getSouthWest().lng();
-    console.log(urlResult);
+    // console.log(urlResult);
     $.ajax({
         url: urlResult, success: function (queryResponse) {
             // console.log(queryResponse);

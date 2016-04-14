@@ -218,6 +218,40 @@ function infowindowContent(title, body) {
         '</div>';
 }
 
+function slowlyFadeOut(markerRef) {
+    var currentOpacity = 1.0;
+
+    function slowlyFadeOutHelper() {
+        currentOpacity -= 0.1;
+        markerRef.setOpacity(currentOpacity);
+        if (currentOpacity <= 0.1) {
+            clearInterval(myInterval);
+            markerRef.setMap(null);
+        }
+    }
+
+    var myInterval = setInterval(function () {
+        slowlyFadeOutHelper()
+    }, 10);
+}
+
+function slowlyFadeIn(markerRef) {
+    var currentOpacity = 0.0;
+
+    function slowlyFadeInHelper() {
+        currentOpacity += 0.1;
+        markerRef.setOpacity(currentOpacity);
+        if (currentOpacity >= 0.9) {
+            clearInterval(myInterval);
+            markerRef.setOpacity(1);
+        }
+    }
+
+    var myInterval = setInterval(function () {
+        slowlyFadeInHelper()
+    }, 10);
+}
+
 function handleMoreDetailsEvent() {
     $('.button-collapse').sideNav('show');
     // console.log(currentlyActiveInfowindowPin);
@@ -230,7 +264,8 @@ function setNewMarkers(input) {
      */
     markers.forEach(function (marker) {
         // if (!isMarkerPresent(input.pins, marker)) {
-        marker.setMap(null);
+        slowlyFadeOut(marker);
+        // marker.setMap(null);
         // }
     });
 
@@ -284,10 +319,13 @@ function setNewMarkers(input) {
             map: map,
             title: title,
             icon: iconLink,
-            position: location
+            position: location,
+            opacity: 0.0
             // animation: google.maps.Animation.DROP
         });
         marker.pinRef = pin;
+        pin.markerRef = marker;
+        slowlyFadeIn(marker);
         marker.addListener('click', function () {
             infowindow.setContent(contentString);
             infowindow.open(map, marker);
