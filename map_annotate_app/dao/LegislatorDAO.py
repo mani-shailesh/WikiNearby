@@ -18,25 +18,25 @@ class LegislatorDAO:
 
         legislator_dto = LegislatorDTO.LegislatorDTO()
         legislator_dto.location = Location.Location(30.978, 76.53)
-        legislator_dto.first_name = "Tushar"
-        legislator_dto.last_name = "Agarwal"
-        legislator_dto.party = "Corrupt Party"
+        legislator_dto.first_name = "ABCD"
+        legislator_dto.last_name = "EFGH"
+        legislator_dto.party = "Party A"
         legislator_dto.no_questions = 0
         return_list.append(legislator_dto)
 
         legislator_dto = LegislatorDTO.LegislatorDTO()
         legislator_dto.location = Location.Location(30.9664, 76.51)
-        legislator_dto.first_name = "Jainendra"
-        legislator_dto.last_name = "Mandavi"
-        legislator_dto.party = "Ropar Mukti Morcha"
+        legislator_dto.first_name = "Apple"
+        legislator_dto.last_name = "Orange"
+        legislator_dto.party = "Party B"
         legislator_dto.no_questions = 10
         return_list.append(legislator_dto)
 
         legislator_dto = LegislatorDTO.LegislatorDTO()
         legislator_dto.location = Location.Location(30.95, 76.53306)
-        legislator_dto.first_name = "Himanshu"
-        legislator_dto.last_name = "Gupta"
-        legislator_dto.party = "PAAP"
+        legislator_dto.first_name = "Banana"
+        legislator_dto.last_name = "Banana"
+        legislator_dto.party = "Party C"
         legislator_dto.no_questions = 100
         return_list.append(legislator_dto)
 
