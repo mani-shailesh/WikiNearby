@@ -7,7 +7,7 @@ class CrimeType(models.Model):
     crime_type = models.CharField(max_length=15)
 
     def __unicode__(self):
-        pass
+        return self.crime_type
 
 
 class Location(models.Model):
@@ -16,7 +16,7 @@ class Location(models.Model):
     longitude = models.FloatField()
 
     def __unicode__(self):
-        pass
+        return self.name
 
 
 class Crime(models.Model):
@@ -26,7 +26,7 @@ class Crime(models.Model):
     type = models.ForeignKey(CrimeType, on_delete=models.SET_NULL, null=True)
 
     def __unicode__(self):
-        pass
+        return self.fir_number
 
 
 class Sansad(models.Model):
@@ -40,4 +40,4 @@ class Sansad(models.Model):
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
 
     def __unicode__(self):
-        pass
+        return self.first_name
