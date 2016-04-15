@@ -3,6 +3,10 @@
 
 /*TODO: Check iOS specific  CSS*/
 
+.fullWidth {
+    width: 100%;
+}
+
 .card .card-content p {
     padding-bottom: 5px;
 }
@@ -13,7 +17,7 @@
 
 .semiTransparentHR {
     margin-top: 0;
-    opacity: 0.3;
+    opacity: 0.15;
 }
 
 .textSemiTransparent {

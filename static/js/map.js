@@ -262,17 +262,20 @@ function slowlyFadeIn(markerRef) {
     }, 30);
 }
 
-function crimeMoreDetailsHelper(crimeItem) {
+function crimeMoreDetailsHelper(crimeItem, showImage) {
     var appendString;
-    //noinspection JSUnresolvedVariable
-    appendString =
-        '<div class="card z-depth-0">' +
-        '<div class="card-image">' +
-        '<img src="' + crimePicture + '">';
 
-    appendString += '<span class="card-title blackBorder">Crime Data</span>';
-    appendString += '</div>' +
-        '<div class="card-content">';
+    //noinspection JSUnresolvedVariable
+    appendString = '<div class="card z-depth-0">';
+    if (showImage) {
+        appendString += '<div class="card-image">' +
+            '<img src="' + crimePicture + '">';
+
+        appendString += '<span class="card-title blackBorder">Crime Data</span>';
+        appendString += '</div>';
+    }
+
+    appendString += '<div class="card-content">';
 
     //noinspection JSUnresolvedVariable
     if ("type" in crimeItem && crimeItem.type.length > 0) {
@@ -291,7 +294,7 @@ function crimeMoreDetailsHelper(crimeItem) {
 
     if ("url_link" in crimeItem && crimeItem.url_link.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<p class="textSemiTransparent"><a class="specialSidebarLink" href="' + crimeItem.url_link + '">More details <i class="fa fa-external-link" aria-hidden="true"></i></a></p>';
+        appendString += '<p class="textSemiTransparent"><a class="specialSidebarLink" href="' + crimeItem.url_link + '">Source of data <i class="fa fa-external-link" aria-hidden="true"></i></a></p>';
     }
 
     appendString += '</div>' +
@@ -301,17 +304,20 @@ function crimeMoreDetailsHelper(crimeItem) {
 }
 
 // TODO: Remove "&nbsp;" occurrences
-function legislatorMoreDetailsHelper(legislatorItem) {
+function legislatorMoreDetailsHelper(legislatorItem, showImage) {
     var appendString;
-    //noinspection JSUnresolvedVariable
-    appendString =
-        '<div class="card z-depth-0">' +
-        '<div class="card-image">' +
-        '<img src="' + sansadPicture + '">';
 
-    appendString += '<span class="card-title blackBorder">Sansad Data</span>';
-    appendString += '</div>' +
-        '<div class="card-content">';
+    //noinspection JSUnresolvedVariable
+    appendString = '<div class="card z-depth-0">';
+    if (showImage) {
+        appendString += '<div class="card-image">' +
+            '<img src="' + sansadPicture + '">';
+
+        appendString += '<span class="card-title blackBorder">Sansad Data</span>';
+        appendString += '</div>';
+    }
+
+    appendString += '<div class="card-content">';
 
     if ("party" in legislatorItem && legislatorItem.party.length > 0) {
         appendString += '<p class="textSemiTransparent"><i class="fa fa-users" aria-hidden="true"></i> Party: ' + legislatorItem.party + '</p>';
@@ -343,17 +349,20 @@ function legislatorMoreDetailsHelper(legislatorItem) {
 }
 
 // TODO: Remove "&nbsp;" occurrences
-function wikiMoreDetailsHelper(wikiItem) {
+function wikiMoreDetailsHelper(wikiItem, showImage) {
     var appendString;
-    //noinspection JSUnresolvedVariable
-    appendString =
-        '<div class="card z-depth-0">' +
-        '<div class="card-image">' +
-        '<img src="' + wikiPicture + '">';
 
-    appendString += '<span class="card-title blackBorder">Wikipedia Data</span>';
-    appendString += '</div>' +
-        '<div class="card-content">';
+    //noinspection JSUnresolvedVariable
+    appendString = '<div class="card z-depth-0">';
+    if (showImage) {
+        appendString += '<div class="card-image">' +
+            '<img src="' + wikiPicture + '">';
+
+        appendString += '<span class="card-title blackBorder">Sansad Data</span>';
+        appendString += '</div>';
+    }
+
+    appendString += '<div class="card-content">';
 
     if ("title" in wikiItem && wikiItem.title.length > 0) {
         appendString += '<p class="textSemiTransparent"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> ' + wikiItem.title + '</p>';
@@ -375,35 +384,77 @@ function wikiMoreDetailsHelper(wikiItem) {
     return appendString;
 }
 
+function multiMoreDetailsHelper(multiItem) {
+    var appendString = '';
+    var picDisplayedAlready;
+
+    if ("legislator_list" in multiItem && multiItem.legislator_list.length > 0) {
+        picDisplayedAlready = false;
+        multiItem.legislator_list.forEach(function (legislatorItem) {
+            appendString += legislatorMoreDetailsHelper(legislatorItem, !picDisplayedAlready);
+            if (!picDisplayedAlready) {
+                picDisplayedAlready = true;
+            }
+        });
+    }
+
+    if ("crime_list" in multiItem && multiItem.crime_list.length > 0) {
+        picDisplayedAlready = false;
+        multiItem.crime_list.forEach(function (crimeItem) {
+            appendString += crimeMoreDetailsHelper(crimeItem, !picDisplayedAlready);
+            if (!picDisplayedAlready) {
+                picDisplayedAlready = true;
+            }
+        });
+    }
+
+    if ("wiki_info_list" in multiItem && multiItem.wiki_info_list.length > 0) {
+        picDisplayedAlready = false;
+        multiItem.wiki_info_list.forEach(function (wikiItem) {
+            appendString += wikiMoreDetailsHelper(wikiItem, !picDisplayedAlready);
+            if (!picDisplayedAlready) {
+                picDisplayedAlready = true;
+            }
+        });
+    }
+
+    return appendString;
+}
+
 function handleMoreDetailsEvent() {
     $('.button-collapse').sideNav('show');
     var navMobileSelector = $('#nav-mobile');
     navMobileSelector.empty();
-    var appendString;
+    var appendString = '<p class="fullWidth"><div class="center-align waves-effect waves-teal btn-flat fullWidth"><i class="fa fa-search-plus" aria-hidden="true"></i> Zoom in to this pin</div></p>';
 
     switch (typeOfMarker(currentlyActiveInfowindowPin)) {
 
         case MULTI_PIN:
+            //noinspection JSUnresolvedVariable
+            var multiItem = currentlyActiveInfowindowPin;
+            appendString += multiMoreDetailsHelper(multiItem);
             break;
         case CRIME_PIN:
             //noinspection JSUnresolvedVariable
             var crimeItem = currentlyActiveInfowindowPin.crime_list[0];
-            appendString = crimeMoreDetailsHelper(crimeItem);
+            appendString += crimeMoreDetailsHelper(crimeItem, true);
             break;
         case LEGISLATOR_PIN:
             //noinspection JSUnresolvedVariable
             var legislatorItem = currentlyActiveInfowindowPin.legislator_list[0];
-            appendString = legislatorMoreDetailsHelper(legislatorItem);
+            appendString += legislatorMoreDetailsHelper(legislatorItem, true);
             break;
         case WIKI_PIN:
             //noinspection JSUnresolvedVariable
             var wikiItem = currentlyActiveInfowindowPin.wiki_info_list[0];
-            appendString = wikiMoreDetailsHelper(wikiItem);
+            appendString += wikiMoreDetailsHelper(wikiItem, true);
             break;
         case INVALID_PIN:
             break;
 
     }
+
+    appendString += '<p class="fullWidth"><h5 class="fullWidth center-align"><i class="fa fa-map"></i> Map-Annotate</h5></p>';
 
     navMobileSelector.append(appendString);
 
