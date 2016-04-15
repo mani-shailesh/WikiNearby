@@ -94,7 +94,7 @@ class ResponseBuilder:
         if no_columns % 2 == 0:
             no_columns += 1
 
-        print("Rows: " + str(no_rows) + "Columns: " + str(no_columns))
+        # print("Rows: " + str(no_rows) + "Columns: " + str(no_columns))
 
         lat_diff = abs(self.map_boundary.north_east.lat - self.map_boundary.south_west.lat)
         lng_diff = abs(self.map_boundary.north_east.lng - self.map_boundary.south_west.lng)
