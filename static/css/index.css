@@ -11,14 +11,16 @@
     opacity: 0.3;
 }
 
-.specialSidebarLink {
-    height: 0 !important;
-    line-height: 0 !important;
-    padding: 0 !important;
+.textSemiTransparent {
+    opacity: 0.55;
 }
 
-.specialSidebarAction {
-    border-top: none !important;
+.specialSidebarLink {
+    color: #059de3 !important;
+    height: inherit !important;
+    line-height: inherit !important;
+    padding: 0 !important;
+    background-color: transparent !important;
 }
 
 @media screen and (min-width: 992px) {

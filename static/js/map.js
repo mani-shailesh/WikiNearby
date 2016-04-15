@@ -270,40 +270,76 @@ function crimeMoreDetailsHelper(crimeItem) {
         '<div class="card-image">' +
         '<img height="100px" src="' + crimePicture + '">';
 
-    if ("type" in crimeItem && crimeItem.type.length > 0) {
-        appendString += '<span class="card-title blackBorder">Crime: <strong>' + crimeItem.type + '</strong></span>';
-    } else {
-        appendString += '<span class="card-title">Crime Data</span>';
-    }
-
+    appendString += '<span class="card-title blackBorder">Crime Data</span>';
     appendString += '</div>' +
-        '<div class="card-content">' +
-        '<p>There is a record of a crime at this location.</p>';
+        '<div class="card-content">';
+
+    //noinspection JSUnresolvedVariable
+    if ("type" in crimeItem && crimeItem.type.length > 0) {
+        appendString += '<p class="textSemiTransparent">There is a record of ' + crimeItem.type + ' at this location.</p>';
+    }
 
     if ("fir_no" in crimeItem && crimeItem.fir_no.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<p><strong>FIR number</strong>: ' + crimeItem.fir_no + '</p>';
+        appendString += '<p class="textSemiTransparent"><i class="fa fa-file-text-o" aria-hidden="true"></i> FIR number ' + crimeItem.fir_no + '</p>';
     }
 
     if ("timestamp" in crimeItem && crimeItem.timestamp.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<p><strong>Date and time</strong>: ' + crimeItem.timestamp + '</p>';
+        appendString += '<p class="textSemiTransparent"><i class="fa fa-calendar" aria-hidden="true"></i> ' + crimeItem.timestamp + '</p>';
     }
-
-    appendString += '</div>';
 
     if ("url_link" in crimeItem && crimeItem.url_link.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<div class="card-action specialSidebarAction"><a class="specialSidebarLink" target="_blank" href="' + crimeItem.url_link + '" >More details</a></div>';
+        appendString += '<p class="textSemiTransparent"><a class="specialSidebarLink" href="' + crimeItem.url_link + '">More details <i class="fa fa-external-link" aria-hidden="true"></i></a></p>';
     }
 
-    appendString += '<hr class="semiTransparent"></div>';
-    console.log(appendString);
+    appendString += '</div>' +
+        '<hr class="semiTransparent"></div>';
+
     return appendString;
 }
 
-function legislatorMoreDetailsHelper(crimeItem) {
+// TODO: Remove "&nbsp;" occurrences
+function legislatorMoreDetailsHelper(legislatorItem) {
+    var appendString;
+    //noinspection JSUnresolvedVariable
+    appendString =
+        '<div class="card z-depth-0">' +
+        '<div class="card-image">' +
+        '<img height="100px" src="' + sansadPicture + '">';
 
+    appendString += '<span class="card-title blackBorder">Sansad Data</span>';
+    appendString += '</div>' +
+        '<div class="card-content">';
+
+    if ("party" in legislatorItem && legislatorItem.party.length > 0) {
+        appendString += '<p class="textSemiTransparent"><i class="fa fa-users" aria-hidden="true"></i> Party: ' + legislatorItem.party + '</p>';
+    }
+
+    if ("first_name" in legislatorItem && legislatorItem.first_name.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += '<p class="textSemiTransparent"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;' + legislatorItem.first_name + " ";
+    } else {
+        appendString += '<p class="textSemiTransparent">Name not available';
+    }
+
+    if ("last_name" in legislatorItem && legislatorItem.last_name.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += legislatorItem.last_name + '</p>';
+    } else {
+        appendString += '</p>';
+    }
+
+    if ("no_questions" in legislatorItem && legislatorItem.no_questions.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += '<p class="textSemiTransparent"><i class="fa fa-question" aria-hidden="true"></i>&nbsp;&nbsp;' + legislatorItem.no_questions + ' questions raised in the legislature.</p>';
+    }
+
+    appendString += '</div>' +
+        '<hr class="semiTransparent"></div>';
+
+    return appendString;
 }
 
 function wikiMoreDetailsHelper(crimeItem) {
