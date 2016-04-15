@@ -262,8 +262,82 @@ function slowlyFadeIn(markerRef) {
     }, 30);
 }
 
+function crimeMoreDetailsHelper(crimeItem) {
+    var appendString;
+    appendString =
+        '<div class="card z-depth-0">' +
+        '<div class="card-image">' +
+        '<img src="../images/crime-image.jpg">';
+
+    if ("type" in crimeItem && crimeItem.type.length > 0) {
+        appendString += '<span class="card-title">Crime Data: ' + crimeItem.type + '</span>';
+    } else {
+        appendString += '<span class="card-title">Crime Data</span>';
+    }
+
+    appendString += '</div>' +
+        '<div class="card-content">' +
+        '<p>The is a record of a crime at this location.</p>';
+
+    if ("fir_no" in crimeItem && crimeItem.fir_no.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += '<p>FIR number: ' + crimeItem.fir_no + '</p>';
+    }
+
+    if ("timestamp" in crimeItem && crimeItem.timestamp.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += '<p>Date and time: ' + crimeItem.timestamp + '</p>';
+    }
+
+    if ("url_link" in crimeItem && crimeItem.url_link.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += '<p>URL: ' + crimeItem.url_link + '</p>';
+    }
+
+    appendString += '</div>' +
+        '</div>';
+
+    return appendString;
+}
+
+// TODO: Refactor to use Django "static files" directives instead of hardcoding links
 function handleMoreDetailsEvent() {
     $('.button-collapse').sideNav('show');
+    var navMobileSelector = $('#nav-mobile');
+    navMobileSelector.empty();
+    var appendString;
+
+    switch (typeOfMarker(currentlyActiveInfowindowPin)) {
+
+        case MULTI_PIN:
+            break;
+        case CRIME_PIN:
+            //noinspection JSUnresolvedVariable
+            var crimeItem = currentlyActiveInfowindowPin.crime_list[0];
+            appendString = crimeMoreDetailsHelper(crimeItem);
+            break;
+        case LEGISLATOR_PIN:
+            break;
+        case WIKI_PIN:
+            break;
+        case INVALID_PIN:
+            break;
+
+    }
+
+    navMobileSelector.append(appendString);
+
+    // <div class="card z-depth-0">
+    //     <div class="card-image">
+    //         <img src="http://materializecss.com/images/sample-1.jpg">
+    //         <span class="card-title">Card Title</span>
+    //     </div>
+    //     <div class="card-content">
+    //         <p>I am a very simple card. I am good at containing small bits of information.
+    //             I am convenient because I require little markup to use effectively.</p>
+    //     </div>
+    // </div>
+
     // console.log(currentlyActiveInfowindowPin);
 }
 
