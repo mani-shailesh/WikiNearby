@@ -1,3 +1,5 @@
 class CrimeFilter:
     def __init__(self):
-        pass
+        self.type = ""
+        self.dateFrom = ""
+        self.dateTo = ""
