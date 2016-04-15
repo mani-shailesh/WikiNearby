@@ -264,40 +264,50 @@ function slowlyFadeIn(markerRef) {
 
 function crimeMoreDetailsHelper(crimeItem) {
     var appendString;
+    //noinspection JSUnresolvedVariable
     appendString =
         '<div class="card z-depth-0">' +
         '<div class="card-image">' +
-        '<img src="../images/crime-image.jpg">';
+        '<img height="100px" src="' + crimePicture + '">';
 
     if ("type" in crimeItem && crimeItem.type.length > 0) {
-        appendString += '<span class="card-title">Crime Data: ' + crimeItem.type + '</span>';
+        appendString += '<span class="card-title blackBorder">Crime: <strong>' + crimeItem.type + '</strong></span>';
     } else {
         appendString += '<span class="card-title">Crime Data</span>';
     }
 
     appendString += '</div>' +
         '<div class="card-content">' +
-        '<p>The is a record of a crime at this location.</p>';
+        '<p>There is a record of a crime at this location.</p>';
 
     if ("fir_no" in crimeItem && crimeItem.fir_no.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<p>FIR number: ' + crimeItem.fir_no + '</p>';
+        appendString += '<p><strong>FIR number</strong>: ' + crimeItem.fir_no + '</p>';
     }
 
     if ("timestamp" in crimeItem && crimeItem.timestamp.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<p>Date and time: ' + crimeItem.timestamp + '</p>';
+        appendString += '<p><strong>Date and time</strong>: ' + crimeItem.timestamp + '</p>';
     }
+
+    appendString += '</div>';
 
     if ("url_link" in crimeItem && crimeItem.url_link.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<p>URL: ' + crimeItem.url_link + '</p>';
+        appendString += '<div class="card-action specialSidebarAction"><a class="specialSidebarLink" target="_blank" href="' + crimeItem.url_link + '" >More details</a></div>';
     }
 
-    appendString += '</div>' +
-        '</div>';
-
+    appendString += '<hr class="semiTransparent"></div>';
+    console.log(appendString);
     return appendString;
+}
+
+function legislatorMoreDetailsHelper(crimeItem) {
+
+}
+
+function wikiMoreDetailsHelper(crimeItem) {
+
 }
 
 // TODO: Refactor to use Django "static files" directives instead of hardcoding links
@@ -317,8 +327,14 @@ function handleMoreDetailsEvent() {
             appendString = crimeMoreDetailsHelper(crimeItem);
             break;
         case LEGISLATOR_PIN:
+            //noinspection JSUnresolvedVariable
+            var legislatorItem = currentlyActiveInfowindowPin.legislator_list[0];
+            appendString = legislatorMoreDetailsHelper(legislatorItem);
             break;
         case WIKI_PIN:
+            //noinspection JSUnresolvedVariable
+            var wikiItem = currentlyActiveInfowindowPin.wiki_list[0];
+            appendString = wikiMoreDetailsHelper(wikiItem);
             break;
         case INVALID_PIN:
             break;
