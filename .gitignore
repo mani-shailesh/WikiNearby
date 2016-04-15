@@ -113,4 +113,4 @@ crashlytics-build.properties
 fabric.properties
 
 # Database
-db.sqlite3
+/map_annotate/db_settings.cnf

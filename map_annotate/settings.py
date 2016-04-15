@@ -78,11 +78,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
             'read_default_file': os.path.join(BASE_DIR, 'map_annotate', 'db_settings.cnf'),
+            # Create a database configuration file named 'db_settings.cnf'.
+            # Save it in map_annotate folder inside main project folder.
+
+            # db_settings.cnf
+
+            # [client]
+            # database = NAME
+            # host = HOST
+            # user = USER
+            # password = PASSWORD
+            # default-character-set = utf8
         },
-        # 'NAME': 'map_annotate',
-        # 'USER': 'root',
-        # 'PASSWORD': 'shailesh96',
-        # 'HOST': 'localhost'
     }
 }
 
