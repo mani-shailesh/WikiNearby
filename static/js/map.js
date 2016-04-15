@@ -268,7 +268,7 @@ function crimeMoreDetailsHelper(crimeItem) {
     appendString =
         '<div class="card z-depth-0">' +
         '<div class="card-image">' +
-        '<img height="100px" src="' + crimePicture + '">';
+        '<img src="' + crimePicture + '">';
 
     appendString += '<span class="card-title blackBorder">Crime Data</span>';
     appendString += '</div>' +
@@ -295,7 +295,7 @@ function crimeMoreDetailsHelper(crimeItem) {
     }
 
     appendString += '</div>' +
-        '<hr class="semiTransparent"></div>';
+        '<hr class="semiTransparentHR"></div>';
 
     return appendString;
 }
@@ -307,7 +307,7 @@ function legislatorMoreDetailsHelper(legislatorItem) {
     appendString =
         '<div class="card z-depth-0">' +
         '<div class="card-image">' +
-        '<img height="100px" src="' + sansadPicture + '">';
+        '<img src="' + sansadPicture + '">';
 
     appendString += '<span class="card-title blackBorder">Sansad Data</span>';
     appendString += '</div>' +
@@ -337,16 +337,43 @@ function legislatorMoreDetailsHelper(legislatorItem) {
     }
 
     appendString += '</div>' +
-        '<hr class="semiTransparent"></div>';
+        '<hr class="semiTransparentHR"></div>';
 
     return appendString;
 }
 
-function wikiMoreDetailsHelper(crimeItem) {
+function wikiMoreDetailsHelper(wikiItem) {
+    var appendString;
+    //noinspection JSUnresolvedVariable
+    appendString =
+        '<div class="card z-depth-0">' +
+        '<div class="card-image">' +
+        '<img src="' + wikiPicture + '">';
 
+    appendString += '<span class="card-title blackBorder">Wikipedia Data</span>';
+    appendString += '</div>' +
+        '<div class="card-content">';
+
+    if ("title" in wikiItem && wikiItem.title.length > 0) {
+        appendString += '<p class="textSemiTransparent">' + wikiItem.title + '</p>';
+    }
+
+    if ("info" in wikiItem && wikiItem.info.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += '<p class="textSemiTransparent">' + wikiItem.info + '</p>';
+    }
+
+    if ("link" in wikiItem && wikiItem.link.length > 0) {
+        //noinspection JSUnresolvedVariable
+        appendString += '<p class="textSemiTransparent"><a class="specialSidebarLink" href="' + wikiItem.link + '">Full article <i class="fa fa-external-link" aria-hidden="true"></i></a></p>';
+    }
+
+    appendString += '</div>' +
+        '<hr class="semiTransparentHR"></div>';
+
+    return appendString;
 }
 
-// TODO: Refactor to use Django "static files" directives instead of hardcoding links
 function handleMoreDetailsEvent() {
     $('.button-collapse').sideNav('show');
     var navMobileSelector = $('#nav-mobile');
@@ -369,7 +396,7 @@ function handleMoreDetailsEvent() {
             break;
         case WIKI_PIN:
             //noinspection JSUnresolvedVariable
-            var wikiItem = currentlyActiveInfowindowPin.wiki_list[0];
+            var wikiItem = currentlyActiveInfowindowPin.wiki_info_list[0];
             appendString = wikiMoreDetailsHelper(wikiItem);
             break;
         case INVALID_PIN:
