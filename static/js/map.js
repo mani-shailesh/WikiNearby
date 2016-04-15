@@ -1,6 +1,7 @@
 var map;
 
 // Helper variabls to display the indeterminate loader on top of the screen
+// Other globals
 var oldTileCoordinate;
 var TILE_SIZE = 256;
 var mapLoaded = false;
