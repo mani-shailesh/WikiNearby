@@ -8,6 +8,7 @@
     <meta name=viewport content="width=device-width, initial-scale=1">
 
     {#Stylesheets#}
+    {#IMPORTANT: Do not modify the order of imports#}
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
@@ -214,8 +215,14 @@
 </footer>
 
 {#Scripts#}
+{#IMPORTANT: Do not modify the order of imports#}
 <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script>
+    var crimePicture = "{% static 'images/crime-image.jpg' %}";
+    var sansadPicture = "{% static 'images/sansad-image.jpg' %}";
+    var wikiPicture = "{% static 'images/crime-image.jpg' %}";
+</script>
 <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 <script async defer

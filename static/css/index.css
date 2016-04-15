@@ -1,6 +1,26 @@
 /*Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version*/
 /*Some code from http://stackoverflow.com/questions/30794947/hide-placeholder-with-css*/
 
+/*TODO: Check iOS specific  CSS*/
+
+.blackBorder {
+    text-shadow: -1px 0 rgba(0, 0, 0, 0.2), 0 1px rgba(0, 0, 0, 0.2), 1px 0 rgba(0, 0, 0, 0.2), 0 -1px rgba(0, 0, 0, 0.2);
+}
+
+.semiTransparent {
+    opacity: 0.3;
+}
+
+.specialSidebarLink {
+    height: 0 !important;
+    line-height: 0 !important;
+    padding: 0 !important;
+}
+
+.specialSidebarAction {
+    border-top: none !important;
+}
+
 @media screen and (min-width: 992px) {
     #nav-mobile {
         width: 25%;
@@ -56,7 +76,7 @@ input[type="date"]:valid::before {
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     select:focus,
     textarea:focus,
-    input[type="search"]:focus {
+    input:focus {
         font-size: 16px;
         background: #eee;
     }

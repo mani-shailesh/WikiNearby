@@ -12,9 +12,6 @@ from map_annotate_app.filters import WikiInfoFilter
 
 SQUARE_SIZE = 150
 
-
-# SQUARE_SIZE_MODIFIED = 297
-
 class ResponseBuilder:
     """
     Class to build the JSON response to be sent to client.
@@ -94,7 +91,7 @@ class ResponseBuilder:
         if no_columns % 2 == 0:
             no_columns += 1
 
-        print("Rows: " + str(no_rows) + "Columns: " + str(no_columns))
+        # print("Rows: " + str(no_rows) + " Columns: " + str(no_columns))
 
         lat_diff = abs(self.map_boundary.north_east.lat - self.map_boundary.south_west.lat)
         lng_diff = abs(self.map_boundary.north_east.lng - self.map_boundary.south_west.lng)
@@ -164,7 +161,6 @@ class ResponseBuilder:
         Processes the request to fetch appropriate response.
         :return:JSON to be sent to client
         """
-        # global SQUARE_SIZE, SQUARE_SIZE_MODIFIED
         crime_pin_list = self.get_crimes()
         wiki_pin_list = self.get_wiki_info()
         legislator_pin_list = self.get_legislators()
@@ -176,11 +172,8 @@ class ResponseBuilder:
         final_pin_list = crime_pin_list + wiki_pin_list + legislator_pin_list
 
         # final_pin_list = self.converge_multiple_type(final_pin_list)
+
         final_pin_list = self.converge(final_pin_list)
-        # tempSquareSize = SQUARE_SIZE
-        # SQUARE_SIZE = SQUARE_SIZE_MODIFIED
-        # final_pin_list = self.converge(final_pin_list)
-        # SQUARE_SIZE = tempSquareSize
 
         json_dict = {'pins': [i.json_dict() for i in final_pin_list]}
 
