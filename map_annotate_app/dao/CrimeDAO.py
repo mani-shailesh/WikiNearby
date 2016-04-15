@@ -17,42 +17,49 @@ class CrimeDAO:
         """
         # TODO: Add actual implementation
 
+        return_list=[]
+
         # Dummy Data
-        crimeData1 = CrimeDTO.CrimeDTO()
-        crimeData1.type = "Mobile"
-        crimeData1.fir_no = "0001"
-        crimeData1.location = Location.Location(30.97069152, 76.5583992)
-        crimeData1.timestamp = time.time()
-        crimeData1.url_link = "http://www.google.com"
+        crimeData_dto = CrimeDTO.CrimeDTO()
+        crimeData_dto.type = "Mobile"
+        crimeData_dto.fir_no = "0001"
+        crimeData_dto.location = Location.Location(30.97069152, 76.5583992)
+        crimeData_dto.timestamp = time.time()
+        crimeData_dto.url_link = "http://www.google.com"
+        return_list.append(crimeData_dto)
 
-        crimeData2 = CrimeDTO.CrimeDTO()
-        crimeData2.type = "Mobile"
-        crimeData2.fir_no = "0002"
-        crimeData2.location = Location.Location(30.96495103, 76.48939133)
-        crimeData2.timestamp = time.time()
-        crimeData2.url_link = "http://www.yahoo.com"
+        crimeData_dto = CrimeDTO.CrimeDTO()
+        crimeData_dto.type = "Mobile"
+        crimeData_dto.fir_no = "0002"
+        crimeData_dto.location = Location.Location(30.96495103, 76.48939133)
+        crimeData_dto.timestamp = time.time()
+        crimeData_dto.url_link = "http://www.yahoo.com"
+        return_list.append(crimeData_dto)
 
-        crimeData3 = CrimeDTO.CrimeDTO()
-        crimeData3.type = "Other"
-        crimeData3.fir_no = "0003"
-        crimeData3.location = Location.Location(30.93359301, 76.47153854)
-        crimeData3.timestamp = time.time()
-        crimeData3.url_link = "http://www.time.com"
+        crimeData_dto = CrimeDTO.CrimeDTO()
+        crimeData_dto.type = "Other"
+        crimeData_dto.fir_no = "0003"
+        crimeData_dto.location = Location.Location(30.93359301, 76.47153854)
+        crimeData_dto.timestamp = time.time()
+        crimeData_dto.url_link = "http://www.time.com"
+        return_list.append(crimeData_dto)
 
-        crimeData4 = CrimeDTO.CrimeDTO()
-        crimeData4.type = "Thievery"
-        crimeData4.fir_no = "0004"
-        crimeData4.location = Location.Location(30.9996831, 76.55118942)
-        crimeData4.timestamp = time.time()
-        crimeData4.url_link = "http://www.theatlantic.com"
+        crimeData_dto = CrimeDTO.CrimeDTO()
+        crimeData_dto.type = "Thievery"
+        crimeData_dto.fir_no = "0004"
+        crimeData_dto.location = Location.Location(30.9996831, 76.55118942)
+        crimeData_dto.timestamp = time.time()
+        crimeData_dto.url_link = "http://www.theatlantic.com"
+        return_list.append(crimeData_dto)
 
-        crimeData5 = CrimeDTO.CrimeDTO()
-        crimeData5.type = "Vehicular Accident"
-        crimeData5.fir_no = "0005"
-        crimeData5.location = Location.Location(30.98172996, 76.53470993)
-        crimeData5.timestamp = time.time()
-        crimeData5.url_link = "http://www.bing.com"
+        crimeData_dto = CrimeDTO.CrimeDTO()
+        crimeData_dto.type = "Vehicular Accident"
+        crimeData_dto.fir_no = "0005"
+        crimeData_dto.location = Location.Location(30.98172996, 76.53470993)
+        crimeData_dto.timestamp = time.time()
+        crimeData_dto.url_link = "http://www.bing.com"
+        return_list.append(crimeData_dto)
 
-        return_list = [crimeData1, crimeData2, crimeData3, crimeData4, crimeData5]
+        # return_list = [crimeData1, crimeData2, crimeData3, crimeData4, crimeData5]
         # return_list = random.sample(return_list, 2)
         return return_list
