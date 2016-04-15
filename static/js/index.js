@@ -6,7 +6,9 @@ var queryData = function () {
     var urlArr = url.split("/");
     var mapSelector = $('#map');
     var mapBounds = map.getBounds();
-    var urlResult = urlArr[0] + "//" + urlArr[2] + "/" + "markers/?map_width=" + mapSelector.width() +
+    var urlResult = urlArr[0] + "//" + urlArr[2] + "/" + "api/?query=get" +
+        "&item=" + "pins" +
+        "&map_width=" + mapSelector.width() +
         "&map_height=" + mapSelector.height() +
         "&north_east_lat=" + mapBounds.getNorthEast().lat() +
         "&north_east_lng=" + mapBounds.getNorthEast().lng() +

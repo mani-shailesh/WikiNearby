@@ -23,23 +23,23 @@ class ResponseBuilder:
         :param request: Request sent by the client
         """
         if request.method == 'GET':
-            query_dict = request.GET
+            self.query_dict = request.GET
         else:
-            query_dict = request.POST
+            self.query_dict = request.POST
 
         # TODO : Initialization of filters
         self.crime_filter = CrimeFilter.CrimeFilter()
         self.legislator_filter = LegislatorFilter.LegislatorFilter()
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter()
 
-        self.map_width = int(query_dict.get('map_width'))
-        self.map_height = int(query_dict.get('map_height'))
+        self.map_width = int(self.query_dict.get('map_width'))
+        self.map_height = int(self.query_dict.get('map_height'))
 
-        north_east = Location.Location(float(query_dict.get('north_east_lat')),
-                                       float(query_dict.get('north_east_lng')))
+        north_east = Location.Location(float(self.query_dict.get('north_east_lat')),
+                                       float(self.query_dict.get('north_east_lng')))
 
-        south_west = Location.Location(float(query_dict.get('south_west_lat')),
-                                       float(query_dict.get('south_west_lng')))
+        south_west = Location.Location(float(self.query_dict.get('south_west_lat')),
+                                       float(self.query_dict.get('south_west_lng')))
 
         self.map_boundary = Boundary.Boundary(north_east, south_west)
 
@@ -160,6 +160,16 @@ class ResponseBuilder:
         """
         Processes the request to fetch appropriate response.
         :return:JSON to be sent to client
+        """
+
+        if self.query_dict['query'] == 'get':
+            if self.query_dict['item'] == 'pins':
+                return self.get_pins_json()
+
+    def get_pins_json(self):
+        """
+        Process request to fetch appropriate pins
+        :return:JSON response
         """
         crime_pin_list = self.get_crimes()
         wiki_pin_list = self.get_wiki_info()
