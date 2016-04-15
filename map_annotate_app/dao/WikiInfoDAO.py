@@ -1,10 +1,12 @@
 from map_annotate_app.dto import WikiInfoDTO
 from map_annotate_app.extras import Location
 
+
 class WikiInfoDAO:
     def __init__(self):
         pass
 
+    # noinspection PyUnusedLocal,PyMethodMayBeStatic
     def get_wiki_info_list(self, wiki_filter):
         """
         Gets crimes which fit the filter from database.

@@ -4,6 +4,7 @@ html, body {
     padding: 0;
     background-color: #009688;
 }
+
 #map {
     height: 91%;
     /*height: calc(100% - 52px);*/

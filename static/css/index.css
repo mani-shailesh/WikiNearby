@@ -53,7 +53,7 @@ input[type="date"]:valid::before {
 }
 
 /*iOS specific CSS*/
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
     select:focus,
     textarea:focus,
     input[type="search"]:focus {
@@ -63,7 +63,7 @@ input[type="date"]:valid::before {
 }
 
 /*iOS specific CSS*/
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
     select,
     textarea,
     input[type="search"] {
@@ -76,7 +76,7 @@ input[type="search"] {
 
     border-radius: 0 0 0 0;
     -webkit-appearance: none;
-    -webkit-border-radius:0;
+    -webkit-border-radius: 0;
 
 }
 
@@ -162,6 +162,7 @@ footer.page-footer {
 
 }
 
+/*noinspection CssUnusedSymbol*/
 .tabs .indicator {
 
     height: 5px;

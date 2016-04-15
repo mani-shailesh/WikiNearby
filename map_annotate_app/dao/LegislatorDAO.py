@@ -6,6 +6,7 @@ class LegislatorDAO:
     def __init__(self):
         pass
 
+    # noinspection PyUnusedLocal,PyMethodMayBeStatic
     def get_legislator_list(self, legislator_filter):
         """
         Gets crimes which fit the filter from database.

@@ -67,6 +67,7 @@ function getNewTileCoordinate() {
 }
 
 // Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+//noinspection JSUnusedGlobalSymbols
 function initAutocomplete() {
 
     map = initMap();
@@ -98,8 +99,10 @@ function initAutocomplete() {
     userGeolocation();
 
     // Create the search box and link it to the UI element.
-    var input = document.getElementById('search-input');
+    var input;
+    input = document.getElementById('search-input');
     // var searchDiv = document.getElementById('search-div');
+    //noinspection JSCheckFunctionSignatures
     var searchBox = new google.maps.places.SearchBox(input);
     // map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchDiv);
 
@@ -164,26 +167,33 @@ var WIKI_PIN = 4;
 // Identify the type of a pin
 function typeOfMarker(pin) {
 
+    //noinspection JSUnresolvedVariable
     if (pin.crime_list.length == 1 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
 
         return CRIME_PIN;
 
-    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 1 && pin.wiki_info_list.length == 0) {
+    } else { //noinspection JSUnresolvedVariable
+        if (pin.crime_list.length == 0 && pin.legislator_list.length == 1 && pin.wiki_info_list.length == 0) {
 
-        return LEGISLATOR_PIN;
+            return LEGISLATOR_PIN;
 
-    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length > 0) {
+        } else { //noinspection JSUnresolvedVariable
+            if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length > 0) {
 
-        return WIKI_PIN;
+                return WIKI_PIN;
 
-    } else if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
+            } else { //noinspection JSUnresolvedVariable
+                if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
 
-        return INVALID_PIN
+                    return INVALID_PIN
 
-    } else {
+                } else {
 
-        return MULTI_PIN;
+                    return MULTI_PIN;
 
+                }
+            }
+        }
     }
 
 }
@@ -276,6 +286,7 @@ function setNewMarkers(input) {
 
     markers = [];
 
+    //noinspection JSUnresolvedVariable
     input.pins.forEach(function (pin) {
         var location = {lat: pin.location.lat, lng: pin.location.lng};
         var iconLink; // See https://sites.google.com/site/gmapsdevelopment/
@@ -293,12 +304,14 @@ function setNewMarkers(input) {
                 break;
             case CRIME_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
+                //noinspection JSUnresolvedVariable
                 title = "Crime Type: " + pin.crime_list[0].type;
                 body = '';
                 contentString = infowindowContent(title, body);
                 break;
             case LEGISLATOR_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
+                //noinspection JSUnresolvedVariable
                 title = "Legislator Data: " + pin.legislator_list[0].first_name +
                     " " + pin.legislator_list[0].last_name;
                 body = '';
@@ -306,6 +319,7 @@ function setNewMarkers(input) {
                 break;
             case WIKI_PIN:
                 iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
+                //noinspection JSUnresolvedVariable
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
                 body = '';
                 contentString = infowindowContent(title, body);
@@ -315,7 +329,9 @@ function setNewMarkers(input) {
 
         }
 
-        var marker = new google.maps.Marker({
+        var marker;
+        //noinspection JSCheckFunctionSignatures
+        marker = new google.maps.Marker({
             map: map,
             title: title,
             icon: iconLink,
@@ -328,6 +344,7 @@ function setNewMarkers(input) {
         slowlyFadeIn(marker);
         marker.addListener('click', function () {
             infowindow.setContent(contentString);
+            //noinspection JSCheckFunctionSignatures
             infowindow.open(map, marker);
             currentlyActiveInfowindowPin = marker.pinRef;
             // console.log(currentlyActiveInfowindowPin);

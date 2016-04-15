@@ -16,11 +16,13 @@ var queryData = function () {
     $.ajax({
         url: urlResult, success: function (queryResponse) {
             // console.log(queryResponse);
+            //noinspection JSUndeclaredVariable
             dataLoaded = true;
             if (mapLoaded && dataLoaded) {
                 $('.activityIndicator').fadeOut(200);
             }
             // Very basic validity check
+            //noinspection JSUnresolvedVariable
             if (typeof queryResponse != 'undefined' && typeof queryResponse.pins != 'undefined') {
                 setNewMarkers(queryResponse);
             }
@@ -70,20 +72,22 @@ toDateSelector.on('change', function () {
 $('#myLocationButton').click(userGeolocation);
 
 // iOS specific jQuery
-var hideSoftKeyboard = function() {
+var hideSoftKeyboard;
+hideSoftKeyboard = function () {
     document.activeElement.blur();
     $("input").blur();
 };
 
 // Remove the below code when ready for production!
 var sideNavState = true;
-var doubleToggleSideNav = function () {
-    if (sideNavState) {
-        $('.button-collapse').sideNav('hide');
-        sideNavState = false;
-    } else {
+var doubleToggleSideNav;
+doubleToggleSideNav = function () {
+    if (!sideNavState) {
         $('.button-collapse').sideNav('show');
         sideNavState = true;
+    } else {
+        $('.button-collapse').sideNav('hide');
+        sideNavState = false;
     }
 };
 $('#mainBranding').click(doubleToggleSideNav);

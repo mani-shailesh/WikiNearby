@@ -104,6 +104,7 @@ class ResponseBuilder:
         lat_square_size = lat_diff / no_rows
         lng_square_size = lng_diff / no_columns
 
+        # noinspection PyUnusedLocal,PyUnusedLocal
         map_mat = [[[] for jj in range(no_columns)] for ii in range(no_rows)]  # Matrix of lists to hold pins
 
         for pin in pin_list:

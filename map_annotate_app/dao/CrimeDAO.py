@@ -8,6 +8,7 @@ class CrimeDAO:
     def __init__(self):
         pass
 
+    # noinspection PyUnusedLocal,PyMethodMayBeStatic
     def get_crime_list(self, crime_filter):
         """
         Gets crimes which fit the filter from database.
