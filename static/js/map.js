@@ -242,7 +242,7 @@ function slowlyFadeOut(markerRef) {
 
     var myInterval = setInterval(function () {
         slowlyFadeOutHelper()
-    }, 10);
+    }, 30);
 }
 
 function slowlyFadeIn(markerRef) {
@@ -259,7 +259,7 @@ function slowlyFadeIn(markerRef) {
 
     var myInterval = setInterval(function () {
         slowlyFadeInHelper()
-    }, 10);
+    }, 30);
 }
 
 function handleMoreDetailsEvent() {
