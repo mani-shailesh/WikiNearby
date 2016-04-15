@@ -22,8 +22,8 @@ class Location(models.Model):
 class Crime(models.Model):
     timestamp = models.DateTimeField()
     fir_number = models.CharField(max_length=10)
-    location_id = models.ForeignKey(Location, on_delete=models.PROTECT)
-    type_id = models.ForeignKey(CrimeType, on_delete=models.SET_NULL, null=True)
+    location = models.ForeignKey(Location, on_delete=models.PROTECT)
+    type = models.ForeignKey(CrimeType, on_delete=models.SET_NULL, null=True)
 
     def __unicode__(self):
         pass
@@ -37,7 +37,7 @@ class Sansad(models.Model):
     no_of_questions = models.PositiveSmallIntegerField()
     attendance = models.PositiveSmallIntegerField()
     mp_id = models.CharField(max_length=45)
-    location_id = models.ForeignKey(Location, on_delete=models.PROTECT)
+    location = models.ForeignKey(Location, on_delete=models.PROTECT)
 
     def __unicode__(self):
         pass
