@@ -114,3 +114,4 @@ fabric.properties
 
 # Database
 /map_annotate/db_settings.cnf
+/map_annotate_app/migrations
