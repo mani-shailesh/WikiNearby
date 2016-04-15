@@ -342,6 +342,7 @@ function legislatorMoreDetailsHelper(legislatorItem) {
     return appendString;
 }
 
+// TODO: Remove "&nbsp;" occurrences
 function wikiMoreDetailsHelper(wikiItem) {
     var appendString;
     //noinspection JSUnresolvedVariable
@@ -355,12 +356,12 @@ function wikiMoreDetailsHelper(wikiItem) {
         '<div class="card-content">';
 
     if ("title" in wikiItem && wikiItem.title.length > 0) {
-        appendString += '<p class="textSemiTransparent">' + wikiItem.title + '</p>';
+        appendString += '<p class="textSemiTransparent"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> ' + wikiItem.title + '</p>';
     }
 
     if ("info" in wikiItem && wikiItem.info.length > 0) {
         //noinspection JSUnresolvedVariable
-        appendString += '<p class="textSemiTransparent">' + wikiItem.info + '</p>';
+        appendString += '<p class="textSemiTransparent"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;' + wikiItem.info + '</p>';
     }
 
     if ("link" in wikiItem && wikiItem.link.length > 0) {
