@@ -545,20 +545,41 @@ function setNewMarkers(input) {
         switch (typeOfMarker(pin)) {
 
             case MULTI_PIN:
-                iconLink = 'http://maps.google.com/mapfiles/kml/pal5/icon44.png';
+                iconLink = {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'grey',
+                    fillOpacity: 0.8,
+                    scale: 12,
+                    strokeColor: 'black',
+                    strokeWeight: 2
+                };
                 title = "Multi Pin: Click to see more details";
                 body = '';
                 contentString = infowindowContent(title, body);
                 break;
             case CRIME_PIN:
-                iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
+                iconLink = {
+                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                    fillColor: 'tomato',
+                    fillOpacity: 0.8,
+                    scale: 5,
+                    strokeColor: 'red',
+                    strokeWeight: 2
+                };
                 //noinspection JSUnresolvedVariable
                 title = "Crime Type: " + pin.crime_list[0].type;
                 body = '';
                 contentString = infowindowContent(title, body);
                 break;
             case LEGISLATOR_PIN:
-                iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon53.png';
+                iconLink = {
+                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                    fillColor: 'lightgreen',
+                    fillOpacity: 0.8,
+                    scale: 5,
+                    strokeColor: 'green',
+                    strokeWeight: 2
+                };
                 //noinspection JSUnresolvedVariable
                 title = "Legislator Data: " + pin.legislator_list[0].first_name +
                     " " + pin.legislator_list[0].last_name;
@@ -566,7 +587,14 @@ function setNewMarkers(input) {
                 contentString = infowindowContent(title, body);
                 break;
             case WIKI_PIN:
-                iconLink = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
+                iconLink = {
+                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                    fillColor: 'lightblue',
+                    fillOpacity: 0.8,
+                    scale: 5,
+                    strokeColor: 'blue',
+                    strokeWeight: 2
+                };
                 //noinspection JSUnresolvedVariable
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
                 body = '';
