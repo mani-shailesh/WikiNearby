@@ -10,10 +10,12 @@ class WikiInfoDAO:
     def get_wiki_info_list(self, wiki_filter):
         """
         Gets crimes which fit the filter from database.
-        :param wiki_filter: `WikiInfoFilter` object to filter out the crimes
-        :return: List of `WikiInfoDTO` objects which satisfy the `crime_filter`
+        :param wiki_filter: `WikiInfoFilter` object to filter out the wiki articles
+        :return: List of `WikiInfoDTO` objects which satisfy the `wiki_filter`
         """
         # TODO
+        # https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gslimit=500&gscoord=28.6139|77.2090&format=json
+        # https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=India
 
         return_list = []
 
