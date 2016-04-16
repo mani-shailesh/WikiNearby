@@ -507,7 +507,7 @@ function zoomIntoPin() {
         prevZoom = map.getZoom();
         map.setZoom(prevZoom + 2);
         if (map.getZoom() == prevZoom) {
-            Materialize.toast('Can not zoom any further!', 2000);
+            Materialize.toast('Cannot zoom any further!', 2000);
         } else {
             $('.button-collapse').sideNav('hide');
         }
