@@ -555,6 +555,30 @@ function setNewMarkers(input) {
                 };
                 title = "Multi Pin: Click to see more details";
                 body = '';
+                var numCrimeRecords = 0;
+                var numLegislatorRecords = 0;
+                var numWikiRecords = 0;
+
+                if ("legislator_list" in pin && pin.legislator_list.length > 0) {
+                    numLegislatorRecords = pin.legislator_list.length;
+                }
+
+                if ("crime_list" in pin && pin.crime_list.length > 0) {
+                    numCrimeRecords = pin.crime_list.length;
+                }
+
+                if ("wiki_info_list" in pin && pin.wiki_info_list.length > 0) {
+                    numWikiRecords = pin.wiki_info_list.length;
+                }
+
+                body = ((numCrimeRecords > 0) ? String(numCrimeRecords) : 'No')
+                    + ' crime record' + ((numCrimeRecords > 1) ? 's' : '') + ', '
+                    + ((numLegislatorRecords > 0) ? String(numLegislatorRecords) : 'No')
+                    + ' Sansad record' + ((numLegislatorRecords > 1) ? 's' : '') + ' and '
+                    + ((numWikiRecords > 0) ? String(numWikiRecords) : 'No')
+                    + ' Wikipedia article' + ((numWikiRecords > 1) ? 's' : '')
+                    + ' ' + ((numCrimeRecords + numLegislatorRecords + numWikiRecords > 1) ? 'are' : 'is') + ' geotagged with this location.';
+
                 contentString = infowindowContent(title, body);
                 break;
             case CRIME_PIN:
@@ -568,7 +592,7 @@ function setNewMarkers(input) {
                 };
                 //noinspection JSUnresolvedVariable
                 title = "Crime Type: " + pin.crime_list[0].type;
-                body = '';
+                body = 'A crime record is geotagged with this location.';
                 contentString = infowindowContent(title, body);
                 break;
             case LEGISLATOR_PIN:
@@ -583,7 +607,7 @@ function setNewMarkers(input) {
                 //noinspection JSUnresolvedVariable
                 title = "Sansad Data: " + pin.legislator_list[0].first_name +
                     " " + pin.legislator_list[0].last_name;
-                body = '';
+                body = 'A Sansad record is geotagged with this location.';
                 contentString = infowindowContent(title, body);
                 break;
             case WIKI_PIN:
@@ -597,7 +621,7 @@ function setNewMarkers(input) {
                 };
                 //noinspection JSUnresolvedVariable
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
-                body = '';
+                body = 'A Wikipedia article is geotagged with this location.';
                 contentString = infowindowContent(title, body);
                 break;
             case INVALID_PIN:
