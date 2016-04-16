@@ -178,7 +178,7 @@ function typeOfMarker(pin) {
             return LEGISLATOR_PIN;
 
         } else { //noinspection JSUnresolvedVariable
-            if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length > 0) {
+            if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 1) {
 
                 return WIKI_PIN;
 
@@ -242,7 +242,7 @@ function slowlyFadeOut(markerRef) {
 
     var myInterval = setInterval(function () {
         slowlyFadeOutHelper()
-    }, 30);
+    }, 20);
 }
 
 function slowlyFadeIn(markerRef) {
@@ -259,7 +259,7 @@ function slowlyFadeIn(markerRef) {
 
     var myInterval = setInterval(function () {
         slowlyFadeInHelper()
-    }, 30);
+    }, 20);
 }
 
 function crimeMoreDetailsHelper(crimeItem, showImage) {

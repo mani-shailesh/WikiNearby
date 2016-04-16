@@ -18,4 +18,5 @@ class WikiInfoDTO:
         return_dict['link'] = self.link
         return_dict['info'] = self.info
         return_dict['location'] = self.location.json_dict()
+        # TODO: Add page ID
         return return_dict

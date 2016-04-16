@@ -1,4 +1,5 @@
 import json
+
 import requests
 
 from map_annotate_app.dto import WikiInfoDTO
@@ -42,6 +43,6 @@ class WikiInfoDAO:
         else:
             pass
 
-        # https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=India
+        # https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=PAGEID
 
         return return_list
