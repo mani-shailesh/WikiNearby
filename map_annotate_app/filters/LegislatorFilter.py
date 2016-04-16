@@ -1,3 +1,3 @@
 class LegislatorFilter:
-    def __init__(self, party=None):
-        self.party = party
+    def __init__(self, north_east, south_west):
+        pass

@@ -28,19 +28,19 @@ class ResponseBuilder:
         else:
             self.query_dict = request.POST
 
-        # TODO : Initialization of filters
-        self.crime_filter = CrimeFilter.CrimeFilter()
-        self.legislator_filter = LegislatorFilter.LegislatorFilter()
-        self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter()
-
-        self.map_width = int(self.query_dict.get('map_width'))
-        self.map_height = int(self.query_dict.get('map_height'))
-
         north_east = Location.Location(float(self.query_dict.get('north_east_lat')),
                                        float(self.query_dict.get('north_east_lng')))
 
         south_west = Location.Location(float(self.query_dict.get('south_west_lat')),
                                        float(self.query_dict.get('south_west_lng')))
+
+        # TODO : Initialization of filters
+        self.crime_filter = CrimeFilter.CrimeFilter(north_east, south_west)
+        self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west)
+        self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter(north_east, south_west)
+
+        self.map_width = int(self.query_dict.get('map_width'))
+        self.map_height = int(self.query_dict.get('map_height'))
 
         self.map_boundary = Boundary.Boundary(north_east, south_west)
 
