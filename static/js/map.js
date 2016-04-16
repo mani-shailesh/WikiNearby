@@ -15,7 +15,6 @@ function initMap() {
         mapTypeControl: false,
         streetViewControl: false
     });
-
 }
 
 // Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
@@ -496,9 +495,6 @@ function handleMoreDetailsEvent() {
 }
 
 function zoomIntoPin() {
-    console.log('Executed: ');
-    console.log(currentlyActiveInfowindowPin);
-
     if (typeof currentlyActiveInfowindowPin != 'undefined') {
         console.log(currentlyActiveInfowindowPin);
         var pos = {
@@ -509,6 +505,7 @@ function zoomIntoPin() {
         // Using global variable here
         map.setCenter(pos);
         map.setZoom(map.getZoom() + 2);
+        $('.button-collapse').sideNav('hide');
     }
 }
 
