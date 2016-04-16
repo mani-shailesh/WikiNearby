@@ -116,3 +116,4 @@ fabric.properties
 /map_annotate/db_settings.cnf
 /map_annotate_app/migrations
 db.sqlite3
+CACHE
