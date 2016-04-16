@@ -3,6 +3,10 @@
 
 /*TODO: Check iOS specific  CSS*/
 
+.card .card-image img {
+    border-radius: 0;
+}
+
 .fullWidth {
     width: 100%;
 }

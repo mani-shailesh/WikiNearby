@@ -370,7 +370,7 @@ function wikiMoreDetailsHelper(wikiItem, showImage) {
         appendString += '<div class="card-image">' +
             '<img src="' + wikiPicture + '">';
 
-        appendString += '<span class="card-title blackBorder">Sansad Data</span>';
+        appendString += '<span class="card-title blackBorder">Wikipedia Data</span>';
         appendString += '</div>';
     }
 
