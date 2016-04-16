@@ -504,8 +504,13 @@ function zoomIntoPin() {
 
         // Using global variable here
         map.setCenter(pos);
-        map.setZoom(map.getZoom() + 2);
-        $('.button-collapse').sideNav('hide');
+        prevZoom = map.getZoom();
+        map.setZoom(prevZoom + 2);
+        if (map.getZoom() == prevZoom) {
+            Materialize.toast('Can not zoom any further!', 2000);
+        } else {
+            $('.button-collapse').sideNav('hide');
+        }
     }
 }
 
