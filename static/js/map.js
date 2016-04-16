@@ -581,7 +581,7 @@ function setNewMarkers(input) {
                     strokeWeight: 2
                 };
                 //noinspection JSUnresolvedVariable
-                title = "Legislator Data: " + pin.legislator_list[0].first_name +
+                title = "Sansad Data: " + pin.legislator_list[0].first_name +
                     " " + pin.legislator_list[0].last_name;
                 body = '';
                 contentString = infowindowContent(title, body);
