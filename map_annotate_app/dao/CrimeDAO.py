@@ -17,7 +17,7 @@ class CrimeDAO:
         """
         # TODO: Add actual implementation
 
-        return_list=[]
+        return_list = []
 
         # Dummy Data
         crimeData_dto = CrimeDTO.CrimeDTO()

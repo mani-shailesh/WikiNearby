@@ -1,5 +1,6 @@
 // Send an AJAX request
-var queryData = function () {
+var queryData;
+queryData = function () {
     $('.activityIndicator').fadeIn(200);
     dataLoaded = false;
     var url = window.location.href;

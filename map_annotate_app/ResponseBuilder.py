@@ -12,6 +12,7 @@ from map_annotate_app.filters import WikiInfoFilter
 
 SQUARE_SIZE = 150
 
+
 class ResponseBuilder:
     """
     Class to build the JSON response to be sent to client.
