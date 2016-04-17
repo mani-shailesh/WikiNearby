@@ -7,6 +7,7 @@ class WikiInfoDTO:
         self.title = ""
         self.link = ""
         self.info = ""
+        self.pageid = ""
 
     def json_dict(self):
         """
@@ -17,6 +18,6 @@ class WikiInfoDTO:
         return_dict['title'] = self.title
         return_dict['link'] = self.link
         return_dict['info'] = self.info
+        return_dict['pageid'] = self.pageid
         return_dict['location'] = self.location.json_dict()
-        # TODO: Add page ID
         return return_dict

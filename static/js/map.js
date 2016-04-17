@@ -222,7 +222,7 @@ function infowindowContent(title, body) {
     return '<div>' +
         '<h6 class="firstHeading">' + title + '</h6>' +
         '<div>' +
-        '<p>' + body + '</p>' +
+        '<p class="truncate">' + body + '</p>' +
         '<p><a onclick="handleMoreDetailsEvent(); void(0);" href="#">More details</a></p>' +
         '</div>' +
         '</div>';
@@ -504,7 +504,7 @@ function zoomIntoPin() {
 
         // Using global variable here
         map.setCenter(pos);
-        prevZoom = map.getZoom();
+        var prevZoom = map.getZoom();
         map.setZoom(prevZoom + 2);
         if (map.getZoom() == prevZoom) {
             Materialize.toast('Cannot zoom any further!', 2000);
@@ -560,14 +560,17 @@ function setNewMarkers(input) {
                 var numWikiRecords = 0;
 
                 if ("legislator_list" in pin && pin.legislator_list.length > 0) {
+                    //noinspection JSUnresolvedVariable
                     numLegislatorRecords = pin.legislator_list.length;
                 }
 
                 if ("crime_list" in pin && pin.crime_list.length > 0) {
+                    //noinspection JSUnresolvedVariable
                     numCrimeRecords = pin.crime_list.length;
                 }
 
                 if ("wiki_info_list" in pin && pin.wiki_info_list.length > 0) {
+                    //noinspection JSUnresolvedVariable
                     numWikiRecords = pin.wiki_info_list.length;
                 }
 
@@ -621,7 +624,7 @@ function setNewMarkers(input) {
                 };
                 //noinspection JSUnresolvedVariable
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
-                body = 'A Wikipedia article is geotagged with this location.';
+                body = '<div class="preloader-wrapper small active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-red"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-yellow"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-green"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div>';
                 contentString = infowindowContent(title, body);
                 break;
             case INVALID_PIN:
@@ -641,12 +644,39 @@ function setNewMarkers(input) {
         });
         marker.pinRef = pin;
         pin.markerRef = marker;
+        marker.contentStringLoaded = false;
         slowlyFadeIn(marker);
         marker.addListener('click', function () {
+            var baseURL = 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=';
             infowindow.setContent(contentString);
             //noinspection JSCheckFunctionSignatures
-            infowindow.open(map, marker);
-            currentlyActiveInfowindowPin = marker.pinRef;
+            infowindow.open(map, this);
+            currentlyActiveInfowindowPin = this.pinRef;
+
+            if (typeOfMarker(marker.pinRef) == WIKI_PIN && !marker.contentStringLoaded) {
+                var pageid = marker.pinRef.wiki_info_list[0].pageid;
+                $.ajax({
+                    url: baseURL + pageid, dataType: "jsonp", success: function (queryResponse) {
+                        // Very basic validity check
+                        if (typeof queryResponse != 'undefined' && typeof queryResponse.query.pages[pageid] != 'undefined') {
+                            var rawAbstract = queryResponse.query.pages[pageid].extract;
+                            marker.pinRef.wiki_info_list[0].info = queryResponse.query.pages[pageid].extract;
+                            marker.contentStringLoaded = true;
+                            var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
+                            var newBody = marker.pinRef.wiki_info_list[0].info;
+                            var newContentString = infowindowContent(newTitle, newBody);
+                            infowindow.setContent(newContentString);
+                        }
+                    }
+                });
+
+            } else if (marker.contentStringLoaded) {
+                var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
+                var newBody = marker.pinRef.wiki_info_list[0].info;
+                var newContentString = infowindowContent(newTitle, newBody);
+                infowindow.setContent(newContentString);
+            }
+
             // console.log(currentlyActiveInfowindowPin);
         });
         markers.push(marker);

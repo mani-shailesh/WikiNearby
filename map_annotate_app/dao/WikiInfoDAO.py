@@ -37,12 +37,10 @@ class WikiInfoDAO:
                 wiki_dto.location = Location.Location(article_dict['lat'], article_dict['lon'])
                 wiki_dto.title = article_dict['title']
                 wiki_dto.link = "https://en.wikipedia.org/?curid=" + str(article_dict['pageid'])
-                # TODO: Fetch info of page
-                wiki_dto.info = "This is some sample info...."
+                wiki_dto.info = ""
+                wiki_dto.pageid = str(article_dict['pageid'])
                 return_list.append(wiki_dto)
         else:
             pass
-
-        # https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=PAGEID
 
         return return_list
