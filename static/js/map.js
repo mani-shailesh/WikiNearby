@@ -559,16 +559,19 @@ function setNewMarkers(input) {
                 var numLegislatorRecords = 0;
                 var numWikiRecords = 0;
 
+                //noinspection JSUnresolvedVariable
                 if ("legislator_list" in pin && pin.legislator_list.length > 0) {
                     //noinspection JSUnresolvedVariable
                     numLegislatorRecords = pin.legislator_list.length;
                 }
 
+                //noinspection JSUnresolvedVariable
                 if ("crime_list" in pin && pin.crime_list.length > 0) {
                     //noinspection JSUnresolvedVariable
                     numCrimeRecords = pin.crime_list.length;
                 }
 
+                //noinspection JSUnresolvedVariable
                 if ("wiki_info_list" in pin && pin.wiki_info_list.length > 0) {
                     //noinspection JSUnresolvedVariable
                     numWikiRecords = pin.wiki_info_list.length;
@@ -624,7 +627,7 @@ function setNewMarkers(input) {
                 };
                 //noinspection JSUnresolvedVariable
                 title = "Wikipedia Data: " + pin.wiki_info_list[0].title;
-                body = '<div class="preloader-wrapper small active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-red"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-yellow"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-green"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div>';
+                body = '<div class="center-align"><div class="preloader-wrapper small active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-red"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-yellow"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-green"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div> </div>';
                 contentString = infowindowContent(title, body);
                 break;
             case INVALID_PIN:
@@ -654,15 +657,19 @@ function setNewMarkers(input) {
             currentlyActiveInfowindowPin = this.pinRef;
 
             if (typeOfMarker(marker.pinRef) == WIKI_PIN && !marker.contentStringLoaded) {
+                //noinspection JSUnresolvedVariable
                 var pageid = marker.pinRef.wiki_info_list[0].pageid;
                 $.ajax({
                     url: baseURL + pageid, dataType: "jsonp", success: function (queryResponse) {
                         // Very basic validity check
+                        //noinspection JSUnresolvedVariable
                         if (typeof queryResponse != 'undefined' && typeof queryResponse.query.pages[pageid] != 'undefined') {
-                            var rawAbstract = queryResponse.query.pages[pageid].extract;
+                            //noinspection JSUnresolvedVariable
                             marker.pinRef.wiki_info_list[0].info = queryResponse.query.pages[pageid].extract;
                             marker.contentStringLoaded = true;
+                            //noinspection JSUnresolvedVariable
                             var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
+                            //noinspection JSUnresolvedVariable
                             var newBody = marker.pinRef.wiki_info_list[0].info;
                             var newContentString = infowindowContent(newTitle, newBody);
                             infowindow.setContent(newContentString);
@@ -671,7 +678,9 @@ function setNewMarkers(input) {
                 });
 
             } else if (marker.contentStringLoaded) {
+                //noinspection JSUnresolvedVariable
                 var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
+                //noinspection JSUnresolvedVariable
                 var newBody = marker.pinRef.wiki_info_list[0].info;
                 var newContentString = infowindowContent(newTitle, newBody);
                 infowindow.setContent(newContentString);
