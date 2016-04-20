@@ -37,6 +37,8 @@ class ResponseBuilder:
         # TODO : Initialization of filters
         self.crime_filter = CrimeFilter.CrimeFilter(north_east, south_west)
         self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west)
+
+
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter(north_east, south_west)
 
         self.map_width = int(self.query_dict.get('map_width'))
