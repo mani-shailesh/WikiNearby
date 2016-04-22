@@ -210,5 +210,9 @@
 
         // Construct the search box
         constructSearchBox();
-    }
+    };
+
+    // Enables functionality for the "Go to my location" button.
+    $('#myLocationButton').click(userGeolocation);
+
 })();

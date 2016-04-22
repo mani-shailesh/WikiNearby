@@ -87,8 +87,50 @@ var wikiPicture;
 /**
  * A handle to the <code>initAutoComplete()</code> for Google Maps API.
  * Initialized in <code>map.js</code>.
+ * @function
  */
 var initAutoComplete;
+
+/**
+ * An array to store all the markers currently marked on the map.
+ * Values are filled into this array in <code>pins.js</code>.
+ * @type {google.maps.Marker[]}
+ */
+var markers;
+
+/**
+ * A global object to represent a single infowindow on the map.
+ * Value is assigned to this variable in <code>pins.js</code>.
+ * @type {google.maps.InfoWindow}
+ */
+var infowindow;
+
+/**
+ * A variable to represent the single pin on which the infowindow is currently open
+ * or was most recently opened.
+ * Value is assigned to this variable in <code>pins.js</code>.
+ */
+var currentlyActiveInfowindowPin;
+
+/**
+ * A handle to the <code>queryData()</code> function declared and defined in <code>extras.js</code>.
+ */
+var queryData;
+
+/**
+ * A handle to the <code>setNewMarkers()</code> function declared and defined in <code>pins.js</code>.
+ */
+var setNewMarkers;
+
+/**
+ * A handle to the <code>handleMoreDetailsEvent()</code> function declared and defined in <code>pins.js</code>.
+ */
+var handleMoreDetailsEvent;
+
+/**
+ * A handle to the <code>zoomIntoPin()</code> function declared and defined in <code>pins.js</code>.
+ */
+var zoomIntoPin;
 
 /**
  * Initialize globals required for downstream functions and code.
@@ -108,6 +150,8 @@ var initAutoComplete;
     CRIME_PIN = 2;
     LEGISLATOR_PIN = 3;
     WIKI_PIN = 4;
+
+    markers = [];
 
     // Global var staticImagesRootPath is declared and initialized in index.html
 
