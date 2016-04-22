@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>mapManager - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="extrasManager.html">extrasManager</a><ul class='methods'><li data-type='method'><a href="extrasManager.html#.hideSoftKeyboard">hideSoftKeyboard</a></li><li data-type='method'><a href="extrasManager.html#.queryData">queryData</a></li></ul></li><li><a href="initGlobals.html">initGlobals</a></li><li><a href="mapManager.html">mapManager</a><ul class='methods'><li data-type='method'><a href="mapManager.html#.boundsChangedListener">boundsChangedListener</a></li><li data-type='method'><a href="mapManager.html#.constructSearchBox">constructSearchBox</a></li><li data-type='method'><a href="mapManager.html#.getNewTileCoordinate">getNewTileCoordinate</a></li><li data-type='method'><a href="mapManager.html#.handleLocationError">handleLocationError</a></li><li data-type='method'><a href="mapManager.html#.initAutocomplete">initAutocomplete</a></li><li data-type='method'><a href="mapManager.html#.initMap">initMap</a></li><li data-type='method'><a href="mapManager.html#.mapIdleListener">mapIdleListener</a></li><li data-type='method'><a href="mapManager.html#.project">project</a></li><li data-type='method'><a href="mapManager.html#.searchBoxListener">searchBoxListener</a></li><li data-type='method'><a href="mapManager.html#.tilesLoadedListener">tilesLoadedListener</a></li><li data-type='method'><a href="mapManager.html#.userGeolocation">userGeolocation</a></li></ul></li><li><a href="pinManager.html">pinManager</a><ul class='methods'><li data-type='method'><a href="pinManager.html#.crimeMoreDetailsHelper">crimeMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.handleMoreDetailsEvent">handleMoreDetailsEvent</a></li><li data-type='method'><a href="pinManager.html#.infowindowContent">infowindowContent</a></li><li data-type='method'><a href="pinManager.html#.legislatorMoreDetailsHelper">legislatorMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.multiMoreDetailsHelper">multiMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.setNewMarkers">setNewMarkers</a></li><li data-type='method'><a href="pinManager.html#.slowlyFadeIn">slowlyFadeIn</a></li><li data-type='method'><a href="pinManager.html#.slowlyFadeOut">slowlyFadeOut</a></li><li data-type='method'><a href="pinManager.html#.typeOfMarker">typeOfMarker</a></li><li data-type='method'><a href="pinManager.html#.wikiMoreDetailsHelper">wikiMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.zoomIntoPin">zoomIntoPin</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#CRIME_PIN">CRIME_PIN</a></li><li><a href="global.html#crimePicture">crimePicture</a></li><li><a href="global.html#currentlyActiveInfowindowPin">currentlyActiveInfowindowPin</a></li><li><a href="global.html#dataLoaded">dataLoaded</a></li><li><a href="global.html#handleMoreDetailsEvent">handleMoreDetailsEvent</a></li><li><a href="global.html#infowindow">infowindow</a></li><li><a href="global.html#initAutoComplete">initAutoComplete</a></li><li><a href="global.html#INVALID_PIN">INVALID_PIN</a></li><li><a href="global.html#LEGISLATOR_PIN">LEGISLATOR_PIN</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#mapLoaded">mapLoaded</a></li><li><a href="global.html#markers">markers</a></li><li><a href="global.html#MULTI_PIN">MULTI_PIN</a></li><li><a href="global.html#oldTileCoordinate">oldTileCoordinate</a></li><li><a href="global.html#queryData">queryData</a></li><li><a href="global.html#sansadPicture">sansadPicture</a></li><li><a href="global.html#setNewMarkers">setNewMarkers</a></li><li><a href="global.html#TILE_SIZE">TILE_SIZE</a></li><li><a href="global.html#WIKI_PIN">WIKI_PIN</a></li><li><a href="global.html#wikiPicture">wikiPicture</a></li><li><a href="global.html#zoomIntoPin">zoomIntoPin</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">mapManager</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        mapManager
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">The <code>mapManager</code> namespace encapsulates core map related functionality.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".boundsChangedListener"><span class="type-signature">(static) </span>boundsChangedListener<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This is a listener for the <code>bounds_changed</code> event, so that the indeterminate loader can be triggered.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line108">line 108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".constructSearchBox"><span class="type-signature">(static) </span>constructSearchBox<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Creates the search box and links it to the UI element.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line173">line 173</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getNewTileCoordinate"><span class="type-signature">(static) </span>getNewTileCoordinate<span class="signature">()</span><span class="type-signature"> &rarr; {google.maps.Point}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Calculates the map's center's tile coordinates based on the <code>TILE_SIZE</code>.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">google.maps.Point</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".handleLocationError"><span class="type-signature">(static) </span>handleLocationError<span class="signature">(browserHasGeolocation)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Triggers a "Toast"(<code>Materialize.toast</code>) notification based
+on the type of geolocation error (as inferred from <code>browserHasGeolocation</code>)
+and prints user-friendly error messages.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>browserHasGeolocation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line63">line 63</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".initAutocomplete"><span class="type-signature">(static) </span>initAutocomplete<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Initializes a Google Maps object, and adds listeners for <code>bounds_changed</code> and
+<code>tilesloaded</code>, so that the indeterminate loader can be triggered and turned off.
+The global variable corresponding to this function is declared in <code>globals.js</code>.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line199">line 199</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".initMap"><span class="type-signature">(static) </span>initMap<span class="signature">()</span><span class="type-signature"> &rarr; {google.maps.Map}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Initializes a Google Maps instance centered (zoom level 12) at New Delhi, India.
+Map type and Street View controls are hidden.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">google.maps.Map</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".mapIdleListener"><span class="type-signature">(static) </span>mapIdleListener<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This is a listener for the map's <code>idle</code> event, to load pins when the map
+transitions to an idle state.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line138">line 138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".project"><span class="type-signature">(static) </span>project<span class="signature">(latLng)</span><span class="type-signature"> &rarr; {google.maps.Point}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Calculates a "Point" from a latitude-longitude coordinate pair.
+This is a helper function for <code>getNewTileCoordinate()</code>.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>latLng</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">google.maps.LatLng</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line78">line 78</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">google.maps.Point</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".searchBoxListener"><span class="type-signature">(static) </span>searchBoxListener<span class="signature">(searchBox)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Listens for the event fired when the user selects a prediction and centers the map on that location.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>searchBox</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">google.maps.places.SearchBox</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line148">line 148</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".tilesLoadedListener"><span class="type-signature">(static) </span>tilesLoadedListener<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    This is a listener for the <code>tilesloaded</code> event, so that the indeterminate loader can be turned off.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line124">line 124</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".userGeolocation"><span class="type-signature">(static) </span>userGeolocation<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Checks if the <code>Geolocation Service</code> is available and
+centers the map at the client's geographic location if it is.
+The default zoom level is 12.
+This function handles errors using <code>handleLocationError()</code>.
+Some code from https://developers.google.com/maps/documentation/javascript/reference#release-version
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Apr 23 2016 01:54:34 GMT+0530 (IST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

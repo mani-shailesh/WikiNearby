@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>globals.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="extrasManager.html">extrasManager</a><ul class='methods'><li data-type='method'><a href="extrasManager.html#.hideSoftKeyboard">hideSoftKeyboard</a></li><li data-type='method'><a href="extrasManager.html#.queryData">queryData</a></li></ul></li><li><a href="initGlobals.html">initGlobals</a></li><li><a href="mapManager.html">mapManager</a><ul class='methods'><li data-type='method'><a href="mapManager.html#.boundsChangedListener">boundsChangedListener</a></li><li data-type='method'><a href="mapManager.html#.constructSearchBox">constructSearchBox</a></li><li data-type='method'><a href="mapManager.html#.getNewTileCoordinate">getNewTileCoordinate</a></li><li data-type='method'><a href="mapManager.html#.handleLocationError">handleLocationError</a></li><li data-type='method'><a href="mapManager.html#.initAutocomplete">initAutocomplete</a></li><li data-type='method'><a href="mapManager.html#.initMap">initMap</a></li><li data-type='method'><a href="mapManager.html#.mapIdleListener">mapIdleListener</a></li><li data-type='method'><a href="mapManager.html#.project">project</a></li><li data-type='method'><a href="mapManager.html#.searchBoxListener">searchBoxListener</a></li><li data-type='method'><a href="mapManager.html#.tilesLoadedListener">tilesLoadedListener</a></li><li data-type='method'><a href="mapManager.html#.userGeolocation">userGeolocation</a></li></ul></li><li><a href="pinManager.html">pinManager</a><ul class='methods'><li data-type='method'><a href="pinManager.html#.crimeMoreDetailsHelper">crimeMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.handleMoreDetailsEvent">handleMoreDetailsEvent</a></li><li data-type='method'><a href="pinManager.html#.infowindowContent">infowindowContent</a></li><li data-type='method'><a href="pinManager.html#.legislatorMoreDetailsHelper">legislatorMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.multiMoreDetailsHelper">multiMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.setNewMarkers">setNewMarkers</a></li><li data-type='method'><a href="pinManager.html#.slowlyFadeIn">slowlyFadeIn</a></li><li data-type='method'><a href="pinManager.html#.slowlyFadeOut">slowlyFadeOut</a></li><li data-type='method'><a href="pinManager.html#.typeOfMarker">typeOfMarker</a></li><li data-type='method'><a href="pinManager.html#.wikiMoreDetailsHelper">wikiMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.zoomIntoPin">zoomIntoPin</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#CRIME_PIN">CRIME_PIN</a></li><li><a href="global.html#crimePicture">crimePicture</a></li><li><a href="global.html#currentlyActiveInfowindowPin">currentlyActiveInfowindowPin</a></li><li><a href="global.html#dataLoaded">dataLoaded</a></li><li><a href="global.html#handleMoreDetailsEvent">handleMoreDetailsEvent</a></li><li><a href="global.html#infowindow">infowindow</a></li><li><a href="global.html#initAutoComplete">initAutoComplete</a></li><li><a href="global.html#INVALID_PIN">INVALID_PIN</a></li><li><a href="global.html#LEGISLATOR_PIN">LEGISLATOR_PIN</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#mapLoaded">mapLoaded</a></li><li><a href="global.html#markers">markers</a></li><li><a href="global.html#MULTI_PIN">MULTI_PIN</a></li><li><a href="global.html#oldTileCoordinate">oldTileCoordinate</a></li><li><a href="global.html#queryData">queryData</a></li><li><a href="global.html#sansadPicture">sansadPicture</a></li><li><a href="global.html#setNewMarkers">setNewMarkers</a></li><li><a href="global.html#TILE_SIZE">TILE_SIZE</a></li><li><a href="global.html#WIKI_PIN">WIKI_PIN</a></li><li><a href="global.html#wikiPicture">wikiPicture</a></li><li><a href="global.html#zoomIntoPin">zoomIntoPin</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">globals.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file Declares and initializes globals required for downstream functions and code.
+ * @author Tushar Agarwal
+ */
+
+/**
+ * The main Google Maps &lt;code>Map&lt;/code> object.
+ * @type {google.maps.Map}
+ */
+var map;
+
+/**
+ * A record of the old center coordinates of the map.
+ * @type {google.maps.Point}
+ */
+var oldTileCoordinate;
+
+/**
+ * This size is used to calculate world coordinates and tile numbers in the map.
+ * @type {number}
+ */
+var TILE_SIZE;
+
+/**
+ * A boolean to represent if the map is loaded.
+ * This is used to trigger an indeterminate loader.
+ * @type {boolean}
+ */
+var mapLoaded;
+
+/**
+ * A boolean to represent if the annotations are loaded.
+ * This is used to trigger an indeterminate loader.
+ * @type {boolean}
+ */
+var dataLoaded;
+
+/**
+ * Represents an invalid pin.
+ * @type {number}
+ */
+var INVALID_PIN;
+
+/**
+ * Represents a multi-pin.
+ * @type {number}
+ */
+var MULTI_PIN;
+
+/**
+ * Represents an crime pin.
+ * @type {number}
+ */
+var CRIME_PIN;
+
+/**
+ * Represents an legislator-data pin.
+ * @type {number}
+ */
+var LEGISLATOR_PIN;
+
+/**
+ * Represents an Wikipedia-data pin.
+ * @type {number}
+ */
+var WIKI_PIN;
+
+/**
+ * The path to the crime "more details" pane image.
+ * @type {string}
+ */
+var crimePicture;
+
+/**
+ * The path to the Sansad "more details" pane image.
+ * @type {string}
+ */
+var sansadPicture;
+
+/**
+ * The path to the Wikipedia "more details" pane image.
+ * @type {string}
+ */
+var wikiPicture;
+
+//noinspection JSUnusedGlobalSymbols
+/**
+ * A handle to the &lt;code>initAutoComplete()&lt;/code> for Google Maps API.
+ * Initialized in &lt;code>map.js&lt;/code>.
+ * @function
+ */
+var initAutoComplete;
+
+/**
+ * An array to store all the markers currently marked on the map.
+ * Values are filled into this array in &lt;code>pins.js&lt;/code>.
+ * @type {google.maps.Marker[]}
+ */
+var markers;
+
+/**
+ * A global object to represent a single infowindow on the map.
+ * Value is assigned to this variable in &lt;code>pins.js&lt;/code>.
+ * @type {google.maps.InfoWindow}
+ */
+var infowindow;
+
+/**
+ * A variable to represent the single pin on which the infowindow is currently open
+ * or was most recently opened.
+ * Value is assigned to this variable in &lt;code>pins.js&lt;/code>.
+ */
+var currentlyActiveInfowindowPin;
+
+/**
+ * A handle to the &lt;code>queryData()&lt;/code> function declared and defined in &lt;code>extras.js&lt;/code>.
+ */
+var queryData;
+
+/**
+ * A handle to the &lt;code>setNewMarkers()&lt;/code> function declared and defined in &lt;code>pins.js&lt;/code>.
+ */
+var setNewMarkers;
+
+/**
+ * A handle to the &lt;code>handleMoreDetailsEvent()&lt;/code> function declared and defined in &lt;code>pins.js&lt;/code>.
+ */
+var handleMoreDetailsEvent;
+
+/**
+ * A handle to the &lt;code>zoomIntoPin()&lt;/code> function declared and defined in &lt;code>pins.js&lt;/code>.
+ */
+var zoomIntoPin;
+
+/**
+ * Initialize globals required for downstream functions and code.
+ * @namespace initGlobals
+ */
+(function initGlobals() {
+
+    map = undefined;
+    oldTileCoordinate = undefined;
+    TILE_SIZE = 256;
+    mapLoaded = false;
+    dataLoaded = false;
+
+    // Types of pins
+    INVALID_PIN = 0;
+    MULTI_PIN = 1;
+    CRIME_PIN = 2;
+    LEGISLATOR_PIN = 3;
+    WIKI_PIN = 4;
+
+    markers = [];
+
+    // Global var staticImagesRootPath is declared and initialized in index.html
+
+    //noinspection JSUnresolvedVariable
+    crimePicture = staticImagesRootPath + '/crime-image.jpg';
+    //noinspection JSUnresolvedVariable
+    sansadPicture = staticImagesRootPath + '/sansad-image.jpg';
+    //noinspection JSUnresolvedVariable
+    wikiPicture = staticImagesRootPath + '/wiki-image.jpg';
+
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Apr 23 2016 01:54:34 GMT+0530 (IST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

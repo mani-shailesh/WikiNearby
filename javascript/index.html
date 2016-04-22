@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="extrasManager.html">extrasManager</a><ul class='methods'><li data-type='method'><a href="extrasManager.html#.hideSoftKeyboard">hideSoftKeyboard</a></li><li data-type='method'><a href="extrasManager.html#.queryData">queryData</a></li></ul></li><li><a href="initGlobals.html">initGlobals</a></li><li><a href="mapManager.html">mapManager</a><ul class='methods'><li data-type='method'><a href="mapManager.html#.boundsChangedListener">boundsChangedListener</a></li><li data-type='method'><a href="mapManager.html#.constructSearchBox">constructSearchBox</a></li><li data-type='method'><a href="mapManager.html#.getNewTileCoordinate">getNewTileCoordinate</a></li><li data-type='method'><a href="mapManager.html#.handleLocationError">handleLocationError</a></li><li data-type='method'><a href="mapManager.html#.initAutocomplete">initAutocomplete</a></li><li data-type='method'><a href="mapManager.html#.initMap">initMap</a></li><li data-type='method'><a href="mapManager.html#.mapIdleListener">mapIdleListener</a></li><li data-type='method'><a href="mapManager.html#.project">project</a></li><li data-type='method'><a href="mapManager.html#.searchBoxListener">searchBoxListener</a></li><li data-type='method'><a href="mapManager.html#.tilesLoadedListener">tilesLoadedListener</a></li><li data-type='method'><a href="mapManager.html#.userGeolocation">userGeolocation</a></li></ul></li><li><a href="pinManager.html">pinManager</a><ul class='methods'><li data-type='method'><a href="pinManager.html#.crimeMoreDetailsHelper">crimeMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.handleMoreDetailsEvent">handleMoreDetailsEvent</a></li><li data-type='method'><a href="pinManager.html#.infowindowContent">infowindowContent</a></li><li data-type='method'><a href="pinManager.html#.legislatorMoreDetailsHelper">legislatorMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.multiMoreDetailsHelper">multiMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.setNewMarkers">setNewMarkers</a></li><li data-type='method'><a href="pinManager.html#.slowlyFadeIn">slowlyFadeIn</a></li><li data-type='method'><a href="pinManager.html#.slowlyFadeOut">slowlyFadeOut</a></li><li data-type='method'><a href="pinManager.html#.typeOfMarker">typeOfMarker</a></li><li data-type='method'><a href="pinManager.html#.wikiMoreDetailsHelper">wikiMoreDetailsHelper</a></li><li data-type='method'><a href="pinManager.html#.zoomIntoPin">zoomIntoPin</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#CRIME_PIN">CRIME_PIN</a></li><li><a href="global.html#crimePicture">crimePicture</a></li><li><a href="global.html#currentlyActiveInfowindowPin">currentlyActiveInfowindowPin</a></li><li><a href="global.html#dataLoaded">dataLoaded</a></li><li><a href="global.html#handleMoreDetailsEvent">handleMoreDetailsEvent</a></li><li><a href="global.html#infowindow">infowindow</a></li><li><a href="global.html#initAutoComplete">initAutoComplete</a></li><li><a href="global.html#INVALID_PIN">INVALID_PIN</a></li><li><a href="global.html#LEGISLATOR_PIN">LEGISLATOR_PIN</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#mapLoaded">mapLoaded</a></li><li><a href="global.html#markers">markers</a></li><li><a href="global.html#MULTI_PIN">MULTI_PIN</a></li><li><a href="global.html#oldTileCoordinate">oldTileCoordinate</a></li><li><a href="global.html#queryData">queryData</a></li><li><a href="global.html#sansadPicture">sansadPicture</a></li><li><a href="global.html#setNewMarkers">setNewMarkers</a></li><li><a href="global.html#TILE_SIZE">TILE_SIZE</a></li><li><a href="global.html#WIKI_PIN">WIKI_PIN</a></li><li><a href="global.html#wikiPicture">wikiPicture</a></li><li><a href="global.html#zoomIntoPin">zoomIntoPin</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        extras.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Declares and defines important functions required for upstream functions and code.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Tushar Agarwal</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extras.js.html">extras.js</a>, <a href="extras.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        globals.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Declares and initializes globals required for downstream functions and code.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Tushar Agarwal</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="globals.js.html">globals.js</a>, <a href="globals.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        map.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Initializes and manages a Google Maps instance.
+Declares helper functions to track the movement and loading of the map.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Tushar Agarwal</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="map.js.html">map.js</a>, <a href="map.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        pins.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Initializes and manages pins on the map.
+Declares helper functions to track the loading and removal of pins and related data.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Tushar Agarwal</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pins.js.html">pins.js</a>, <a href="pins.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Apr 23 2016 01:54:34 GMT+0530 (IST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
