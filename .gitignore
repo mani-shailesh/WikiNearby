@@ -114,3 +114,6 @@ fabric.properties
 
 # Database
 db.sqlite3
+CACHE
+db_settings.cnf
+map_annotate_app/migrations
