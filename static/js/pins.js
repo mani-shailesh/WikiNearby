@@ -38,20 +38,6 @@ function typeOfMarker(pin) {
 
 }
 
-// Checks if a marker is present in the new input
-// function isMarkerPresent(pinList, marker) {
-//     pinList.forEach(function (pin) {
-//         if (pin.location.lat == marker.position.lat &&
-//             pin.location.lng == marker.position.lng &&
-//             typeOfMarker(pin) == markerTypes[markers.indexOf(marker)]) {
-//             return true;
-//         }
-//     });
-//
-//     return false;
-//
-// }
-
 // Global array to store all the markers currently marked on `map`.
 var markers = [];
 // var markerTypes = [];
@@ -320,18 +306,6 @@ function handleMoreDetailsEvent() {
 
     navMobileSelector.append(appendString);
 
-    // <div class="card z-depth-0">
-    //     <div class="card-image">
-    //         <img src="http://materializecss.com/images/sample-1.jpg">
-    //         <span class="card-title">Card Title</span>
-    //     </div>
-    //     <div class="card-content">
-    //         <p>I am a very simple card. I am good at containing small bits of information.
-    //             I am convenient because I require little markup to use effectively.</p>
-    //     </div>
-    // </div>
-
-    // console.log(currentlyActiveInfowindowPin);
 }
 
 function zoomIntoPin() {

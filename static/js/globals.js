@@ -83,10 +83,18 @@ var sansadPicture;
  */
 var wikiPicture;
 
+//noinspection JSUnusedGlobalSymbols
+/**
+ * A handle to the <code>initAutoComplete()</code> for Google Maps API.
+ * Initialized in <code>map.js</code>.
+ */
+var initAutoComplete;
+
 /**
  * Initialize globals required for downstream functions and code.
+ * @namespace initGlobals
  */
-function initGlobals() {
+(function initGlobals() {
 
     map = undefined;
     oldTileCoordinate = undefined;
@@ -102,7 +110,7 @@ function initGlobals() {
     WIKI_PIN = 4;
 
     // Global var staticImagesRootPath is declared and initialized in index.html
-    
+
     //noinspection JSUnresolvedVariable
     crimePicture = staticImagesRootPath + '/crime-image.jpg';
     //noinspection JSUnresolvedVariable
@@ -110,7 +118,4 @@ function initGlobals() {
     //noinspection JSUnresolvedVariable
     wikiPicture = staticImagesRootPath + '/wiki-image.jpg';
 
-}
-
-// Call to initGlobals to initialize global variables.
-initGlobals();
+})();
