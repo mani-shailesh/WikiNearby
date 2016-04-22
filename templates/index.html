@@ -223,11 +223,11 @@
     <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
     <script>
-        var crimePicture = "{% static 'images/crime-image.jpg' %}";
-        var sansadPicture = "{% static 'images/sansad-image.jpg' %}";
-        var wikiPicture = "{% static 'images/wiki-image.jpg' %}";
+        var staticImagesRootPath = "{% static 'images' %}";
     </script>
+    <script type="text/javascript" src="{% static 'js/globals.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pins.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 {% endcompress %}
 <script async defer
