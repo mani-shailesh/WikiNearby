@@ -60,8 +60,8 @@
     );
 
     // Helper selectors to help enforce sane behaviour on date range
-    fromDateSelector = $('#fromDatePicker');
-    toDateSelector = $('#toDatePicker');
+    var fromDateSelector = $('#fromDatePicker');
+    var toDateSelector = $('#toDatePicker');
 
     // This statement initializes a date selector in the filter settings modal.
     var fromDatePicker = fromDateSelector.pickadate({

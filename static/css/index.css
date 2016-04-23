@@ -3,6 +3,10 @@
 
 /*TODO: Check iOS specific  CSS*/
 
+.dropdown-content {
+    font-size: 16px;
+}
+
 .card .card-image img {
     border-radius: 0;
 }
@@ -99,6 +103,7 @@ input[type="date"]:valid::before {
 
 /*iOS specific CSS*/
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    div#toast-container,
     select,
     textarea,
     input[type="search"] {
