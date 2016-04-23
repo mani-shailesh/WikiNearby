@@ -3,6 +3,38 @@
 
 /*TODO: Check iOS specific  CSS*/
 
+/*Improve contrast in form input fields*/
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: black;
+}
+
+/*Improve contrast in form input fields*/
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: black;
+    opacity: 1;
+}
+
+/*Improve contrast in form input fields*/
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: black;
+    opacity: 1;
+}
+
+/*Improve contrast in form input fields*/
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: black;
+}
+
+/*Improve contrast in form input fields*/
+input.select-dropdown {
+    color: black;
+}
+
+/*Improve contrast in form input fields*/
+input[type="date"] {
+    color: black !important;
+}
+
 .dropdown-content {
     font-size: 16px;
 }
