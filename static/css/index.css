@@ -3,6 +3,12 @@
 
 /*TODO: Check iOS specific  CSS*/
 
+/*Fix side-nav scrolling on mobile devices*/
+div#nav-mobile.side-nav {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
 /*Improve contrast in form input fields*/
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: black;
