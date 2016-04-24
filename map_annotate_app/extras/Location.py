@@ -2,8 +2,8 @@ class Location:
     def __init__(self, lat, lng):
         """
         Initializes this object.
-        :param lat: Latitude
-        :param lng: Longitude
+        lat is a parameter which stores the Latitude of the location
+        lng is a parameter which stores the Longitude of the location
         """
         # self.name = ""
         self.lat = lat
@@ -11,8 +11,8 @@ class Location:
 
     def json_dict(self):
         """
-        Returns dictionary to be used for building JSON response.
-        :return: A python dictionary.
+        Returns a python dictionary to be used for building JSON response.
         """
+
         return_dict = {'lat': self.lat, 'lng': self.lng}
         return return_dict

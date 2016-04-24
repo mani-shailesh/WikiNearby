@@ -12,8 +12,9 @@ class CrimeDAO:
     def get_crime_list(self, crime_filter):
         """
         Gets crimes which fit the filter from database.
-        :param crime_filter: `CrimeFilter` object to filter out the crimes
-        :return: List of `CrimeDTO` objects which satisfy the `crime_filter`
+        crime_filter is an object of class `CrimeFilter` which is used to filter out the crimes
+
+        It returns a list of `CrimeDTO` objects which satisfy the `crime_filter`
         """
         # TODO: Add actual implementation
 
@@ -60,6 +61,14 @@ class CrimeDAO:
         crimeData_dto.url_link = "http://www.bing.com"
         return_list.append(crimeData_dto)
 
-        # return_list = [crimeData1, crimeData2, crimeData3, crimeData4, crimeData5]
-        # return_list = random.sample(return_list, 2)
+        # for each in Crime.objects.all():
+        #     crimeData_dto = CrimeDTO.CrimeDTO()
+        #     crimeData_dto.type = each.type
+        #     crimeData_dto.fir_no = each.fir_number
+        #     crimeData_dto.location = each.location
+        #     crimeData_dto.timestamp = each.timestamp
+        #     crimeData_dto.url_link = "http://www.zipnet.in"
+        #     return_list.append(crimeData_dto)
+
+
         return return_list
