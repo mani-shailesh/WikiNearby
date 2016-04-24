@@ -67,7 +67,7 @@ class CrimeDAO:
         #     crimeData_dto.fir_no = each.fir_number
         #     crimeData_dto.location = each.location
         #     crimeData_dto.timestamp = each.timestamp
-        #     crimeData_dto.url_link = "http://www.zipnet.in"
+        #     crllimeData_dto.url_link = "http://www.zipnet.in"
         #     return_list.append(crimeData_dto)
 
 
