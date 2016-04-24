@@ -11,8 +11,7 @@ class CrimeDTO:
 
     def json_dict(self):
         """
-        Returns dictionary to be used for building JSON response.
-        :return: A python dictionary.
+        Returns a python dictionary to be used for building JSON response.
         """
         return_dict = dict()
         return_dict['type'] = self.type

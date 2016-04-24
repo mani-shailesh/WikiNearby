@@ -11,8 +11,7 @@ class LegislatorDTO:
 
     def json_dict(self):
         """
-        Returns dictionary to be used for building JSON response.
-        :return: A python dictionary.
+        Returns a python dictionary to be used for building JSON response.
         """
         return_dict = dict()
         return_dict['first_name'] = self.first_name
