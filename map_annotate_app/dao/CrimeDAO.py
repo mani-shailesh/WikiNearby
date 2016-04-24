@@ -1,3 +1,5 @@
+import time
+
 from map_annotate_app.dto import CrimeDTO
 from map_annotate_app.models import Crime
 
