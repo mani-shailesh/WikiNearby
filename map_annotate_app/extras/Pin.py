@@ -2,9 +2,9 @@ class Pin:
     def __init__(self, location, crime_list, legislator_list, wiki_info_list):
         """
         Initializes this object.
-        :param crime_list: List of `CrimeDTO` objects.
-        :param legislator_list: List of `LegislatorDTO` objects.
-        :param wiki_info_list: List of `WikiInfoDTO` objects.
+        crime_list is a list which has the list of `CrimeDTO` objects.
+        legislator_list is a list which has the list of `LegislatorDTO` objects.
+        wiki_info_list is a list which has the list of `WikiInfoDTO` objects.
         """
         self.location = location  # `Location` where this `Pin` has to be placed.
 
@@ -16,8 +16,7 @@ class Pin:
 
     def json_dict(self):
         """
-        Returns dictionary to be used for building JSON response.
-        :return: A python dictionary.
+        Returns a  python dictionary to be used for building JSON response.
         """
 
         # TODO: Truncate the list of crimes etc. at a threshold
