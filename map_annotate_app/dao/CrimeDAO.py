@@ -61,5 +61,14 @@ class CrimeDAO:
         crimeData_dto.url_link = "http://www.bing.com"
         return_list.append(crimeData_dto)
 
+        # for each in Crime.objects.all():
+        #     crimeData_dto = CrimeDTO.CrimeDTO()
+        #     crimeData_dto.type = each.type
+        #     crimeData_dto.fir_no = each.fir_number
+        #     crimeData_dto.location = each.location
+        #     crimeData_dto.timestamp = each.timestamp
+        #     crimeData_dto.url_link = "http://www.zipnet.in"
+        #     return_list.append(crimeData_dto)
+
 
         return return_list
