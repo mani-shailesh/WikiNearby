@@ -4,14 +4,14 @@ from django.db import models
 
 
 class CrimeType(models.Model):
-    crime_type = models.CharField(max_length=15)
+    crime_type = models.CharField(max_length=45, unique=True)
 
     def __unicode__(self):
         return self.crime_type
 
 
 class Location(models.Model):
-    name = models.CharField(max_length=45)
+    name = models.CharField(max_length=255, unique=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
 
@@ -36,7 +36,7 @@ class Sansad(models.Model):
     party = models.CharField(max_length=45)
     no_of_questions = models.PositiveSmallIntegerField()
     attendance = models.PositiveSmallIntegerField()
-    mp_id = models.CharField(max_length=45)
+    mp_id = models.CharField(max_length=45, unique=True)
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
 
     def __unicode__(self):
