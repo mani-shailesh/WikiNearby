@@ -29,7 +29,11 @@
             "&north_east_lat=" + mapBounds.getNorthEast().lat() +
             "&north_east_lng=" + mapBounds.getNorthEast().lng() +
             "&south_west_lat=" + mapBounds.getSouthWest().lat() +
-            "&south_west_lng=" + mapBounds.getSouthWest().lng();
+            "&south_west_lng=" + mapBounds.getSouthWest().lng() +
+            "&crimeTypeId=" + $('#crimeType').val().join() +
+            "&dateFrom=" + $('#fromDatePicker')[0].value +
+            "&dateTo=" + $('#toDatePicker')[0].value +
+            "&pinCategory=" + $('#filterTabsArea').find('a.active')[0].text;
 
         $.ajax({
             url: urlResult, success: function (queryResponse) {

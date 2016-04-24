@@ -1,7 +1,5 @@
-import time
-
 from map_annotate_app.dto import CrimeDTO
-from map_annotate_app.extras import Location
+from map_annotate_app.models import Crime
 
 
 class CrimeDAO:
@@ -21,54 +19,66 @@ class CrimeDAO:
         return_list = []
 
         # Dummy Data
-        crimeData_dto = CrimeDTO.CrimeDTO()
-        crimeData_dto.type = "Mobile"
-        crimeData_dto.fir_no = "0001"
-        crimeData_dto.location = Location.Location(30.97069152, 76.5583992)
-        crimeData_dto.timestamp = time.time()
-        crimeData_dto.url_link = "http://www.google.com"
-        return_list.append(crimeData_dto)
+        # crime_data_dto2 = CrimeDTO.CrimeDTO()
+        # crime_data_dto2.type = "Mobile"
+        # crime_data_dto2.fir_no = "0001"
+        # crime_data_dto2.location = Location.Location(30.97069152, 76.5583992)
+        # crime_data_dto2.timestamp = timezone.datetime.strptime("25 August, 2016", "%d %B, %Y")
+        # crime_data_dto2.url_link = "http://www.google.com"
+        # return_list.append(crime_data_dto2)
+        #
+        # crime_data_dto = CrimeDTO.CrimeDTO()
+        # crime_data_dto.type = "Mobile"
+        # crime_data_dto.fir_no = "0002"
+        # crime_data_dto.location = Location.Location(30.96495103, 76.48939133)
+        # crime_data_dto.timestamp = time.time()
+        # crime_data_dto.url_link = "http://www.yahoo.com"
+        # return_list.append(crime_data_dto)
+        #
+        # crime_data_dto = CrimeDTO.CrimeDTO()
+        # crime_data_dto.type = "Other"
+        # crime_data_dto.fir_no = "0003"
+        # crime_data_dto.location = Location.Location(30.93359301, 76.47153854)
+        # crime_data_dto.timestamp = time.time()
+        # crime_data_dto.url_link = "http://www.time.com"
+        # return_list.append(crime_data_dto)
+        #
+        # crime_data_dto = CrimeDTO.CrimeDTO()
+        # crime_data_dto.type = "Thievery"
+        # crime_data_dto.fir_no = "0004"
+        # crime_data_dto.location = Location.Location(30.9996831, 76.55118942)
+        # crime_data_dto.timestamp = time.time()
+        # crime_data_dto.url_link = "http://www.theatlantic.com"
+        # return_list.append(crime_data_dto)
+        #
+        # crime_data_dto = CrimeDTO.CrimeDTO()
+        # crime_data_dto.type = "Vehicular Accident"
+        # crime_data_dto.fir_no = "0005"
+        # crime_data_dto.location = Location.Location(30.98172996, 76.53470993)
+        # crime_data_dto.timestamp = time.time()
+        # crime_data_dto.url_link = "http://www.bing.com"
+        # return_list.append(crime_data_dto)
 
-        crimeData_dto = CrimeDTO.CrimeDTO()
-        crimeData_dto.type = "Mobile"
-        crimeData_dto.fir_no = "0002"
-        crimeData_dto.location = Location.Location(30.96495103, 76.48939133)
-        crimeData_dto.timestamp = time.time()
-        crimeData_dto.url_link = "http://www.yahoo.com"
-        return_list.append(crimeData_dto)
+        crime_obj = Crime.objects
+        if crime_filter.type_id:
+            crime_obj = crime_obj.filter(type_id=crime_filter.type_id)
+        if crime_filter.north_east and crime_filter.south_west:
+            crime_obj = crime_obj.filter(location__lat__lte=crime_filter.north_east.lat) \
+                .filter(location__lat__gte=crime_filter.south_west.lat) \
+                .filter(location__lng__lte=crime_filter.north_east.lng) \
+                .filter(location__lng__gte=crime_filter.south_west.lng)
+        if crime_filter.dateFrom:
+            crime_obj = crime_obj.filter(timestamp__gte=crime_filter.dateFrom)
+        if crime_filter.dateTo:
+            crime_obj = crime_obj.filter(timestamp__lte=crime_filter.dateTo)
 
-        crimeData_dto = CrimeDTO.CrimeDTO()
-        crimeData_dto.type = "Other"
-        crimeData_dto.fir_no = "0003"
-        crimeData_dto.location = Location.Location(30.93359301, 76.47153854)
-        crimeData_dto.timestamp = time.time()
-        crimeData_dto.url_link = "http://www.time.com"
-        return_list.append(crimeData_dto)
-
-        crimeData_dto = CrimeDTO.CrimeDTO()
-        crimeData_dto.type = "Thievery"
-        crimeData_dto.fir_no = "0004"
-        crimeData_dto.location = Location.Location(30.9996831, 76.55118942)
-        crimeData_dto.timestamp = time.time()
-        crimeData_dto.url_link = "http://www.theatlantic.com"
-        return_list.append(crimeData_dto)
-
-        crimeData_dto = CrimeDTO.CrimeDTO()
-        crimeData_dto.type = "Vehicular Accident"
-        crimeData_dto.fir_no = "0005"
-        crimeData_dto.location = Location.Location(30.98172996, 76.53470993)
-        crimeData_dto.timestamp = time.time()
-        crimeData_dto.url_link = "http://www.bing.com"
-        return_list.append(crimeData_dto)
-
-        # for each in Crime.objects.all():
-        #     crimeData_dto = CrimeDTO.CrimeDTO()
-        #     crimeData_dto.type = each.type
-        #     crimeData_dto.fir_no = each.fir_number
-        #     crimeData_dto.location = each.location
-        #     crimeData_dto.timestamp = each.timestamp
-        #     crimeData_dto.url_link = "http://www.zipnet.in"
-        #     return_list.append(crimeData_dto)
-
+        for each in crime_obj.all():
+            crime_data_dto = CrimeDTO.CrimeDTO()
+            crime_data_dto.type = str(each.type)
+            crime_data_dto.fir_no = each.fir_number
+            crime_data_dto.location = each.location
+            crime_data_dto.timestamp = each.timestamp
+            crime_data_dto.url_link = "http://www.zipnet.in"
+            return_list.append(crime_data_dto)
 
         return return_list

@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.utils import timezone
 
 from map_annotate_app.dao import CrimeDAO
 from map_annotate_app.dao import LegislatorDAO
@@ -35,9 +36,27 @@ class ResponseBuilder:
                                        float(self.query_dict.get('south_west_lng')))
 
         # TODO : Initialization of filters
-        self.crime_filter = CrimeFilter.CrimeFilter(north_east, south_west)
-        self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west)
+        date_from = self.query_dict.get('dateFrom')
+        date_to = self.query_dict.get('dateTo')
+        if date_from:
+            date_from = str(timezone.datetime.strptime(date_from + " 00:00:00", "%d %B, %Y %H:%M:%S"))
+        if date_to:
+            date_to = str(timezone.datetime.strptime(date_to + " 23:59:59", "%d %B, %Y %H:%M:%S"))
 
+        # TODO: fix below commented code and replace with the above one to remove naive datetime object warning
+        # if date_from:
+        #     date_from = str(timezone.make_aware(timezone.datetime.strptime(date_from, "%d %B, %Y"),
+        #                                         timezone.get_current_timezone()))
+        # if date_to:
+        #     date_to = str(timezone.make_aware((timezone.datetime.strptime(date_to, "%d %B, %Y"),
+        #                                        timezone.get_current_timezone())))
+
+        self.crime_filter_list = []
+        for __type_id in self.query_dict.get('crimeTypeId').split(','):
+            self.crime_filter_list.append(
+                CrimeFilter.CrimeFilter(north_east, south_west, __type_id, date_from, date_to))
+
+        self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west, )
 
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter(north_east, south_west)
 
@@ -51,11 +70,12 @@ class ResponseBuilder:
         Helper method to get a list of `Pin` objects which satisfy the `CrimeFilter`.
         :return: List of `Pin` objects.
         """
-        crime_dao = CrimeDAO.CrimeDAO()
-        crime_dto_list = crime_dao.get_crime_list(self.crime_filter)
         pin_list = []
-        for crime_dto in crime_dto_list:
-            pin_list.append(Pin.Pin(crime_dto.location, [crime_dto], [], []))
+        for crime_filter in self.crime_filter_list:
+            crime_dao = CrimeDAO.CrimeDAO()
+            crime_dto_list = crime_dao.get_crime_list(crime_filter)
+            for crime_dto in crime_dto_list:
+                pin_list.append(Pin.Pin(crime_dto.location, [crime_dto], [], []))
 
         return pin_list
 
@@ -174,9 +194,18 @@ class ResponseBuilder:
         Process request to fetch appropriate pins
         :return:JSON response
         """
-        crime_pin_list = self.get_crimes()
-        wiki_pin_list = self.get_wiki_info()
-        legislator_pin_list = self.get_legislators()
+        crime_pin_list = []
+        wiki_pin_list = []
+        legislator_pin_list = []
+
+        if self.query_dict['pinCategory'] == "Crime":
+            crime_pin_list = self.get_crimes()
+        elif self.query_dict['pinCategory'] == "Wikipedia":
+            wiki_pin_list = self.get_wiki_info()
+        else:
+            crime_pin_list = self.get_crimes()
+            wiki_pin_list = self.get_wiki_info()
+            legislator_pin_list = self.get_legislators()
         #
         # crime_pin_list = self.converge_single_type(crime_pin_list)
         # wiki_pin_list = self.converge_single_type(wiki_pin_list)
