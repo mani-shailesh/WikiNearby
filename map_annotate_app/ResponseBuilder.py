@@ -77,11 +77,14 @@ class ResponseBuilder:
         """
         pin_list = []
         crime_dao = CrimeDAO.CrimeDAO()
+
         crime_dto_list = crime_dao.get_crime_list(self.crime_filter)
+
         for crime_dto in crime_dto_list:
             pin_list.append(Pin.Pin(crime_dto.location, [crime_dto], [], []))
 
         return pin_list
+        # return crime_dao.get_crime_list(self.crime_filter)
 
     def get_wiki_info(self):
         """
@@ -220,6 +223,7 @@ class ResponseBuilder:
         Process request to fetch appropriate pins
         :return:JSON response
         """
+
         crime_pin_list = []
         wiki_pin_list = []
         legislator_pin_list = []

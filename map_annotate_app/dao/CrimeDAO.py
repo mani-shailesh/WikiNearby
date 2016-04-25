@@ -1,6 +1,7 @@
 from django.db.models import Q
 
 from map_annotate_app.dto import CrimeDTO
+from map_annotate_app.extras import Location
 from map_annotate_app.models import Crime
 
 
@@ -39,13 +40,18 @@ class CrimeDAO:
         if crime_filter.dateTo:
             crime_obj = crime_obj.filter(timestamp__lte=crime_filter.dateTo)
 
-        for each in crime_obj.all():
+        result_set = crime_obj.select_related('location', 'type').all()
+
+        for each in result_set:
             crime_data_dto = CrimeDTO.CrimeDTO()
-            crime_data_dto.type = str(each.type)
+            crime_data_dto.type = str(each.type.crime_type)
+            # crime_data_dto.type = "mobile theft"
             crime_data_dto.fir_no = "\"" + str(each.fir_number) + "\""
-            crime_data_dto.location = each.location
+            crime_data_dto.location = Location.Location(each.location.lat, each.location.lng)
+            # crime_data_dto.location = Location.Location(23, 45)
             crime_data_dto.timestamp = each.timestamp.strftime("%d %B, %Y %H:%M:%S")
             crime_data_dto.url_link = "http://www.zipnet.in"
             return_list.append(crime_data_dto)
+            # return_list.append(Pin.Pin(crime_data_dto.location, [crime_data_dto], [], []))
 
         return return_list
