@@ -7,15 +7,22 @@ from map_annotate_app.extras import Location
 
 
 class WikiInfoDAO:
+    """
+    This class represents the data access layer for a Wikipedia article.
+    """
+
     def __init__(self):
+        """
+        No need to initialize anything.
+        """
         pass
 
-    # noinspection PyUnusedLocal,PyMethodMayBeStatic
-    def get_wiki_info_list(self, wiki_filter):
+    @staticmethod
+    def get_wiki_info_list(wiki_filter):
         """
         Gets crimes which fit the filter from database.
-        wiki_filter is a `WikiInfoFilter` object to filter out the wiki articles
-        This returns a list of `WikiInfoDTO` objects which satisfy the `wiki_filter`
+        `wiki_filter` is a `WikiInfoFilter` object to filter out the wiki articles.
+        This returns a list of `WikiInfoDTO` objects which satisfy the `wiki_filter`.
         """
 
         return_list = []

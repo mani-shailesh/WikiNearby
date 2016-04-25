@@ -2,10 +2,15 @@ from map_annotate_app.extras import Location
 
 
 class CrimeDTO:
+    """
+    This class represents the data transfer object for a crime record.
+    """
+
     def __init__(self):
         """
         Constructor to initialize this object.
         """
+
         self.type = ""
         self.fir_no = ""
         self.location = None
@@ -16,6 +21,7 @@ class CrimeDTO:
         """
         Returns a python dictionary to be used for building JSON response.
         """
+
         return_dict = dict()
         return_dict['type'] = self.type
         return_dict['fir_no'] = self.fir_no

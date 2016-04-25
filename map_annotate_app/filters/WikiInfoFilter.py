@@ -5,7 +5,8 @@ from map_annotate_app.extras import Location
 
 class WikiInfoFilter:
     """
-    Class to represent a Filter for fetching WikiInfo data.
+    This class encapsulates functionality and data entities for filtering Wikipedia's geotagged data
+    based on the client's query.
     """
 
     def __init__(self, north_east, south_west):
@@ -21,9 +22,10 @@ class WikiInfoFilter:
 # Code copied from online resources
 def haversine(lon1, lat1, lon2, lat2):
     """
-    Calculate the great circle distance(in meters) between two points
-    on the earth (specified in decimal degrees)
+    Calculates the great circle distance(in meters) between two points
+    on the earth (specified in decimal degrees).
     """
+
     # convert decimal degrees to radians
     lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
     # haversine formula
