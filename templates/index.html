@@ -186,7 +186,8 @@
 
 {#Scripts#}
 {#IMPORTANT: Do not modify the order of imports#}
-<script>document.body.className += ' fade-out';</script>
+<script>document.body.className += ' fade-out';
+document.querySelector("#map").className += ' fade-out';</script>
 {% compress js %}
     <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
@@ -202,6 +203,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&callback=initAutocomplete"></script>
 <script>$(function () {
     $('body').removeClass('fade-out');
+    $('#map').removeClass('fade-out');
 });</script>
 </body>
 </html>

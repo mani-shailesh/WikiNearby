@@ -228,6 +228,7 @@
      * @memberof pinManager
      * @param wikiItem
      * @param {boolean} isTopElement
+     * @param {boolean} isListItem
      * @returns {string}
      */
     function wikiMoreDetailsHelper(wikiItem, isTopElement, isListItem) {
@@ -249,7 +250,7 @@
             appendString += '<div id="WikiImageHolder" class="card-image">';
             $('<img style="display: none;" src="' + image_source + '">').load(function () {
                 $('div#sideNavImagePreLoader').hide();
-                $(this).prependTo('div#WikiImageHolder').slideDown(85);
+                $(this).prependTo('div#WikiImageHolder').animate({height: 'toggle', opacity: 'toggle'}, 'fast');
             });
 
             if (isListItem)
