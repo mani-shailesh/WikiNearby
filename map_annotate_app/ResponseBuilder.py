@@ -172,14 +172,36 @@ class ResponseBuilder:
         lat_sum = 0.0
         lng_sum = 0.0
 
-        for pin in pin_list:
-            crime_list += pin.crime_list
-            wiki_info_list += pin.wiki_info_list
-            legislator_list += pin.legislator_list
-            lat_sum += pin.location.lat
-            lng_sum += pin.location.lng  # TODO: May cause errors with pins near +180 and -180
+        crime_overflow = False
+        wiki_info_overflow = False
+        legislator_overflow = False
 
-        final_location = Location.Location(lat_sum / len(pin_list), lng_sum / len(pin_list))
+        no_of_pins = 0
+        for pin in pin_list:
+            pin_included = False
+            if not crime_overflow:
+                crime_list += pin.crime_list
+                pin_included = True
+                if len(crime_list) >= 10:
+                    crime_overflow = True
+            if not wiki_info_overflow:
+                wiki_info_list += pin.wiki_info_list
+                pin_included = True
+                if len(wiki_info_list) >= 10:
+                    wiki_info_overflow = True
+            if not legislator_overflow:
+                legislator_list += pin.legislator_list
+                pin_included = True
+                if len(legislator_list) >= 10:
+                    legislator_overflow = True
+            if pin_included:
+                no_of_pins += 1
+                lat_sum += pin.location.lat
+                lng_sum += pin.location.lng  # TODO: May cause errors with pins near +180 and -180
+            if crime_overflow and wiki_info_overflow and legislator_overflow:
+                break
+
+        final_location = Location.Location(lat_sum / no_of_pins, lng_sum / no_of_pins)
         final_pin = Pin.Pin(final_location, crime_list, legislator_list, wiki_info_list)
         return final_pin
 
