@@ -1,5 +1,3 @@
-import time
-
 from map_annotate_app.dto import CrimeDTO
 from map_annotate_app.models import Crime
 
@@ -77,9 +75,9 @@ class CrimeDAO:
         for each in crime_obj.all():
             crime_data_dto = CrimeDTO.CrimeDTO()
             crime_data_dto.type = str(each.type)
-            crime_data_dto.fir_no = each.fir_number
+            crime_data_dto.fir_no = "\"" + str(each.fir_number) + "\""
             crime_data_dto.location = each.location
-            crime_data_dto.timestamp = each.timestamp
+            crime_data_dto.timestamp = each.timestamp.strftime("%d %B, %Y %H:%M:%S")
             crime_data_dto.url_link = "http://www.zipnet.in"
             return_list.append(crime_data_dto)
 
