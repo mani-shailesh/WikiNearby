@@ -29,9 +29,12 @@ class WikiInfoDAO:
               "&format=json"
 
         response = requests.get(url)
+
         if response.ok:
+
             json_dict = json.loads(response.content)
             article_dict_array = json_dict['query']['geosearch']
+
             for article_dict in article_dict_array:
                 wiki_dto = WikiInfoDTO.WikiInfoDTO()
                 wiki_dto.location = Location.Location(article_dict['lat'], article_dict['lon'])
@@ -40,6 +43,7 @@ class WikiInfoDAO:
                 wiki_dto.info = ""
                 wiki_dto.pageid = str(article_dict['pageid'])
                 return_list.append(wiki_dto)
+
         else:
             pass
 
