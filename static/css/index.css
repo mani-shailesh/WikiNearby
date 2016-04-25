@@ -9,6 +9,11 @@ div#nav-mobile.side-nav {
     -webkit-overflow-scrolling: touch;
 }
 
+.card .card-image .card-title {
+    width: 100%;
+    background: rgba(0, 0, 0, .3);
+}
+
 /*Improve contrast in form input fields*/
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: black;

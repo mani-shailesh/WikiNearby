@@ -600,7 +600,6 @@
                                     //noinspection JSUnresolvedVariable
                                     marker.pinRef.wiki_info_list[0].imageURL = queryResponse.query.pages[pageid].thumbnail.source;
                                     marker.imageLoaded = true;
-                                    console.log(marker.pinRef.wiki_info_list[0].imageURL);
                                 }
                             }
                         });
