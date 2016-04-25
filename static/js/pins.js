@@ -460,11 +460,11 @@
                         numWikiRecords = pin.wiki_info_list.length;
                     }
 
-                    body = ((numCrimeRecords > 0) ? String(numCrimeRecords) : 'No')
+                    body = ((numCrimeRecords > 0 ) ? ((numCrimeRecords > 9) ? '9+' : String(numCrimeRecords)) : 'No')
                         + ' crime record' + ((numCrimeRecords > 1) ? 's' : '') + ', '
-                        + ((numLegislatorRecords > 0) ? String(numLegislatorRecords) : 'No')
+                        + ((numLegislatorRecords > 0) ? ((numLegislatorRecords > 9) ? '9+' : String(numLegislatorRecords)) : 'No')
                         + ' Sansad record' + ((numLegislatorRecords > 1) ? 's' : '') + ' and '
-                        + ((numWikiRecords > 0) ? String(numWikiRecords) : 'No')
+                        + ((numWikiRecords > 0) ? ((numWikiRecords > 9) ? '9+' : String(numWikiRecords)) : 'No')
                         + ' Wikipedia article' + ((numWikiRecords > 1) ? 's' : '')
                         + ' ' + ((numCrimeRecords + numLegislatorRecords + numWikiRecords > 1) ? 'are' : 'is') + ' geotagged with this location.';
 
