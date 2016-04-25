@@ -227,15 +227,18 @@
      * Generates and returns a HTML string for the side-navigation pane corresponding to a Wikipedia object.
      * @memberof pinManager
      * @param wikiItem
-     * @param {boolean} showImage
+     * @param {boolean} isTopElement
      * @returns {string}
      */
-    function wikiMoreDetailsHelper(wikiItem, showImage) {
+    function wikiMoreDetailsHelper(wikiItem, isTopElement, isListItem) {
         var appendString;
+
+        if (typeof isListItem == 'undefined')
+            isListItem = false;
 
         //noinspection JSUnresolvedVariable
         appendString = '<div class="card z-depth-0">';
-        if (showImage) {
+        if (isTopElement) {
             //noinspection JSUnresolvedVariable
 
             image_source = wikiPicture;
@@ -246,14 +249,17 @@
             appendString += '<div class="card-image">' +
                 '<img src="' + image_source + '">';
 
-            appendString += '<span class="card-title blackBorder">Wikipedia Data</span>';
+            if (isListItem)
+                appendString += '<span class="card-title blackBorder">Wikipedia Data</span>';
+            else
+                appendString += '<span class="card-title blackBorder"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> ' + wikiItem.title + '</span>';
             appendString += '</div>';
         }
 
         appendString += '<div class="card-content">';
 
         //noinspection JSUnresolvedVariable
-        if ("title" in wikiItem && wikiItem.title.length > 0) {
+        if (isListItem && "title" in wikiItem && wikiItem.title.length > 0) {
             //noinspection JSUnresolvedVariable
             appendString += '<p class="textSemiTransparent"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> ' + wikiItem.title + '</p>';
         }
@@ -315,7 +321,7 @@
             picDisplayedAlready = false;
             //noinspection JSUnresolvedVariable
             multiItem.wiki_info_list.forEach(function (wikiItem) {
-                appendString += wikiMoreDetailsHelper(wikiItem, !picDisplayedAlready);
+                appendString += wikiMoreDetailsHelper(wikiItem, !picDisplayedAlready, true);
                 if (!picDisplayedAlready) {
                     picDisplayedAlready = true;
                 }
@@ -421,6 +427,10 @@
         });
 
         markers = [];
+
+        if (input.pins.length == 0) {
+            Materialize.toast('Oops, no matching pins here!', 2500);
+        }
 
         //noinspection JSUnresolvedVariable
         input.pins.forEach(function (pin) {
