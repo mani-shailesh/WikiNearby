@@ -237,8 +237,14 @@
         appendString = '<div class="card z-depth-0">';
         if (showImage) {
             //noinspection JSUnresolvedVariable
+
+            image_source = wikiPicture;
+
+            if (typeof wikiItem.imageURL != 'undefined')
+                image_source = wikiItem.imageURL;
+
             appendString += '<div class="card-image">' +
-                '<img src="' + wikiPicture + '">';
+                '<img src="' + image_source + '">';
 
             appendString += '<span class="card-title blackBorder">Wikipedia Data</span>';
             appendString += '</div>';
@@ -533,43 +539,63 @@
             marker.pinRef = pin;
             pin.markerRef = marker;
             marker.contentStringLoaded = false;
+            marker.imageLoaded = false;
             slowlyFadeIn(marker);
             marker.addListener('click', function () {
                 var baseURL = 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=';
+                var baseImageURL = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=pageimages&pithumbsize=350&pageids=";
                 infowindow.setContent(contentString);
                 //noinspection JSCheckFunctionSignatures
                 infowindow.open(map, this);
                 //noinspection JSUnresolvedVariable
                 currentlyActiveInfowindowPin = this.pinRef;
 
-                if (typeOfMarker(marker.pinRef) == WIKI_PIN && !marker.contentStringLoaded) {
+                if (typeOfMarker(marker.pinRef) == WIKI_PIN) {
                     //noinspection JSUnresolvedVariable
                     var pageid = marker.pinRef.wiki_info_list[0].pageid;
-                    $.ajax({
-                        url: baseURL + pageid, dataType: "jsonp", success: function (queryResponse) {
-                            // Very basic validity check
-                            //noinspection JSUnresolvedVariable
-                            if (typeof queryResponse != 'undefined' && typeof queryResponse.query.pages[pageid] != 'undefined') {
+                    if (!marker.contentStringLoaded) {
+                        $.ajax({
+                            url: baseURL + pageid, dataType: "jsonp", success: function (queryResponse) {
+                                // Very basic validity check
                                 //noinspection JSUnresolvedVariable
-                                marker.pinRef.wiki_info_list[0].info = queryResponse.query.pages[pageid].extract;
-                                marker.contentStringLoaded = true;
-                                //noinspection JSUnresolvedVariable
-                                var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
-                                //noinspection JSUnresolvedVariable
-                                var newBody = marker.pinRef.wiki_info_list[0].info;
-                                var newContentString = infowindowContent(newTitle, newBody);
-                                infowindow.setContent(newContentString);
+                                if (typeof queryResponse != 'undefined' && typeof queryResponse.query.pages[pageid] != 'undefined') {
+                                    //noinspection JSUnresolvedVariable
+                                    marker.pinRef.wiki_info_list[0].info = queryResponse.query.pages[pageid].extract;
+                                    marker.contentStringLoaded = true;
+                                    //noinspection JSUnresolvedVariable
+                                    var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
+                                    //noinspection JSUnresolvedVariable
+                                    var newBody = marker.pinRef.wiki_info_list[0].info;
+                                    var newContentString = infowindowContent(newTitle, newBody);
+                                    infowindow.setContent(newContentString);
+                                }
                             }
-                        }
-                    });
+                        });
 
-                } else if (marker.contentStringLoaded) {
-                    //noinspection JSUnresolvedVariable
-                    var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
-                    //noinspection JSUnresolvedVariable
-                    var newBody = marker.pinRef.wiki_info_list[0].info;
-                    var newContentString = infowindowContent(newTitle, newBody);
-                    infowindow.setContent(newContentString);
+                    } else if (marker.contentStringLoaded) {
+                        //noinspection JSUnresolvedVariable
+                        var newTitle = "Wikipedia Data: " + marker.pinRef.wiki_info_list[0].title;
+                        //noinspection JSUnresolvedVariable
+                        var newBody = marker.pinRef.wiki_info_list[0].info;
+                        var newContentString = infowindowContent(newTitle, newBody);
+                        infowindow.setContent(newContentString);
+                    }
+
+                    if (!marker.imageLoaded) {
+                        $.ajax({
+                            url: baseImageURL + pageid, dataType: "jsonp", success: function (queryResponse) {
+                                // Very basic validity check
+                                //noinspection JSUnresolvedVariable
+                                if (typeof queryResponse != 'undefined' && typeof queryResponse.query.pages[pageid] != 'undefined') {
+                                    //noinspection JSUnresolvedVariable
+                                    marker.pinRef.wiki_info_list[0].imageURL = queryResponse.query.pages[pageid].thumbnail.source;
+                                    marker.imageLoaded = true;
+                                    console.log(marker.pinRef.wiki_info_list[0].imageURL);
+                                }
+                            }
+                        });
+
+                    }
                 }
 
                 // console.log(currentlyActiveInfowindowPin);
