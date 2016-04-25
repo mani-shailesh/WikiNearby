@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from map_annotate_app.dto import CrimeDTO
 from map_annotate_app.models import Crime
 
@@ -18,14 +20,18 @@ class CrimeDAO:
         return_list = []
         crime_obj = Crime.objects
 
-        if crime_filter.type_id:
-            crime_obj = crime_obj.filter(type_id=crime_filter.type_id)
+        if len(crime_filter.type_id_list) > 0:
+            filter_type_parameter = Q(type_id=crime_filter.type_id_list[0])
+            for type_id in crime_filter.type_id_list[1:]:
+                filter_type_parameter = filter_type_parameter | Q(type_id=type_id)
+            crime_obj = crime_obj.filter(filter_type_parameter)
 
         if crime_filter.north_east and crime_filter.south_west:
-            crime_obj = crime_obj.filter(location__lat__lte=crime_filter.north_east.lat) \
-                .filter(location__lat__gte=crime_filter.south_west.lat) \
-                .filter(location__lng__lte=crime_filter.north_east.lng) \
-                .filter(location__lng__gte=crime_filter.south_west.lng)
+            # TODO: May cause errors when longitude varies from +180 to -180
+            crime_obj = crime_obj.filter(location__lat__lte=crime_filter.north_east.lat,
+                                         location__lat__gte=crime_filter.south_west.lat,
+                                         location__lng__lte=crime_filter.north_east.lng,
+                                         location__lng__gte=crime_filter.south_west.lng, )
 
         if crime_filter.dateFrom:
             crime_obj = crime_obj.filter(timestamp__gte=crime_filter.dateFrom)

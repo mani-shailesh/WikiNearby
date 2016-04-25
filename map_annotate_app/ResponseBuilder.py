@@ -51,10 +51,15 @@ class ResponseBuilder:
         #     date_to = str(timezone.make_aware((timezone.datetime.strptime(date_to, "%d %B, %Y"),
         #                                        timezone.get_current_timezone())))
 
-        self.crime_filter_list = []
+        type_id_list = []
         for __type_id in self.query_dict.get('crimeTypeId').split(','):
-            self.crime_filter_list.append(
-                CrimeFilter.CrimeFilter(north_east, south_west, __type_id, date_from, date_to))
+            try:
+                __type_id = int(__type_id)
+            except ValueError:
+                continue
+            type_id_list.append(__type_id)
+
+        self.crime_filter = CrimeFilter.CrimeFilter(north_east, south_west, type_id_list, date_from, date_to)
 
         self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west, )
 
@@ -71,11 +76,10 @@ class ResponseBuilder:
         :return: List of `Pin` objects.
         """
         pin_list = []
-        for crime_filter in self.crime_filter_list:
-            crime_dao = CrimeDAO.CrimeDAO()
-            crime_dto_list = crime_dao.get_crime_list(crime_filter)
-            for crime_dto in crime_dto_list:
-                pin_list.append(Pin.Pin(crime_dto.location, [crime_dto], [], []))
+        crime_dao = CrimeDAO.CrimeDAO()
+        crime_dto_list = crime_dao.get_crime_list(self.crime_filter)
+        for crime_dto in crime_dto_list:
+            pin_list.append(Pin.Pin(crime_dto.location, [crime_dto], [], []))
 
         return pin_list
 
