@@ -1,6 +1,6 @@
 """
-This is the `admin.py` file for `map_annotate_app`.
-For more details, see the documentation for `map_annotate_app`.
+This is the C{admin.py} file for C{map_annotate_app}.
+For more details, see the documentation for C{map_annotate_app}.
 """
 
 from django.contrib import admin

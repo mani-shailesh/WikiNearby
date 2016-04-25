@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 class LegislatorDTO:
     """
     This class represents the data transfer object for a Sansad record.

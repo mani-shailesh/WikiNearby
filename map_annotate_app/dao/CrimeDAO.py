@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 from django.db.models import Q
 
 from map_annotate_app.dto import CrimeDTO
@@ -17,8 +21,8 @@ class CrimeDAO:
     def get_crime_list(crime_filter):
         """
         Gets crimes which pass the filter from database.
-        `crime_filter` is an object of class `CrimeFilter` which is used to filter out the crimes.
-        Returns a list of `CrimeDTO` objects which satisfy the `crime_filter`
+        C{crime_filter} is an object of class C{CrimeFilter} which is used to filter out the crimes.
+        Returns a list of C{CrimeDTO} objects which satisfy the C{crime_filter}
         """
 
         return_list = []

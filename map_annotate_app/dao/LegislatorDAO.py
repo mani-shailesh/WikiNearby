@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 class LegislatorDAO:
     """
     This class represents the data access layer for a Sansad record.
@@ -10,8 +14,8 @@ class LegislatorDAO:
     def get_legislator_list(legislator_filter):
         """
         Gets crimes which fit the filter from database.
-        `legislator_filter` is a `LegislatorFilter` object to filter out the crimes.
-        This returns a list of `LegislatorDTO` objects which satisfy the `crime_filter`.
+        C{legislator_filter} is a C{LegislatorFilter} object to filter out the crimes.
+        This returns a list of C{LegislatorDTO} objects which satisfy the C{crime_filter}.
         """
 
         return_list = []

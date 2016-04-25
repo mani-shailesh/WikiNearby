@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 import json
 
 import requests
@@ -21,8 +25,8 @@ class WikiInfoDAO:
     def get_wiki_info_list(wiki_filter):
         """
         Gets crimes which fit the filter from database.
-        `wiki_filter` is a `WikiInfoFilter` object to filter out the wiki articles.
-        This returns a list of `WikiInfoDTO` objects which satisfy the `wiki_filter`.
+        C{wiki_filter} is a C{WikiInfoFilter} object to filter out the wiki articles.
+        This returns a list of C{WikiInfoDTO} objects which satisfy the C{wiki_filter}.
         """
 
         return_list = []

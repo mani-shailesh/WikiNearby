@@ -1,5 +1,5 @@
 """
-The `filters` package encapsulates functionality and data entities for filtering data
+The C{filters} package encapsulates functionality and data entities for filtering data
 based on the client's query.
 """
 

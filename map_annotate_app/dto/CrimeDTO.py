@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 from map_annotate_app.extras import Location
 
 

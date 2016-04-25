@@ -1,7 +1,7 @@
 """
-WSGI config for `map_annotate` project.
+WSGI config for C{map_annotate} project.
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+It exposes the WSGI callable as a module-level variable named C{}applicationC{}.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/

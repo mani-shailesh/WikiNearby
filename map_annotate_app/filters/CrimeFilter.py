@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 class CrimeFilter:
     """
     This class encapsulates functionality and data entities for filtering crime data
@@ -6,7 +10,7 @@ class CrimeFilter:
 
     def __init__(self, north_east, south_west, type_id_list, date_from, date_to):
         """
-        Initializes the `CrimeFilter` object.
+        Initializes the C{CrimeFilter} object.
         """
 
         self.north_east = north_east

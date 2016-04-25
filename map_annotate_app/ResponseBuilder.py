@@ -1,5 +1,5 @@
 """
-JSON output required by `views.get_response()` is returned by the functions of this class.
+JSON output required by C{views.get_response()} is returned by the functions of this class.
 """
 
 from django.http import JsonResponse
@@ -26,7 +26,7 @@ class ResponseBuilder:
     def __init__(self, request):
         """
         Initializes the appropriate class variables and filters.
-        `request` refers to the request sent by the client.
+        C{request} refers to the request sent by the client.
         """
 
         if request.method == 'GET':
@@ -68,8 +68,8 @@ class ResponseBuilder:
 
     def get_crimes(self):
         """
-        Helper method to get a list of `Pin` objects which satisfy the `CrimeFilter`.
-        This function returns a `list` of `Pin` objects.
+        Helper method to get a list of C{Pin} objects which satisfy the C{CrimeFilter}.
+        This function returns a C{list} of C{Pin} objects.
         """
 
         pin_list = []
@@ -85,8 +85,8 @@ class ResponseBuilder:
 
     def get_wiki_info(self):
         """
-        Helper method to get a list of `Pin` objects which satisfy the filter.
-        This function returns a `list` of `Pin` objects.
+        Helper method to get a list of C{Pin} objects which satisfy the filter.
+        This function returns a C{list} of C{Pin} objects.
         """
 
         wiki_info_dao = WikiInfoDAO.WikiInfoDAO()
@@ -99,8 +99,8 @@ class ResponseBuilder:
 
     def get_legislators(self):
         """
-        Helper method to get a list of `Pin` objects which satisfy the filter.
-        This function returns a `list` of `Pin` objects.
+        Helper method to get a list of C{Pin} objects which satisfy the filter.
+        This function returns a C{list} of C{Pin} objects.
         """
 
         legislator_dao = LegislatorDAO.LegislatorDAO()
@@ -164,8 +164,8 @@ class ResponseBuilder:
     def converge_to_one(pin_list):
         """
         Utility function to converge pins in one square to a single pin.
-        `pin_list` is a  `list` of `Pin` objects.
-        This function returns a `Pin` object.
+        C{pin_list} is a  C{list} of C{Pin} objects.
+        This function returns a C{Pin} object.
         """
 
         if len(pin_list) == 0:

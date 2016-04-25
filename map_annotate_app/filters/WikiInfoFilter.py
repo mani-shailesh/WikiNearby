@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 from math import radians, cos, sin, asin, sqrt
 
 from map_annotate_app.extras import Location

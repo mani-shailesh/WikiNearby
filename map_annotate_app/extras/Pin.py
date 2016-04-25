@@ -1,3 +1,7 @@
+"""
+For more details, see the class documentation.
+"""
+
 class Pin:
     """
     This class represents a "Pin" on the Google Maps map.
@@ -6,17 +10,17 @@ class Pin:
     def __init__(self, location, crime_list, legislator_list, wiki_info_list):
         """
         Initializes this object.
-        crime_list is a list which has the list of `CrimeDTO` objects.
-        legislator_list is a list which has the list of `LegislatorDTO` objects.
-        wiki_info_list is a list which has the list of `WikiInfoDTO` objects.
+        crime_list is a list which has the list of C{CrimeDTO} objects.
+        legislator_list is a list which has the list of C{LegislatorDTO} objects.
+        wiki_info_list is a list which has the list of C{WikiInfoDTO} objects.
         """
-        self.location = location  # `Location` where this `Pin` has to be placed.
+        self.location = location  # C{Location} where this C{Pin} has to be placed.
 
-        self.crime_list = list(crime_list)  # List of `CrimeDTO` objects represented by this Pin.
+        self.crime_list = list(crime_list)  # List of C{CrimeDTO} objects represented by this Pin.
 
-        self.legislator_list = list(legislator_list)  # List of `LegislatorDTO` objects represented by this Pin.
+        self.legislator_list = list(legislator_list)  # List of C{LegislatorDTO} objects represented by this Pin.
 
-        self.wiki_info_list = list(wiki_info_list)  # List of `WikiInfoDTO` objects represented by this Pin.
+        self.wiki_info_list = list(wiki_info_list)  # List of C{WikiInfoDTO} objects represented by this Pin.
 
     def json_dict(self):
         """

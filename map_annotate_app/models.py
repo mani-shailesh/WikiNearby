@@ -1,5 +1,5 @@
 """
-This is the `models.py` file for `map_annotate_app`.
+This is the C{models.py} file for C{map_annotate_app}.
 This encodes the data entities used in the project..
 """
 
@@ -34,7 +34,7 @@ class Location(models.Model):
 
 class Crime(models.Model):
     """
-    The `model` of a crime.
+    The C{model} of a crime.
     """
 
     timestamp = models.DateTimeField()
@@ -48,7 +48,7 @@ class Crime(models.Model):
 
 class Sansad(models.Model):
     """
-    The `model` of a crime.
+    The C{model} of a crime.
     """
 
     first_name = models.CharField(max_length=45)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-This is the `manage.py` file for `map_annotate`.
+This is the C{manage.py} file for C{map_annotate}.
 """
 
 import os
