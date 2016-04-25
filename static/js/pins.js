@@ -460,12 +460,14 @@
                         numWikiRecords = pin.wiki_info_list.length;
                     }
 
-                    body = ((numCrimeRecords > 0 ) ? ((numCrimeRecords > 9) ? '9+' : String(numCrimeRecords)) : 'No')
-                        + ' crime record' + ((numCrimeRecords > 1) ? 's' : '') + ', '
-                        + ((numLegislatorRecords > 0) ? ((numLegislatorRecords > 9) ? '9+' : String(numLegislatorRecords)) : 'No')
-                        + ' Sansad record' + ((numLegislatorRecords > 1) ? 's' : '') + ' and '
-                        + ((numWikiRecords > 0) ? ((numWikiRecords > 9) ? '9+' : String(numWikiRecords)) : 'No')
-                        + ' Wikipedia article' + ((numWikiRecords > 1) ? 's' : '')
+                    body = ((numCrimeRecords > 0 ) ? ((numCrimeRecords > 9) ? '9+' : String(numCrimeRecords)) + ' crime record' : '')
+                        + ((numCrimeRecords > 1) ? 's' : '')
+                        + ((numCrimeRecords > 0 && numLegislatorRecords > 0) ? ', ' : '')
+                        + ((numLegislatorRecords > 0) ? ((numLegislatorRecords > 9) ? '9+' : String(numLegislatorRecords)) + ' Sansad record' : '')
+                        + ((numLegislatorRecords > 1) ? 's' : '')
+                        + (((numCrimeRecords + numCrimeRecords > 1) && numWikiRecords > 0) ? ' and ' : '')
+                        + ((numWikiRecords > 0) ? ((numWikiRecords > 9) ? '9+' : String(numWikiRecords)) + ' Wikipedia article' : '')
+                        + ((numWikiRecords > 1) ? 's' : '')
                         + ' ' + ((numCrimeRecords + numLegislatorRecords + numWikiRecords > 1) ? 'are' : 'is') + ' geotagged with this location.';
 
                     contentString = infowindowContent(title, body);
