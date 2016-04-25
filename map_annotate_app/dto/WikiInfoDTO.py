@@ -1,8 +1,13 @@
 class WikiInfoDTO:
+    """
+    This class represents the data transfer object for a Wikipedia article.
+    """
+
     def __init__(self):
         """
         Constructor to initialize this object.
         """
+
         self.location = None
         self.title = ""
         self.link = ""
@@ -13,6 +18,7 @@ class WikiInfoDTO:
         """
         Returns a python dictionary to be used for building JSON response.
         """
+
         return_dict = dict()
         return_dict['title'] = self.title
         return_dict['link'] = self.link

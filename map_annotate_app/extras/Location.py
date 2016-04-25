@@ -1,9 +1,13 @@
 class Location:
+    """
+    Represents a location on the map in the form of a latitude-longitude pair.
+    """
+
     def __init__(self, lat, lng):
         """
         Initializes this object.
-        lat is a parameter which stores the Latitude of the location
-        lng is a parameter which stores the Longitude of the location
+        `lat` is a parameter which stores the latitude of the location.
+        `lng` is a parameter which stores the longitude of the location.
         """
         # self.name = ""
         self.lat = lat

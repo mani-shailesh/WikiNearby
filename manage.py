@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+
+"""
+This is the `views.py` file for `map_annotate_app`.
+"""
+
 import os
 import sys
 

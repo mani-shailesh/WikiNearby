@@ -1,8 +1,13 @@
 class LegislatorDTO:
+    """
+    This class represents the data transfer object for a Sansad record.
+    """
+
     def __init__(self):
         """
         Constructor to initialize this object.
         """
+
         self.first_name = ""
         self.last_name = ""
         self.location = None
@@ -13,6 +18,7 @@ class LegislatorDTO:
         """
         Returns a python dictionary to be used for building JSON response.
         """
+
         return_dict = dict()
         return_dict['first_name'] = self.first_name
         return_dict['last_name'] = self.last_name

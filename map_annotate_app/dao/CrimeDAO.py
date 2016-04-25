@@ -6,16 +6,19 @@ from map_annotate_app.models import Crime
 
 
 class CrimeDAO:
+    """
+    This class represents the data access layer for a crime record.
+    """
+
     def __init__(self):
         pass
 
-    # noinspection PyUnusedLocal,PyMethodMayBeStatic
-    def get_crime_list(self, crime_filter):
+    @staticmethod
+    def get_crime_list(crime_filter):
         """
-        Gets crimes which fit the filter from database.
-        crime_filter is an object of class `CrimeFilter` which is used to filter out the crimes
-
-        It returns a list of `CrimeDTO` objects which satisfy the `crime_filter`
+        Gets crimes which pass the filter from database.
+        `crime_filter` is an object of class `CrimeFilter` which is used to filter out the crimes.
+        Returns a list of `CrimeDTO` objects which satisfy the `crime_filter`
         """
 
         return_list = []

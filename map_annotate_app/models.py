@@ -1,9 +1,18 @@
+"""
+This is the `models.py` file for `map_annotate_app`.
+This encodes the data entities used in the project..
+"""
+
 from __future__ import unicode_literals
 
 from django.db import models
 
 
 class CrimeType(models.Model):
+    """
+    Refers to the type of a crime.
+    """
+
     crime_type = models.CharField(max_length=45, unique=True)
 
     def __unicode__(self):
@@ -11,6 +20,10 @@ class CrimeType(models.Model):
 
 
 class Location(models.Model):
+    """
+    Stores a location on the map in the form of a latitude-longitude pair.
+    """
+
     name = models.CharField(max_length=255, unique=True)
     lat = models.FloatField()
     lng = models.FloatField()
@@ -20,6 +33,10 @@ class Location(models.Model):
 
 
 class Crime(models.Model):
+    """
+    The `model` of a crime.
+    """
+
     timestamp = models.DateTimeField()
     fir_number = models.CharField(max_length=10)
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
@@ -30,6 +47,10 @@ class Crime(models.Model):
 
 
 class Sansad(models.Model):
+    """
+    The `model` of a crime.
+    """
+
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     gender = models.CharField(max_length=1)

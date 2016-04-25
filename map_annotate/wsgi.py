@@ -1,5 +1,5 @@
 """
-WSGI config for map_annotate project.
+WSGI config for `map_annotate` project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

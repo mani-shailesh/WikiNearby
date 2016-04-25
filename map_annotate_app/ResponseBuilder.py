@@ -1,3 +1,7 @@
+"""
+JSON output required by `views.get_response()` is returned by the functions of this class.
+"""
+
 from django.http import JsonResponse
 from django.utils import timezone
 
@@ -22,8 +26,9 @@ class ResponseBuilder:
     def __init__(self, request):
         """
         Initializes the appropriate class variables and filters.
-        :param request: Request sent by the client
+        `request` refers to the request sent by the client.
         """
+
         if request.method == 'GET':
             self.query_dict = request.GET
         else:
@@ -35,21 +40,12 @@ class ResponseBuilder:
         south_west = Location.Location(float(self.query_dict.get('south_west_lat')),
                                        float(self.query_dict.get('south_west_lng')))
 
-        # TODO : Initialization of filters
         date_from = self.query_dict.get('dateFrom')
         date_to = self.query_dict.get('dateTo')
         if date_from:
             date_from = str(timezone.datetime.strptime(date_from + " 00:00:00", "%d %B, %Y %H:%M:%S"))
         if date_to:
             date_to = str(timezone.datetime.strptime(date_to + " 23:59:59", "%d %B, %Y %H:%M:%S"))
-
-        # TODO: fix below commented code and replace with the above one to remove naive datetime object warning
-        # if date_from:
-        #     date_from = str(timezone.make_aware(timezone.datetime.strptime(date_from, "%d %B, %Y"),
-        #                                         timezone.get_current_timezone()))
-        # if date_to:
-        #     date_to = str(timezone.make_aware((timezone.datetime.strptime(date_to, "%d %B, %Y"),
-        #                                        timezone.get_current_timezone())))
 
         type_id_list = []
         for __type_id in self.query_dict.get('crimeTypeId').split(','):
@@ -73,8 +69,9 @@ class ResponseBuilder:
     def get_crimes(self):
         """
         Helper method to get a list of `Pin` objects which satisfy the `CrimeFilter`.
-        :return: List of `Pin` objects.
+        This function returns a `list` of `Pin` objects.
         """
+
         pin_list = []
         crime_dao = CrimeDAO.CrimeDAO()
 
@@ -89,8 +86,9 @@ class ResponseBuilder:
     def get_wiki_info(self):
         """
         Helper method to get a list of `Pin` objects which satisfy the filter.
-        :return: List of `Pin` objects.
+        This function returns a `list` of `Pin` objects.
         """
+
         wiki_info_dao = WikiInfoDAO.WikiInfoDAO()
         wiki_dto_list = wiki_info_dao.get_wiki_info_list(self.wiki_info_filter)
         pin_list = []
@@ -102,8 +100,9 @@ class ResponseBuilder:
     def get_legislators(self):
         """
         Helper method to get a list of `Pin` objects which satisfy the filter.
-        :return: List of `Pin` objects.
+        This function returns a `list` of `Pin` objects.
         """
+
         legislator_dao = LegislatorDAO.LegislatorDAO()
         legislator_dto_list = legislator_dao.get_legislator_list(self.legislator_filter)
 
@@ -114,14 +113,17 @@ class ResponseBuilder:
         return pin_list
 
     def converge(self, pin_list):
+        """
+        Converts the raw data from the data access layer into a suitable format to respond
+        to a client's request.
+        """
+
         no_rows = int(self.map_height / SQUARE_SIZE) + 1
         if no_rows % 2 == 0:
             no_rows += 1
         no_columns = int(self.map_width / SQUARE_SIZE) + 1
         if no_columns % 2 == 0:
             no_columns += 1
-
-        # print("Rows: " + str(no_rows) + " Columns: " + str(no_columns))
 
         lat_diff = abs(self.map_boundary.north_east.lat - self.map_boundary.south_west.lat)
         lng_diff = abs(self.map_boundary.north_east.lng - self.map_boundary.south_west.lng)
@@ -162,8 +164,8 @@ class ResponseBuilder:
     def converge_to_one(pin_list):
         """
         Utility function to converge pins in one square to a single pin.
-        :param pin_list: List of `Pin` objects.
-        :return: A `Pin` object.
+        `pin_list` is a  `list` of `Pin` objects.
+        This function returns a `Pin` object.
         """
 
         if len(pin_list) == 0:
@@ -211,7 +213,7 @@ class ResponseBuilder:
     def get_response_json(self):
         """
         Processes the request to fetch appropriate response.
-        :return:JSON to be sent to client
+        This function returns a JSON response to be sent to client.
         """
 
         if self.query_dict['query'] == 'get':
@@ -220,8 +222,8 @@ class ResponseBuilder:
 
     def get_pins_json(self):
         """
-        Process request to fetch appropriate pins
-        :return:JSON response
+        Processes request to fetch appropriate pins.
+        This function returns a JSON response.
         """
 
         crime_pin_list = []
@@ -236,17 +238,9 @@ class ResponseBuilder:
             crime_pin_list = self.get_crimes()
             wiki_pin_list = self.get_wiki_info()
             legislator_pin_list = self.get_legislators()
-        #
-        # crime_pin_list = self.converge_single_type(crime_pin_list)
-        # wiki_pin_list = self.converge_single_type(wiki_pin_list)
-        # legislator_pin_list = self.converge_single_type(legislator_pin_list)
 
         final_pin_list = crime_pin_list + wiki_pin_list + legislator_pin_list
-
-        # final_pin_list = self.converge_multiple_type(final_pin_list)
-
         final_pin_list = self.converge(final_pin_list)
-
         json_dict = {'pins': [i.json_dict() for i in final_pin_list]}
 
         return JsonResponse(json_dict)

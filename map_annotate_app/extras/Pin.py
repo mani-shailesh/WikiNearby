@@ -1,4 +1,8 @@
 class Pin:
+    """
+    This class represents a "Pin" on the Google Maps map.
+    """
+
     def __init__(self, location, crime_list, legislator_list, wiki_info_list):
         """
         Initializes this object.
