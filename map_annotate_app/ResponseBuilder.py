@@ -61,7 +61,7 @@ class ResponseBuilder:
 
         self.crime_filter = CrimeFilter.CrimeFilter(north_east, south_west, type_id_list, date_from, date_to)
 
-        self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west, )
+        self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west)
 
         self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter(north_east, south_west)
 
