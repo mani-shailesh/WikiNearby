@@ -1,5 +1,6 @@
 from map_annotate_app.extras import Location
 
+
 class CrimeDTO:
     def __init__(self):
         """
