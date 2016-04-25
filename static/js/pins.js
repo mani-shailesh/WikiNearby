@@ -246,8 +246,11 @@
             if (typeof wikiItem.imageURL != 'undefined')
                 image_source = wikiItem.imageURL;
 
-            appendString += '<div class="card-image">' +
-                '<img src="' + image_source + '">';
+            appendString += '<div id="WikiImageHolder" class="card-image">';
+            $('<img style="display: none;" src="' + image_source + '">').load(function () {
+                $('div#sideNavImagePreLoader').hide();
+                $(this).prependTo('div#WikiImageHolder').slideDown(85);
+            });
 
             if (isListItem)
                 appendString += '<span class="card-title blackBorder">Wikipedia Data</span>';
@@ -257,6 +260,7 @@
         }
 
         appendString += '<div class="card-content">';
+        appendString += '<div id="sideNavImagePreLoader" class="center-align"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div><div class="spinner-layer spinner-red"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div><div class="spinner-layer spinner-yellow"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div><div class="spinner-layer spinner-green"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div></div>';
 
         //noinspection JSUnresolvedVariable
         if (isListItem && "title" in wikiItem && wikiItem.title.length > 0) {

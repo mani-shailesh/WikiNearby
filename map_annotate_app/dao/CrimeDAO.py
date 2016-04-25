@@ -56,7 +56,7 @@ class CrimeDAO:
             crime_data_dto.fir_no = "\"" + str(each.fir_number) + "\""
             crime_data_dto.location = Location.Location(each.location.lat, each.location.lng)
             # crime_data_dto.location = Location.Location(23, 45)
-            crime_data_dto.timestamp = each.timestamp.strftime("%d %B, %Y %H:%M:%S")
+            crime_data_dto.timestamp = each.timestamp.strftime("%d %B, %Y, %H:%M")
             crime_data_dto.url_link = "http://www.zipnet.in"
             return_list.append(crime_data_dto)
             # return_list.append(Pin.Pin(crime_data_dto.location, [crime_data_dto], [], []))
