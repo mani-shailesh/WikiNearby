@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link href="bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="apidocs.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.html" class="navbar-brand">
+            map_annotate API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code>map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder</code> <small>class documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="map_annotate.html" data-type="Package" class="code">map_annotate</a>.<a href="map_annotate.map_annotate_app.html" data-type="Package" class="code">map_annotate_app</a>.<a href="map_annotate.map_annotate_app.ResponseBuilder.html" data-type="Module" class="code">ResponseBuilder</a></code>
+          
+          <a href="classIndex.html#map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder">(View In Hierarchy)</a>
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>Class to build the JSON response to be sent to client.</p><table class="fieldTable"></table></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id38">
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#__init__" data-type="Method" class="code">__init__</a></td>
+    <td><span>Initializes the appropriate class variables and filters. 
+<code>request</code> refers to the request sent by the client.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#get_crimes" data-type="Method" class="code">get_crimes</a></td>
+    <td><span>Helper method to get a list of <code>Pin</code> objects which satisfy 
+the <code>CrimeFilter</code>. This function returns a <code>list</code> of 
+<code>Pin</code> objects.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#get_wiki_info" data-type="Method" class="code">get_wiki_info</a></td>
+    <td><span>Helper method to get a list of <code>Pin</code> objects which satisfy 
+the filter. This function returns a <code>list</code> of <code>Pin</code> 
+objects.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#get_legislators" data-type="Method" class="code">get_legislators</a></td>
+    <td><span>Helper method to get a list of <code>Pin</code> objects which satisfy 
+the filter. This function returns a <code>list</code> of <code>Pin</code> 
+objects.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#converge" data-type="Method" class="code">converge</a></td>
+    <td><span>Converts the raw data from the data access layer into a suitable format 
+to respond to a client's request.</span></td>
+  </tr><tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#converge_to_one" data-type="Static Method" class="code">converge_to_one</a></td>
+    <td><span>Utility function to converge pins in one square to a single pin. 
+<code>pin_list</code> is a  <code>list</code> of <code>Pin</code> objects. 
+This function returns a <code>Pin</code> object.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#get_response_json" data-type="Method" class="code">get_response_json</a></td>
+    <td><span>Processes the request to fetch appropriate response. This function 
+returns a JSON response to be sent to client.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.html#get_pins_json" data-type="Method" class="code">get_pins_json</a></td>
+    <td><span>Processes request to fetch appropriate pins. This function returns a 
+JSON response.</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    __init__(self, request):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Initializes the appropriate class variables and filters. 
+<code>request</code> refers to the request sent by the client.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.get_crimes">
+    
+  </a>
+  <a name="get_crimes">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_crimes(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Helper method to get a list of <code>Pin</code> objects which satisfy 
+the <code>CrimeFilter</code>. This function returns a <code>list</code> of 
+<code>Pin</code> objects.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.get_wiki_info">
+    
+  </a>
+  <a name="get_wiki_info">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_wiki_info(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Helper method to get a list of <code>Pin</code> objects which satisfy 
+the filter. This function returns a <code>list</code> of <code>Pin</code> 
+objects.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.get_legislators">
+    
+  </a>
+  <a name="get_legislators">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_legislators(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Helper method to get a list of <code>Pin</code> objects which satisfy 
+the filter. This function returns a <code>list</code> of <code>Pin</code> 
+objects.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.converge">
+    
+  </a>
+  <a name="converge">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    converge(self, pin_list):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Converts the raw data from the data access layer into a suitable format 
+to respond to a client's request.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basestaticmethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.converge_to_one">
+    
+  </a>
+  <a name="converge_to_one">
+    
+  </a>
+  <div class="functionHeader">
+    @staticmethod<br />
+    def
+    converge_to_one(pin_list):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Utility function to converge pins in one square to a single pin. 
+<code>pin_list</code> is a  <code>list</code> of <code>Pin</code> objects. 
+This function returns a <code>Pin</code> object.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.get_response_json">
+    
+  </a>
+  <a name="get_response_json">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_response_json(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Processes the request to fetch appropriate response. This function 
+returns a JSON response to be sent to client.</p><table class="fieldTable"></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="map_annotate.map_annotate_app.ResponseBuilder.ResponseBuilder.get_pins_json">
+    
+  </a>
+  <a name="get_pins_json">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_pins_json(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Processes request to fetch appropriate pins. This function returns a 
+JSON response.</p><table class="fieldTable"></table></div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for map_annotate, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2016-04-25 22:26:55.
+      </address>
+
+    </div>
+
+    <script type="text/javascript" src="pydoctor.js"></script>
+
+  </body>
+</html>
