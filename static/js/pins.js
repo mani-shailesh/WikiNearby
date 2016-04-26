@@ -603,7 +603,8 @@
                                 //noinspection JSUnresolvedVariable
                                 if (typeof queryResponse != 'undefined' && typeof queryResponse.query.pages[pageid] != 'undefined') {
                                     //noinspection JSUnresolvedVariable
-                                    marker.pinRef.wiki_info_list[0].imageURL = queryResponse.query.pages[pageid].thumbnail.source;
+                                    if (typeof queryResponse.query.pages[pageid].thumbnail != 'undefined')
+                                        marker.pinRef.wiki_info_list[0].imageURL = queryResponse.query.pages[pageid].thumbnail.source;
                                     marker.imageLoaded = true;
                                 }
                             }
