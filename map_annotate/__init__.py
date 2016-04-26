@@ -4,4 +4,4 @@ crime data (from http://www.zipnet.in) and geotagged Wikipedia articles are supp
 For more details, see the documentation for C{map_annotate_app}.
 """
 
-__all__ = ['settings', 'urls', 'wsgi']
+# __all__ = ['settings', 'urls', 'wsgi']

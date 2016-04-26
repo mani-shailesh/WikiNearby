@@ -3,4 +3,4 @@ The C{filters} package encapsulates functionality and data entities for filterin
 based on the client's query.
 """
 
-__all__ = ['CrimeFilter', 'LegislatorFilter', 'WikiInfoFilter']
+# __all__ = ['CrimeFilter', 'LegislatorFilter', 'WikiInfoFilter']
