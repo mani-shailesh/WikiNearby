@@ -7,4 +7,4 @@ Code documentation is available <a href="http://tushar-agarwal.github.io/map_ann
 
 Presently, it is able to show Wikipedia artickes geotagged near the user's location, as well as some crime data from an Indian crime database (<a href="http://zipnet.in" target="_blank">Zipnet.in</a>).
 
-#### Go to <a href="http://tagarwal.pythonanywhere.com" target="_blank">Map-Annotate</a>
+#### <a href="http://tagarwal.pythonanywhere.com" target="_blank">Go to Map-Annotate</a>
