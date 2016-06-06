@@ -3,6 +3,30 @@
  * @author Tushar Agarwal
  */
 
+/* global
+   map
+   oldTileCoordinate
+   TILE_SIZE
+   mapLoaded
+   dataLoaded
+   INVALID_PIN
+   MULTI_PIN
+   CRIME_PIN
+   LEGISLATOR_PIN
+   WIKI_PIN
+   crimePicture
+   sansadPicture
+   wikiPicture
+   initAutoComplete
+   markers
+   infowindow
+   currentlyActiveInfowindowPin
+   queryData
+   setNewMarkers
+   handleMoreDetailsEvent
+   zoomIntoPin
+*/
+
 /**
  * The <code>pinManager</code> namespace encapsulates pin and marker related functionality.
  * @namespace extrasManager
