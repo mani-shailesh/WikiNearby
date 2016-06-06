@@ -1,4 +1,4 @@
-/*global $, map:true, oldTileCoordinate:true, TILE_SIZE, mapLoaded:true, dataLoaded:true,
+/*globals $, map:true, oldTileCoordinate:true, TILE_SIZE, mapLoaded:true, dataLoaded:true,
    INVALID_PIN, MULTI_PIN, CRIME_PIN, LEGISLATOR_PIN, WIKI_PIN, crimePicture:true,
    sansadPicture:true, wikiPicture:true, initAutoComplete:true, markers:true, infowindow:true,
    currentlyActiveInfowindowPin:true, queryData:true, setNewMarkers:true,

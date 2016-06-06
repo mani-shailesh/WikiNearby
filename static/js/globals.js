@@ -1,4 +1,4 @@
-/*global $, staticImagesRootPath
+/*globals $, staticImagesRootPath
 */
 
 /**
