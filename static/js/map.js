@@ -1,15 +1,15 @@
-/**
- * @file Initializes and manages a Google Maps instance.
- * Declares helper functions to track the movement and loading of the map.
- * @author Tushar Agarwal
- */
-
-/* global map, oldTileCoordinate, TILE_SIZE, mapLoaded, dataLoaded,
+/*global $, map, oldTileCoordinate, TILE_SIZE, mapLoaded, dataLoaded,
    INVALID_PIN, MULTI_PIN, CRIME_PIN, LEGISLATOR_PIN, WIKI_PIN, crimePicture,
    sansadPicture, wikiPicture, initAutoComplete, markers, infowindow,
    currentlyActiveInfowindowPin, queryData, setNewMarkers,
    handleMoreDetailsEvent, zoomIntoPin
 */
+
+/**
+ * @file Initializes and manages a Google Maps instance.
+ * Declares helper functions to track the movement and loading of the map.
+ * @author Tushar Agarwal
+ */
 
 /**
  * The <code>mapManager</code> namespace encapsulates core map related functionality.

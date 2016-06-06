@@ -1,15 +1,15 @@
-/**
- * @file Initializes and manages pins on the map.
- * Declares helper functions to track the loading and removal of pins and related data.
- * @author Tushar Agarwal
- */
-
-/* global map, oldTileCoordinate, TILE_SIZE, mapLoaded, dataLoaded,
+/*global $, map, oldTileCoordinate, TILE_SIZE, mapLoaded, dataLoaded,
    INVALID_PIN, MULTI_PIN, CRIME_PIN, LEGISLATOR_PIN, WIKI_PIN, crimePicture,
    sansadPicture, wikiPicture, initAutoComplete, markers, infowindow,
    currentlyActiveInfowindowPin, queryData, setNewMarkers,
    handleMoreDetailsEvent, zoomIntoPin
 */
+
+/**
+ * @file Initializes and manages pins on the map.
+ * Declares helper functions to track the loading and removal of pins and related data.
+ * @author Tushar Agarwal
+ */
 
 /**
  * The <code>pinManager</code> namespace encapsulates pin and marker related functionality.
