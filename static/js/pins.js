@@ -4,28 +4,11 @@
  * @author Tushar Agarwal
  */
 
-/* global
-   map
-   oldTileCoordinate
-   TILE_SIZE
-   mapLoaded
-   dataLoaded
-   INVALID_PIN
-   MULTI_PIN
-   CRIME_PIN
-   LEGISLATOR_PIN
-   WIKI_PIN
-   crimePicture
-   sansadPicture
-   wikiPicture
-   initAutoComplete
-   markers
-   infowindow
-   currentlyActiveInfowindowPin
-   queryData
-   setNewMarkers
-   handleMoreDetailsEvent
-   zoomIntoPin
+/* global map, oldTileCoordinate, TILE_SIZE, mapLoaded, dataLoaded,
+   INVALID_PIN, MULTI_PIN, CRIME_PIN, LEGISLATOR_PIN, WIKI_PIN, crimePicture,
+   sansadPicture, wikiPicture, initAutoComplete, markers, infowindow,
+   currentlyActiveInfowindowPin, queryData, setNewMarkers,
+   handleMoreDetailsEvent, zoomIntoPin
 */
 
 /**
@@ -45,24 +28,24 @@
     function typeOfMarker(pin) {
 
         //noinspection JSUnresolvedVariable
-        if (pin.crime_list.length == 1 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
+        if (pin.crime_list.length === 1 && pin.legislator_list.length === 0 && pin.wiki_info_list.length === 0) {
 
             return CRIME_PIN;
 
         } else { //noinspection JSUnresolvedVariable
-            if (pin.crime_list.length == 0 && pin.legislator_list.length == 1 && pin.wiki_info_list.length == 0) {
+            if (pin.crime_list.length === 0 && pin.legislator_list.length === 1 && pin.wiki_info_list.length === 0) {
 
                 return LEGISLATOR_PIN;
 
             } else { //noinspection JSUnresolvedVariable
-                if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 1) {
+                if (pin.crime_list.length === 0 && pin.legislator_list.length === 0 && pin.wiki_info_list.length === 1) {
 
                     return WIKI_PIN;
 
                 } else { //noinspection JSUnresolvedVariable
-                    if (pin.crime_list.length == 0 && pin.legislator_list.length == 0 && pin.wiki_info_list.length == 0) {
+                    if (pin.crime_list.length === 0 && pin.legislator_list.length === 0 && pin.wiki_info_list.length === 0) {
 
-                        return INVALID_PIN
+                        return INVALID_PIN;
 
                     } else {
 
@@ -99,6 +82,7 @@
      */
     function slowlyFadeOut(markerRef) {
         var currentOpacity = 1.0;
+        var myInterval;
 
         function slowlyFadeOutHelper() {
             currentOpacity -= 0.1;
@@ -109,8 +93,8 @@
             }
         }
 
-        var myInterval = setInterval(function () {
-            slowlyFadeOutHelper()
+        myInterval = setInterval(function () {
+            slowlyFadeOutHelper();
         }, 20);
     }
 
@@ -121,6 +105,7 @@
      */
     function slowlyFadeIn(markerRef) {
         var currentOpacity = 0.0;
+        var myInterval;
 
         function slowlyFadeInHelper() {
             currentOpacity += 0.1;
@@ -131,8 +116,8 @@
             }
         }
 
-        var myInterval = setInterval(function () {
-            slowlyFadeInHelper()
+        myInterval = setInterval(function () {
+            slowlyFadeInHelper();
         }, 20);
     }
 
@@ -262,9 +247,9 @@
 
         //noinspection JSUnresolvedVariable
         appendString = '<div class="card z-depth-0">';
+        var image_source;
         if (isTopElement) {
             //noinspection JSUnresolvedVariable
-
             image_source = wikiPicture;
 
             if (typeof wikiItem.imageURL != 'undefined')
@@ -273,7 +258,10 @@
             appendString += '<div id="WikiImageHolder" class="card-image">';
             $('<img style="display: none;" src="' + image_source + '">').load(function () {
                 $('div#sideNavImagePreLoader').hide();
-                $(this).prependTo('div#WikiImageHolder').animate({height: 'toggle', opacity: 'toggle'}, 'fast');
+                $(this).prependTo('div#WikiImageHolder').animate({
+                    height: 'toggle',
+                    opacity: 'toggle'
+                }, 'fast');
             });
 
             if (isListItem)
