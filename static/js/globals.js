@@ -1,3 +1,6 @@
+/*global $, staticImagesRootPath
+*/
+
 /**
  * @file Declares and initializes globals required for downstream functions and code.
  * @author Tushar Agarwal
