@@ -235,9 +235,9 @@ class ResponseBuilder:
         elif self.query_dict['pinCategory'] == "Wikipedia":
             wiki_pin_list = self.get_wiki_info()
         else:
-            crime_pin_list = self.get_crimes()
+            # crime_pin_list = self.get_crimes()
             wiki_pin_list = self.get_wiki_info()
-            legislator_pin_list = self.get_legislators()
+            # legislator_pin_list = self.get_legislators()
 
         final_pin_list = crime_pin_list + wiki_pin_list + legislator_pin_list
         final_pin_list = self.converge(final_pin_list)
