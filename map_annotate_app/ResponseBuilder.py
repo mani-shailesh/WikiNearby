@@ -48,18 +48,19 @@ class ResponseBuilder:
             date_to = str(timezone.datetime.strptime(date_to + " 23:59:59", "%d %B, %Y %H:%M:%S"))
 
         type_id_list = []
-        for __type_id in self.query_dict.get('crimeTypeId').split(','):
-            try:
-                __type_id = int(__type_id)
-            except ValueError:
-                continue
-            type_id_list.append(__type_id)
+        # for __type_id in self.query_dict.get('crimeTypeId').split(','):
+        #     try:
+        #         __type_id = int(__type_id)
+        #     except ValueError:
+        #         continue
+        #     type_id_list.append(__type_id)
 
         self.crime_filter = CrimeFilter.CrimeFilter(north_east, south_west, type_id_list, date_from, date_to)
 
         self.legislator_filter = LegislatorFilter.LegislatorFilter(north_east, south_west)
 
-        self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter(north_east, south_west)
+        lang = self.query_dict.get('lang')
+        self.wiki_info_filter = WikiInfoFilter.WikiInfoFilter(north_east, south_west, lang)
 
         self.map_width = int(self.query_dict.get('map_width'))
         self.map_height = int(self.query_dict.get('map_height'))
@@ -235,9 +236,9 @@ class ResponseBuilder:
         elif self.query_dict['pinCategory'] == "Wikipedia":
             wiki_pin_list = self.get_wiki_info()
         else:
-            crime_pin_list = self.get_crimes()
+            # crime_pin_list = self.get_crimes()
             wiki_pin_list = self.get_wiki_info()
-            legislator_pin_list = self.get_legislators()
+            # legislator_pin_list = self.get_legislators()
 
         final_pin_list = crime_pin_list + wiki_pin_list + legislator_pin_list
         final_pin_list = self.converge(final_pin_list)

@@ -13,12 +13,15 @@ class WikiInfoFilter:
     based on the client's query.
     """
 
-    def __init__(self, north_east, south_west):
+    def __init__(self, north_east, south_west, lang):
         centre_lat = (north_east.lat + south_west.lat) / 2
         centre_lng = (north_east.lng + south_west.lng) / 2  # TODO: May cause problems at intersection of +180, -180
         self.centre = Location.Location(centre_lat, centre_lng)
         self.radius = haversine(self.centre.lng, self.centre.lat,
                                 north_east.lng, north_east.lat)
+        self.lang = lang
+        if self.lang == "" or self.lang == 'null' or self.lang is None:
+            self.lang = 'en'
         if self.radius > 10000:
             self.radius = 10000
 
