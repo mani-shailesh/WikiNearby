@@ -6,4 +6,4 @@ Code documentation is available <a href="http://tushar-agarwal.github.io/WikiNea
 ### Description
 "WikiNearby" is a web application to annotate Google Maps with geotagged Wikipedia articles in various Indian languages. 
 
-#### <a href="http://tagarwal.pythonanywhere.com" target="_blank">Go to Map-Annotate</a>
+#### <a href="http://tagarwal.pythonanywhere.com" target="_blank">Go to WikiNearby</a>
