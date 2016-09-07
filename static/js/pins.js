@@ -386,7 +386,7 @@
         }
 
         appendString += '<p class="fullWidth"><div class="center-align waves-effect waves-teal btn-flat fullWidth" id="zoomIntoPin" onclick="zoomIntoPin(); void(0);"><i class="fa fa-search-plus" aria-hidden="true"></i> Zoom in to this pin</div></p><hr class="semiTransparentHR">' +
-            '<p class="fullWidth"><h5 class="fullWidth center-align"><i class="fa fa-map"></i> Map-Annotate</h5></p>';
+            '<p class="fullWidth"><h5 class="fullWidth center-align"><i class="fa fa-map"></i> WikiNearby</h5></p>';
 
         navMobileSelector.append(appendString);
 
