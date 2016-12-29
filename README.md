@@ -1,6 +1,8 @@
+<a href="http://wikinearby.in/">
 <div align="center">
 	<img src="readme-images/logo.png">
-</div><br>
+</div>
+</a><br>
 
 # http://wikinearby.in
 
