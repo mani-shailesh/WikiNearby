@@ -29,6 +29,8 @@
         var urlArr = url.split("/");
         var mapSelector = $('#map');
         var mapBounds = map.getBounds();
+        var wikiLang = $('#wikiLang').val();
+        $('#mainBranding').html("<i class=\"fa fa-map\"> </i> WikiNearby | Lang: " + wikiLang.toUpperCase());
         var urlResult = urlArr[0] + "//" + urlArr[2] + "/" + "api/?query=get" +
             "&item=" + "pins" +
             "&map_width=" + mapSelector.width() +
@@ -37,9 +39,10 @@
             "&north_east_lng=" + mapBounds.getNorthEast().lng() +
             "&south_west_lat=" + mapBounds.getSouthWest().lat() +
             "&south_west_lng=" + mapBounds.getSouthWest().lng() +
-            "&crimeTypeId=" + $('#crimeType').val().join() +
+            // "&crimeTypeId=" + $('#crimeType').val().join() +
             "&dateFrom=" + $('#fromDatePicker')[0].value +
             "&dateTo=" + $('#toDatePicker')[0].value +
+            "&lang=" + wikiLang +
             "&pinCategory=" + $('#filterTabsArea').find('a.active')[0].text;
 
         $.ajax({

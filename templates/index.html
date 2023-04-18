@@ -1,5 +1,4 @@
-{% load compress %}
-{% load staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,17 +7,15 @@
     <meta charset="UTF-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
 
-    <title>Map Annotate</title>
+    <title>WikiNearby</title>
 
     {#Stylesheets#}
     {#IMPORTANT: Do not modify the order of imports#}
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    {% compress css %}
-        <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="{% static 'css/map.css' %}"/>
-        <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}"/>
-    {% endcompress %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/map.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}"/>
 </head>
 
 <body>
@@ -47,7 +44,7 @@
 <div id="upperRightControls">
 
     <div class="row">
-        {#Filter button#}
+        {#        Filter button#}
         <a id="filterModalTrigger"
            class="waves-effect waves-light btn-floating btn-large teal modal-trigger z-depth-2"
            href="#filterModal">
@@ -73,80 +70,106 @@
     <div class="row">
         <div class="col s12 center-align">
             <ul class="tabs" id="filterTabsArea">
-                <li class="tab col s3"><a class="teal-text active" id="allFilterSource" href="#allFilter">All</a>
-                </li>
-                <li class="tab col s3"><a class="teal-text" id="crimeFilterSource" href="#crimeFilter">Crime</a>
-                </li>
+                {#                <li class="tab col s3"><a class="teal-text active" id="allFilterSource" href="#allFilter">All</a>#}
+                {#                </li>#}
+                {#                <li class="tab col s3"><a class="teal-text" id="crimeFilterSource" href="#crimeFilter">Crime</a>#}
+                {#                </li>#}
                 <li class="tab col s3"><a class="teal-text" id="wikipediaFilterSource"
                                           href="#wikipediaFilter">Wikipedia</a></li>
             </ul>
         </div>
-        <div id="allFilter" class="col s12 flow-text center-align">
+        {#        <div id="allFilter" class="col s12 flow-text center-align">#}
+        {#            <div class="row">#}
+        {#                <div class="valign-wrapper-responsive">#}
+        {#                    <p class="col s12 l3">Show all data.</p>#}
+        {#                    <p class="col s12 l3">Choose a filter above.</p>#}
+        {#                    <div class="col s12 l2">#}
+        {#                        <label>#}
+        {#                            <input type="date" class="datepicker notVisible" disabled>#}
+        {#                        </label>#}
+        {#                    </div>#}
+        {#                    <div class="col s12 l2">#}
+        {#                        <label>#}
+        {#                            <input type="date" class="datepicker notVisible" disabled>#}
+        {#                        </label>#}
+        {#                    </div>#}
+        {#                    <div class="col s12 l2">#}
+        {#                        <p>#}
+        {#                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>#}
+        {#                        </p>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div id="crimeFilter" class="col s12 flow-text center-align">#}
+        {#            <div class="row">#}
+        {#                <div class="valign-wrapper-responsive">#}
+        {#                    <p class="col s12 l3">Only show crime data.</p>#}
+        {#                    <div class="col s12 l3">#}
+        {#                        <label>#}
+        {#                            <select id="crimeType" multiple>#}
+        {#                                <option value="" disabled selected>Crime type(s)</option>#}
+        {#                                <option value="1">Stolen/Theft</option>#}
+        {#                                <option value="2">Snatching Case</option>#}
+        {#                                <option value="3">Robbery Case</option>#}
+        {#                            </select>#}
+        {#                        </label>#}
+        {#                    </div>#}
+        {#                    <div class="col s12 l2">#}
+        {#                        <input type="date" placeholder="Start date" id="fromDatePicker">#}
+        {#                    </div>#}
+        {#                    <div class="col s12 l2">#}
+        {#                        <input type="date" placeholder="End date" id="toDatePicker">#}
+        {#                    </div>#}
+        {#                    <div class="col s12 l2">#}
+        {#                        <p>#}
+        {#                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>#}
+        {#                        </p>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        <div id="wikipediaFilter" class="col s12 flow-text center-align">
             <div class="row">
                 <div class="valign-wrapper-responsive">
-                    <p class="col s12 l3">Show all data.</p>
-                    <p class="col s12 l3">Choose a filter above.</p>
-                    <div class="col s12 l2">
-                        <label>
-                            <input type="date" class="datepicker notVisible" disabled>
-                        </label>
-                    </div>
-                    <div class="col s12 l2">
-                        <label>
-                            <input type="date" class="datepicker notVisible" disabled>
-                        </label>
-                    </div>
-                    <div class="col s12 l2">
-                        <p>
-                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="crimeFilter" class="col s12 flow-text center-align">
-            <div class="row">
-                <div class="valign-wrapper-responsive">
-                    <p class="col s12 l3">Only show crime data.</p>
+                    <p class="col s12 l5">Choose Wikipedia language:</p>
                     <div class="col s12 l3">
                         <label>
-                            <select id="crimeType" multiple>
-                                <option value="" disabled selected>Crime type(s)</option>
-                                <option value="1">Stolen/Theft</option>
-                                <option value="2">Snatching Case</option>
-                                <option value="3">Robbery Case</option>
+                            <select id="wikiLang">
+                                <option value="bn">Bengali</option>
+                                <option value="en" selected>English</option>
+                                <option value="gu">Gujarati</option>
+                                <option value="hi">Hindi</option>
+                                <option value="kn">Kannada</option>
+                                <option value="mai">Maithili</option>
+                                <option value="ml">Malayalam</option>
+                                <option value="mr">Marathi</option>
+                                <option value="or">Oriya</option>
+                                <option value="pa">Punjabi</option>
+                                <option value="sa">Sanskrit</option>
+                                <option value="simple">Simple English</option>
+                                <option value="ta">Tamil</option>
+                                <option value="te">Telugu</option>
+                                <option value="ur">Urdu</option>
                             </select>
                         </label>
                     </div>
                     <div class="col s12 l2">
-                        <input type="date" placeholder="Start date" id="fromDatePicker">
+                        <input type="date" class="datepicker notVisible" placeholder="Start date" id="fromDatePicker">
                     </div>
                     <div class="col s12 l2">
-                        <input type="date" placeholder="End date" id="toDatePicker">
+                        <input type="date" class="datepicker notVisible" placeholder="End date" id="toDatePicker">
                     </div>
-                    <div class="col s12 l2">
-                        <p>
-                            <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="wikipediaFilter" class="col s12 flow-text center-align">
-            <div class="row">
-                <div class="valign-wrapper-responsive">
-                    <p class="col s12 l5">Only show Wiki data.</p>
-                    <p class="col s12 l3">No settings available.</p>
-                    <div class="col s12 l1">
-                        <label>
-                            <input type="date" class="datepicker notVisible" disabled>
-                        </label>
-                    </div>
-                    <div class="col s12 l1">
-                        <label>
-                            <input type="date" class="datepicker notVisible" disabled>
-                        </label>
-                    </div>
+                    {#                    <div class="col s12 l1">#}
+                    {#                        <label>#}
+                    {#                            <input type="date" class="datepicker notVisible" disabled>#}
+                    {#                        </label>#}
+                    {#                    </div>#}
+                    {#                    <div class="col s12 l1">#}
+                    {#                        <label>#}
+                    {#                            <input type="date" class="datepicker notVisible" disabled>#}
+                    {#                        </label>#}
+                    {#                    </div>#}
                     <div class="col s12 l2">
                         <p>
                             <a href="#" class="modal-action modal-close waves-effect waves-teal btn-flat">Apply</a>
@@ -170,15 +193,22 @@
     <div class="container valign center-block">
         <div class="row">
             <div class="col l4 s12">
-                <h5 class="white-text" id="mainBranding"><i class="fa fa-map"></i> Map-Annotate</h5>
+                <h5 class="white-text" id="mainBranding"><i class="fa fa-map"></i> WikiNearby </h5>
             </div>
             <div class="col l2 offset-l3 s12">
+<<<<<<< HEAD
                 <a class="white-text modal-trigger" href="http://agarwalt.github.io/map_annotate/"><p>
                     <i class="fa fa-question-circle"></i> Help/About</p></a>
             </div>
             <div class="col l3 s12">
                 <a class="white-text" href="https://github.com/agarwalt/map_annotate"><p>
                     <i class="fa fa-github"></i> GitHub repo</p></a>
+=======
+            </div>
+            <div class="col l3 s12">
+                <a class="white-text" href="https://github.com/agarwalt/WikiNearby"><p>
+                    <i class="fa fa-github"></i> About/GitHub Repo.</p></a>
+>>>>>>> wiki-nearby
             </div>
         </div>
     </div>
@@ -188,17 +218,16 @@
 {#IMPORTANT: Do not modify the order of imports#}
 <script>document.body.className += ' fade-out';
 document.querySelector("#map").className += ' fade-out';</script>
-{% compress js %}
-    <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-    <script>
-        var staticImagesRootPath = "{% static 'images' %}";
-    </script>
-    <script type="text/javascript" src="{% static 'js/globals.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/pins.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/extras.js' %}"></script>
-{% endcompress %}
+
+<script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script>
+    var staticImagesRootPath = "{% static 'images' %}";
+</script>
+<script type="text/javascript" src="{% static 'js/globals.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/pins.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/extras.js' %}"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbxx7r2xIYtpWqPgCFpR7E4ttqc-wSUCM&libraries=places&callback=initAutocomplete"></script>
 <script>$(function () {

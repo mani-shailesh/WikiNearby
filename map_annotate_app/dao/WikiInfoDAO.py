@@ -10,6 +10,9 @@ from map_annotate_app.dto import WikiInfoDTO
 from map_annotate_app.extras import Location
 
 
+def get_lang_code(lang):
+    return "en"
+
 class WikiInfoDAO:
     """
     This class represents the data access layer for a Wikipedia article.
@@ -21,6 +24,7 @@ class WikiInfoDAO:
         """
         pass
 
+
     @staticmethod
     def get_wiki_info_list(wiki_filter):
         """
@@ -31,7 +35,7 @@ class WikiInfoDAO:
 
         return_list = []
 
-        url = "https://en.wikipedia.org/w/api.php?" + \
+        url = "https://" + wiki_filter.lang + ".wikipedia.org/w/api.php?" + \
               "action=query" + \
               "&list=geosearch" + \
               "&gsradius=" + str(wiki_filter.radius) + \
@@ -50,7 +54,7 @@ class WikiInfoDAO:
                 wiki_dto = WikiInfoDTO.WikiInfoDTO()
                 wiki_dto.location = Location.Location(article_dict['lat'], article_dict['lon'])
                 wiki_dto.title = article_dict['title']
-                wiki_dto.link = "https://en.wikipedia.org/?curid=" + str(article_dict['pageid'])
+                wiki_dto.link = "https://" + wiki_filter.lang + ".wikipedia.org/?curid=" + str(article_dict['pageid'])
                 wiki_dto.info = ""
                 wiki_dto.pageid = str(article_dict['pageid'])
                 return_list.append(wiki_dto)

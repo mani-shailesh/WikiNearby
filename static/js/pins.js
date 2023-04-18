@@ -386,7 +386,7 @@
         }
 
         appendString += '<p class="fullWidth"><div class="center-align waves-effect waves-teal btn-flat fullWidth" id="zoomIntoPin" onclick="zoomIntoPin(); void(0);"><i class="fa fa-search-plus" aria-hidden="true"></i> Zoom in to this pin</div></p><hr class="semiTransparentHR">' +
-            '<p class="fullWidth"><h5 class="fullWidth center-align"><i class="fa fa-map"></i> Map-Annotate</h5></p>';
+            '<p class="fullWidth"><h5 class="fullWidth center-align"><i class="fa fa-map"></i> WikiNearby</h5></p>';
 
         navMobileSelector.append(appendString);
 
@@ -568,8 +568,8 @@
             marker.imageLoaded = false;
             slowlyFadeIn(marker);
             marker.addListener('click', function () {
-                var baseURL = 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=';
-                var baseImageURL = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=pageimages&pithumbsize=350&pageids=";
+                var baseURL = 'https://' + $('#wikiLang').val() + '.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&pageids=';
+                var baseImageURL = "https://" + $('#wikiLang').val() + ".wikipedia.org/w/api.php?format=json&action=query&prop=pageimages&pithumbsize=350&pageids=";
                 infowindow.setContent(contentString);
                 //noinspection JSCheckFunctionSignatures
                 infowindow.open(map, this);
